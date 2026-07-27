@@ -1,0 +1,62 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { projects } from "../data/site";
+---
+
+<InteriorLayout
+  title="Projects | V12 Electric"
+  description="Explore V12 Electric project work across electrical systems, lighting, and planning."
+  active="projects"
+>
+  <PageHero
+    eyebrow="Selected work"
+    title="Clean work. Real results."
+    description="Electrical systems should support the architecture, the people using the space, and what comes next."
+    image="/images/featured-kitchen.webp"
+    alt="Contemporary kitchen with carefully coordinated architectural lighting"
+  />
+
+  <section class="intro-split section-pad">
+    <p class="section-label" data-reveal="up">Project standard</p>
+    <div data-reveal="up">
+      <h2>The finished room starts behind the walls.</h2>
+      <p class="body-large">
+        Every project shown here reflects the same priorities: clear planning, careful coordination,
+        clean installation, and a final system that feels natural to use.
+      </p>
+    </div>
+  </section>
+
+  <section class="project-list section-pad" aria-label="Selected electrical projects">
+    {
+      projects.map((project, index) => (
+        <article class="project-card" data-reveal="up">
+          <figure class="project-card-media media-frame">
+            <img src={project.image} width="1894" height="1086" alt={project.alt} loading="lazy" />
+          </figure>
+          <div class="project-card-copy">
+            <span class="index-number">0{index + 1}</span>
+            <div>
+              <p class="section-label">{project.category}</p>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="project-principles section-pad">
+    <div data-reveal="up">
+      <p class="section-label">What stays consistent</p>
+      <h2>Plan clearly.<br />Install cleanly.<br />Verify everything.</h2>
+    </div>
+    <ol>
+      <li data-reveal="up"><span>01</span><p>Systems coordinated before installation begins.</p></li>
+      <li data-reveal="up"><span>02</span><p>Work organized for safety, clarity, and serviceability.</p></li>
+      <li data-reveal="up"><span>03</span><p>Final testing and a clear owner walkthrough.</p></li>
+    </ol>
+  </section>
+</InteriorLayout>

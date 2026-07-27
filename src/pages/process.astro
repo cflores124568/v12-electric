@@ -1,0 +1,91 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Discover",
+    copy: "We learn how the space will be used, review existing conditions, and define the project priorities.",
+  },
+  {
+    number: "02",
+    title: "Coordinate",
+    copy: "We align power, lighting, equipment, controls, plans, and trade dependencies before work begins.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    copy: "Installation moves forward with clean routing, clear communication, and respect for the surrounding work.",
+  },
+  {
+    number: "04",
+    title: "Verify",
+    copy: "We test the system, review the finished work, and walk through the result with the project team.",
+  },
+] as const;
+---
+
+<InteriorLayout
+  title="Our Process | V12 Electric"
+  description="See how V12 Electric moves an electrical project from discovery through coordination, installation, and verification."
+  active="process"
+>
+  <PageHero
+    eyebrow="Our process"
+    title="A clear path from idea to power."
+    description="Good electrical work is the result of good decisions made in the right order."
+    image="/images/design-planning.webp"
+    alt="Electrical plans being reviewed and coordinated"
+  />
+
+  <section class="process-intro section-pad">
+    <p class="section-label" data-reveal="up">How we work</p>
+    <div data-reveal="up">
+      <h2>Fewer surprises start with better coordination.</h2>
+      <p class="body-large">
+        The process is designed to make decisions visible early, keep the installation moving, and
+        give every stakeholder a clear understanding of what comes next.
+      </p>
+    </div>
+  </section>
+
+  <section class="process-timeline section-pad">
+    {
+      steps.map((step) => (
+        <article data-reveal="up">
+          <span class="process-big-number">{step.number}</span>
+          <div>
+            <h2>{step.title}</h2>
+            <p>{step.copy}</p>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="process-collaboration">
+    <figure class="media-frame" data-reveal="image">
+      <img
+        src="/images/hero-electricians-plans.webp"
+        width="1842"
+        height="1024"
+        alt="Electrical team collaborating over construction plans"
+        loading="lazy"
+      />
+    </figure>
+    <div class="section-pad" data-reveal="up">
+      <p class="section-label">Collaboration</p>
+      <h2>Built to work with the whole team.</h2>
+      <p class="body-large">
+        We coordinate with homeowners, builders, designers, architects, and other trades so the
+        electrical work supports the project instead of interrupting it.
+      </p>
+    </div>
+  </section>
+
+  <section class="handoff-band section-pad">
+    <p class="section-label">The handoff</p>
+    <h2>Tested. Explained. Ready to use.</h2>
+  </section>
+</InteriorLayout>

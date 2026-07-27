@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const className = Astro.props.class ?? "";
+---
+
+<a class={`brand-logo ${className}`} href="/" aria-label="V12 Electric home">
+  <img
+    src="/images/v12-electric-logo-source.png"
+    width="1536"
+    height="1024"
+    alt="V12 Electric"
+  />
+</a>

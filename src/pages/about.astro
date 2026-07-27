@@ -1,0 +1,81 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<InteriorLayout
+  title="About | V12 Electric"
+  description="Learn about V12 Electric's plan-first approach to power, lighting, and electrical design."
+  active="about"
+>
+  <PageHero
+    eyebrow="About V12"
+    title="Built around the whole project."
+    description="We approach electrical work as part of the design, not simply a list of devices to install."
+    image="/images/hero-electricians-plans.webp"
+    alt="Electricians reviewing project plans together on site"
+  />
+
+  <section class="about-statement section-pad">
+    <p class="section-label" data-reveal="up">Our point of view</p>
+    <h2 data-reveal="up">
+      The best electrical work disappears into the experience of a space—and stays dependable for
+      years.
+    </h2>
+  </section>
+
+  <section class="about-grid section-pad">
+    <figure class="about-grid-media media-frame" data-reveal="image">
+      <img
+        src="/images/design-planning.webp"
+        width="1536"
+        height="1024"
+        alt="Electrical planning on architectural drawings"
+        loading="lazy"
+      />
+    </figure>
+    <div class="about-grid-copy" data-reveal="up">
+      <p class="section-label">Why V12</p>
+      <h2>Power, lighting, and design in one conversation.</h2>
+      <p class="body-large">
+        Owners, builders, and designers should not have to bridge the gaps between a plan and the
+        field. We focus on communication early, careful coordination during the work, and a clean
+        handoff at the end.
+      </p>
+    </div>
+  </section>
+
+  <section class="values section-pad">
+    <p class="section-label" data-reveal="up">What guides the work</p>
+    <div class="value-list">
+      <article data-reveal="up">
+        <span>01</span>
+        <h2>Think ahead.</h2>
+        <p>Plan for the finished space, today’s needs, and tomorrow’s possibilities.</p>
+      </article>
+      <article data-reveal="up" data-delay="1">
+        <span>02</span>
+        <h2>Make it clear.</h2>
+        <p>Communicate decisions, dependencies, and next steps without unnecessary friction.</p>
+      </article>
+      <article data-reveal="up" data-delay="2">
+        <span>03</span>
+        <h2>Build it clean.</h2>
+        <p>Organized work is easier to inspect, maintain, adapt, and trust.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-field-note">
+    <figure class="media-frame image-drift" data-reveal="image">
+      <img
+        src="/images/conduit-installation.webp"
+        width="1536"
+        height="1024"
+        alt="Cleanly routed conduit within a framed wall"
+        loading="lazy"
+      />
+    </figure>
+    <blockquote data-reveal="up">What happens behind the walls determines how well everything works in front of them.</blockquote>
+  </section>
+</InteriorLayout>

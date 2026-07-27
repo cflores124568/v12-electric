@@ -1,0 +1,65 @@
+---
+import InteriorLayout from "../../layouts/InteriorLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceIcon from "../../components/ServiceIcon.astro";
+import { services } from "../../data/site";
+---
+
+<InteriorLayout
+  title="Electrical Services | V12 Electric"
+  description="Explore V12 Electric services for electrical systems, lighting solutions, and project planning."
+  active="services"
+>
+  <PageHero
+    eyebrow="Services"
+    title="Power built around the project."
+    description="From the electrical backbone to the final fixture, we coordinate the details that make a space work."
+    image="/images/electrical-systems.webp"
+    alt="Electrician working inside an organized electrical panel"
+  />
+
+  <section class="intro-split section-pad">
+    <p class="section-label" data-reveal="up">One coordinated system</p>
+    <div data-reveal="up">
+      <h2>Plan the infrastructure. Protect the design.</h2>
+      <p class="body-large">
+        Electrical work touches every room, finish, and trade. Our service model connects power,
+        lighting, and planning early so decisions stay clear and installation stays clean.
+      </p>
+    </div>
+  </section>
+
+  <section class="service-index" aria-label="V12 Electric services">
+    {
+      services.map((service, index) => (
+        <article class="service-overview-item">
+          <figure class="service-overview-media media-frame" data-reveal="image">
+            <img src={service.image} width="1536" height="1024" alt={service.alt} loading="lazy" />
+          </figure>
+          <div class="service-overview-copy section-pad" data-reveal="up">
+            <span class="index-number">0{index + 1}</span>
+            <div class="service-overview-title">
+              <ServiceIcon name={service.icon} />
+              <p class="section-label">{service.shortTitle}</p>
+            </div>
+            <h2>{service.title}</h2>
+            <p>{service.summary}</p>
+            <a class="text-link" href={`/services/${service.slug}/`}>
+              Explore this service <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="capability-band section-pad">
+    <p class="section-label">Built to coordinate</p>
+    <div class="capability-list">
+      <span>Homes</span>
+      <span>Businesses</span>
+      <span>Renovations</span>
+      <span>New construction</span>
+    </div>
+  </section>
+</InteriorLayout>

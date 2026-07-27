@@ -1,0 +1,94 @@
+---
+import type { GetStaticPaths } from "astro";
+import InteriorLayout from "../../layouts/InteriorLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceIcon from "../../components/ServiceIcon.astro";
+import { services } from "../../data/site";
+
+export const getStaticPaths = (() =>
+  services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }))) satisfies GetStaticPaths;
+
+type Service = (typeof services)[number];
+const { service } = Astro.props as { service: Service };
+---
+
+<InteriorLayout
+  title={`${service.title} | V12 Electric`}
+  description={service.summary}
+  active="services"
+>
+  <PageHero
+    eyebrow={service.shortTitle}
+    title={service.title}
+    description={service.summary}
+    image={service.image}
+    alt={service.alt}
+  />
+
+  <section class="service-detail-intro section-pad">
+    <div class="service-detail-mark" data-reveal="up">
+      <ServiceIcon name={service.icon} />
+      <span>{service.shortTitle}</span>
+    </div>
+    <div data-reveal="up">
+      <h2>Built into the plan, not added at the end.</h2>
+      <p class="body-large">{service.intro}</p>
+    </div>
+  </section>
+
+  <section class="service-inclusions section-pad">
+    <div class="section-heading compact" data-reveal="up">
+      <p class="section-label">Typical scope</p>
+      <h2>What we can coordinate.</h2>
+    </div>
+    <ul class="inclusion-list">
+      {
+        service.inclusions.map((item, index) => (
+          <li data-reveal="up" data-delay={String(index % 3)}>
+            <span>0{index + 1}</span>
+            <strong>{item}</strong>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="service-proof">
+    <figure class="service-proof-media media-frame image-drift" data-reveal="image">
+      <img
+        src={service.slug === "lighting-solutions" ? "/images/featured-kitchen.webp" : service.slug === "design-planning" ? "/images/hero-electricians-plans.webp" : "/images/conduit-installation.webp"}
+        width="1842"
+        height="1024"
+        alt=""
+        loading="lazy"
+      />
+    </figure>
+    <div class="service-proof-copy section-pad" data-reveal="up">
+      <p class="section-label">The V12 approach</p>
+      <blockquote>{service.closing}</blockquote>
+      <a class="button button-primary" href="/contact/">
+        Plan Your Project <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <nav class="next-service section-pad" aria-label="More services">
+    <p class="section-label">Continue exploring</p>
+    <div>
+      {
+        services
+          .filter((item) => item.slug !== service.slug)
+          .map((item) => (
+            <a href={`/services/${item.slug}/`}>
+              <span>{item.shortTitle}</span>
+              <strong>{item.title}</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))
+      }
+    </div>
+  </nav>
+</InteriorLayout>

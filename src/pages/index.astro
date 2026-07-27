@@ -1,0 +1,362 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandLogo from "../components/BrandLogo.astro";
+import ServiceIcon from "../components/ServiceIcon.astro";
+
+const services = [
+  {
+    icon: "power",
+    title: "Electrical Systems",
+    description: "Panels, wiring, and complete system installations.",
+    image: "/images/electrical-systems.webp",
+    alt: "Electrician completing a carefully organized electrical panel installation",
+  },
+  {
+    icon: "lighting",
+    title: "Lighting Solutions",
+    description: "Layered lighting that brings your space to life.",
+    image: "/images/lighting-solutions.webp",
+    alt: "Layered pendant and task lighting in a contemporary kitchen",
+  },
+  {
+    icon: "design",
+    title: "Design & Planning",
+    description: "Thoughtful electrical design coordinated from day one.",
+    image: "/images/design-planning.webp",
+    alt: "Electrical design being marked on an architectural plan",
+  },
+] as const;
+
+const process = [
+  {
+    number: "01",
+    title: "Listen",
+    description: "We learn your goals and evaluate your space.",
+  },
+  {
+    number: "02",
+    title: "Coordinate",
+    description: "We plan every detail and keep your project moving.",
+  },
+  {
+    number: "03",
+    title: "Deliver",
+    description: "We build it right and stand behind our work.",
+  },
+] as const;
+---
+
+<BaseLayout
+  title="V12 Electric | Power, Lighting & Design"
+  description="V12 Electric plans and builds residential and commercial electrical systems, lighting, and design."
+>
+  <div id="top" class="site-shell">
+    <header class="site-header" data-reveal="fade">
+      <BrandLogo class="header-logo" />
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
+        <a href="/about/">About</a>
+        <a href="/process/">Process</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+
+      <a class="button button-primary header-cta" href="/contact/">Plan Your Project</a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert>
+        <nav aria-label="Mobile navigation">
+          <a href="/services/">Services</a>
+          <a href="/projects/">Projects</a>
+          <a href="/about/">About</a>
+          <a href="/process/">Process</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <a class="button button-light" href="/contact/">Plan Your Project</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title" data-reveal="up">
+            <span>Make power</span>
+            <span>part of</span>
+            <span>the plan.</span>
+          </h1>
+          <p data-reveal="up" data-delay="1">
+            From first sketch to final switch, we build electrical systems around your space.
+          </p>
+          <div class="button-row" data-reveal="up" data-delay="2">
+            <a class="button button-primary" href="/contact/">
+              Plan Your Project
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-outline" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <div class="hero-strike" aria-hidden="true">
+          <span class="hero-strike-rule hero-strike-rule-top"></span>
+          <svg viewBox="0 0 118 286" role="presentation">
+            <path d="M79 0 20 132h37L5 286l108-177H70L79 0Z" />
+          </svg>
+          <span class="hero-strike-rule hero-strike-rule-bottom"></span>
+        </div>
+
+        <div class="hero-media" data-reveal="image">
+          <img
+            src="/images/hero-electricians-plans.webp"
+            width="1842"
+            height="854"
+            alt="Two electricians reviewing plans inside a new construction project"
+            fetchpriority="high"
+          />
+        </div>
+      </section>
+
+      <section class="service-rail" aria-label="Core services">
+        {
+          services.map((service) => (
+            <a href="#services" class="service-rail-item">
+              <ServiceIcon name={service.icon} />
+              <span>{service.icon === "power" ? "Power" : service.icon === "lighting" ? "Lighting" : "Design"}</span>
+            </a>
+          ))
+        }
+      </section>
+
+      <section id="about" class="manifesto section-pad">
+        <div class="manifesto-copy" data-reveal="up">
+          <p class="section-label">Built with intention</p>
+          <h2>The work behind the walls matters.</h2>
+          <p class="body-large">
+            Great spaces start with great systems. We plan carefully, install cleanly, and test
+            everything so your home or business runs safely and reliably for years to come.
+          </p>
+        </div>
+
+        <figure class="manifesto-media media-frame" data-reveal="image">
+          <img
+            src="/images/conduit-installation.webp"
+            width="1448"
+            height="1086"
+            alt="Neatly arranged electrical conduit inside a framed commercial wall"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section id="services" class="services section-pad">
+        <div class="section-heading" data-reveal="up">
+          <p class="section-label">Services</p>
+          <h2>Designed for the whole project.</h2>
+        </div>
+
+        <div class="service-grid">
+          {
+            services.map((service, index) => (
+              <article class="service-item" data-reveal="up" data-delay={String(index)}>
+                <figure class="service-image media-frame">
+                  <img
+                    src={service.image}
+                    width="1448"
+                    height="1086"
+                    alt={service.alt}
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="service-copy">
+                  <div class="service-title">
+                    <ServiceIcon name={service.icon} />
+                    <h3>{service.title}</h3>
+                  </div>
+                  <p>{service.description}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="projects" class="featured-project" aria-labelledby="project-title">
+        <div class="featured-copy section-pad" data-reveal="up">
+          <p class="section-label">Selected work</p>
+          <h2 id="project-title">Lighting that changes how a room feels.</h2>
+          <p>Layered ambient, task, and architectural lighting designed as one complete system.</p>
+        </div>
+        <figure class="featured-media media-frame image-drift" data-reveal="image">
+          <img
+            src="/images/featured-kitchen.webp"
+            width="1894"
+            height="830"
+            alt="Contemporary kitchen with layered architectural and task lighting"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section class="upgrade section-pad">
+        <figure class="upgrade-media media-frame" data-reveal="image">
+          <img
+            src="/images/panel-upgrade.webp"
+            width="1536"
+            height="1024"
+            alt="Completed modern electrical panel upgrade with organized conductors"
+            loading="lazy"
+          />
+        </figure>
+        <div class="upgrade-copy" data-reveal="up">
+          <h2>Built for today.<br />Ready for tomorrow.</h2>
+          <span class="short-rule" aria-hidden="true"></span>
+          <p class="body-large">
+            Outdated panels and overloaded circuits create problems you cannot see. We upgrade
+            your electrical infrastructure to meet today's demands and tomorrow's possibilities.
+          </p>
+        <a class="text-link" href="/contact/">Discuss your project <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section id="process" class="process section-pad">
+        <div class="section-heading compact" data-reveal="up">
+          <p class="section-label">Our process</p>
+          <h2>A clear path from idea to power.</h2>
+        </div>
+
+        <ol class="process-list">
+          {
+            process.map((item, index) => (
+              <li data-reveal="up" data-delay={String(index)}>
+                <span class="process-number">{item.number}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section class="testimonial">
+        <div class="testimonial-copy" data-reveal="up">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <blockquote>
+            Clear communication. Clean work. Electrical systems built around your space.
+          </blockquote>
+          <p>The V12 standard</p>
+        </div>
+        <figure class="testimonial-media media-frame image-drift" data-reveal="image">
+          <img
+            src="/images/testimonial-living-room.webp"
+            width="1672"
+            height="941"
+            alt="Contemporary living room with integrated architectural lighting"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section id="contact" class="closing-cta">
+        <div data-reveal="up">
+          <h2>Let's build it right.</h2>
+          <p>Tell us about your project and we will help you plan the power behind it.</p>
+        </div>
+        <a class="button button-light" href="/contact/">
+          Plan Your Project
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <BrandLogo />
+        <p>Power. Lighting. Design.<br />Built right from the start.</p>
+      </div>
+
+      <div>
+        <h2>Services</h2>
+        <a href="/services/electrical-systems/">Electrical Systems</a>
+        <a href="/services/lighting-solutions/">Lighting Solutions</a>
+        <a href="/services/design-planning/">Design & Planning</a>
+      </div>
+
+      <div>
+        <h2>Company</h2>
+        <a href="/about/">About</a>
+        <a href="/process/">Our Process</a>
+        <a href="/projects/">Projects</a>
+      </div>
+
+      <div id="project-inquiries">
+        <h2>Project inquiries</h2>
+        <p>Serving homes, businesses, and design teams across California.</p>
+        <a class="text-link" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="footer-meta">
+        <p>© 2026 V12 Electric. Concept website.</p>
+        <p>Temporary raster logo shown pending final vector artwork.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const menuButton = document.querySelector<HTMLButtonElement>(".menu-toggle");
+    const mobileMenu = document.querySelector<HTMLElement>(".mobile-menu");
+
+    const setMenuState = (open: boolean) => {
+      if (!menuButton || !mobileMenu) return;
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+      mobileMenu.toggleAttribute("inert", !open);
+      document.body.classList.toggle("menu-open", open);
+    };
+
+    menuButton?.addEventListener("click", () => {
+      setMenuState(menuButton.getAttribute("aria-expanded") !== "true");
+    });
+
+    mobileMenu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuState(false));
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenuState(false);
+    });
+
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.16 },
+      );
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
+</BaseLayout>

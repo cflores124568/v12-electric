@@ -1,0 +1,105 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<InteriorLayout
+  title="Contact | V12 Electric"
+  description="Tell V12 Electric about your electrical, lighting, or design project."
+  active="contact"
+  showCta={false}
+>
+  <PageHero
+    eyebrow="Project inquiries"
+    title="Let's build it right."
+    description="Share the scope, timing, and goals for your project. We will help define the right next step."
+    image="/images/hero-electricians-plans.webp"
+    alt="Electricians coordinating a new construction project"
+  />
+
+  <section class="contact-section section-pad">
+    <div class="contact-intro" data-reveal="up">
+      <p class="section-label">Start a conversation</p>
+      <h2>Tell us what you are planning.</h2>
+      <p class="body-large">
+        A few clear details help us understand the project and prepare for a productive first
+        conversation.
+      </p>
+      <dl class="contact-notes">
+        <div>
+          <dt>Project types</dt>
+          <dd>Homes, businesses, renovations, and new construction.</dd>
+        </div>
+        <div>
+          <dt>Service area</dt>
+          <dd>California project inquiries.</dd>
+        </div>
+        <div>
+          <dt>What to include</dt>
+          <dd>Location, project stage, desired timing, and any available plans.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <form class="inquiry-form" data-inquiry-form data-reveal="up">
+      <div class="form-grid">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Phone</span>
+          <input type="tel" name="phone" autocomplete="tel" />
+        </label>
+        <label>
+          <span>Project location</span>
+          <input type="text" name="location" autocomplete="street-address" />
+        </label>
+        <label class="form-span">
+          <span>Service needed</span>
+          <select name="service" required>
+            <option value="">Select a service</option>
+            <option>Electrical Systems</option>
+            <option>Lighting Solutions</option>
+            <option>Design & Planning</option>
+            <option>Multiple services</option>
+          </select>
+        </label>
+        <label class="form-span">
+          <span>Project details</span>
+          <textarea name="details" rows="6" required></textarea>
+        </label>
+      </div>
+      <button class="button button-primary" type="submit">
+        Prepare Inquiry <span aria-hidden="true">↗</span>
+      </button>
+      <p class="form-note">
+        This concept form is ready to connect to your preferred email or CRM before launch.
+      </p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="contact-close">
+    <div data-reveal="up">
+      <p class="section-label">Power · Lighting · Design</p>
+      <h2>Built right from the start.</h2>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>("[data-inquiry-form]");
+    const status = form?.querySelector<HTMLElement>(".form-status");
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!status) return;
+      status.textContent =
+        "Inquiry details are complete. Connect the form endpoint before launch to deliver submissions.";
+    });
+  </script>
+</InteriorLayout>

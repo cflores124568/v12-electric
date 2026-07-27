@@ -1,0 +1,43 @@
+---
+interface Props {
+  name: "power" | "lighting" | "design";
+}
+
+const { name } = Astro.props;
+---
+
+{
+  name === "power" && (
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M18.5 2 7 18h8l-1.5 12L25 13h-8l1.5-11Z" fill="currentColor" />
+    </svg>
+  )
+}
+{
+  name === "lighting" && (
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path
+        d="M16 3a9 9 0 0 0-5.7 16v3.4h11.4V19A9 9 0 0 0 16 3Zm-4 22h8m-7 3h6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
+{
+  name === "design" && (
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path
+        d="m5 23 3.7 3.7L27 8.4 23.3 4.7 5 23Zm0 0-1 5 4.7-1.3M20.8 7.2l4 4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
