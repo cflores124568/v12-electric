@@ -20,11 +20,12 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" href="/images/v12-electric-logo-source.png" />
+    <meta name="theme-color" content="#065bff" />
+    <link rel="icon" type="image/png" href="/images/v12-electric-logo-white-on-blue.png" />
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <slot />
   </body>
 </html>

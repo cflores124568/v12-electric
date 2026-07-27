@@ -18,7 +18,7 @@ const { title, description, active = "", showCta = true } = Astro.props;
 <BaseLayout title={title} description={description}>
   <div id="top" class="site-shell">
     <SiteHeader active={active} />
-    <main>
+    <main id="main-content">
       <slot />
       {showCta && <ProjectCTA />}
     </main>
