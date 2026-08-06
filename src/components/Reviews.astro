@@ -1,0 +1,51 @@
+---
+import { reviewProof } from "../data/reviews";
+
+const featuredReviews = reviewProof.slice(0, 6);
+---
+
+<section class="proof-section reviews-section" aria-labelledby="reviews-title">
+  <div class="proof-intro section-pad" data-reveal="up">
+    <p class="section-label">Customer proof</p>
+    <h2 id="reviews-title">The work is in the details.</h2>
+    <p class="body-large">
+      Written feedback from Google and Thumbtack customers, kept in the original wording and
+      attribution.
+    </p>
+    <div class="proof-source-line" aria-label="Review sources">
+      <span>Google</span>
+      <span>Thumbtack</span>
+    </div>
+  </div>
+
+  <div class="review-grid section-pad">
+    {
+      featuredReviews.map((review, index) => (
+        <article class:list={["review-card", index === 0 && "review-card-featured"]} data-reveal="up">
+          <div class="review-card-meta">
+            <span class="review-stars" aria-label={`${review.rating} out of 5 stars`}>★★★★★</span>
+            <span class="review-source">{review.source}</span>
+          </div>
+          <blockquote>“{review.text}”</blockquote>
+          <footer>
+            <strong>{review.author}</strong>
+            {review.date && <span>{review.date}</span>}
+          </footer>
+          {
+            review.photo && (
+              <figure class="review-photo">
+                <img src={review.photo.src} width="1600" height="1200" alt={review.photo.alt} loading="lazy" />
+                <figcaption>Project photo shared with this review</figcaption>
+              </figure>
+            )
+          }
+        </article>
+      ))
+    }
+  </div>
+
+  <p class="proof-disclosure section-pad">
+    Review text is reproduced as provided by the original customer source. The source business
+    name remains inside quoted attribution where it appears in the original wording.
+  </p>
+</section>

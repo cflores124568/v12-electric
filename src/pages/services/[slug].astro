@@ -59,10 +59,10 @@ const { service } = Astro.props as { service: Service };
   <section class="service-proof">
     <figure class="service-proof-media media-frame image-drift" data-reveal="image">
       <img
-        src={service.slug === "lighting-solutions" ? "/images/featured-kitchen.webp" : service.slug === "design-planning" ? "/images/hero-electricians-plans.webp" : "/images/conduit-installation.webp"}
+        src={service.proofImage}
         width="1842"
         height="1024"
-        alt=""
+        alt={service.proofAlt}
         loading="lazy"
       />
     </figure>

@@ -1,0 +1,64 @@
+---
+const projects = [
+  {
+    title: "EV charging installation",
+    category: "EV charging",
+    image: "/images/proof/ev-charger-installation.webp",
+    alt: "Installed EV charging equipment and organized service hardware",
+  },
+  {
+    title: "Service upgrade",
+    category: "Power systems",
+    image: "/images/proof/service-upgrade.webp",
+    alt: "Open service equipment with organized conductors and upgraded components",
+  },
+  {
+    title: "Two-story chandelier",
+    category: "Residential lighting",
+    image: "/images/proof/chandelier-installation.webp",
+    alt: "Two-story chandelier installation in a finished residential interior",
+  },
+  {
+    title: "Layered ceiling lighting",
+    category: "Lighting controls",
+    image: "/images/proof/ceiling-lighting.webp",
+    alt: "Custom ceiling lighting with multiple fixture layers",
+  },
+  {
+    title: "Commercial service",
+    category: "Commercial",
+    image: "/images/proof/commercial-service.webp",
+    alt: "Commercial electrical service equipment in a working space",
+  },
+  {
+    title: "Electrical inspection",
+    category: "Inspection",
+    image: "/images/proof/electrical-inspection.webp",
+    alt: "Electrician inspecting electrical equipment with a handheld meter",
+  },
+];
+---
+
+<section class="project-proof-section" aria-labelledby="project-proof-title">
+  <div class="section-heading section-pad" data-reveal="up">
+    <p class="section-label">Field record</p>
+    <h2 id="project-proof-title">Real work. Clear evidence.</h2>
+    <p class="body-large">
+      Reviewed project and jobsite photography carried forward from the source business gallery.
+    </p>
+  </div>
+
+  <div class="project-proof-grid">
+    {
+      projects.map((project, index) => (
+        <figure class:list={["project-proof-card", index === 0 && "project-proof-card-wide"]} data-reveal="image">
+          <img src={project.image} width="1920" height="1440" alt={project.alt} loading="lazy" />
+          <figcaption>
+            <span>{project.category}</span>
+            <strong>{project.title}</strong>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>

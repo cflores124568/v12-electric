@@ -3,30 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BrandLogo from "../components/BrandLogo.astro";
 import ServiceIcon from "../components/ServiceIcon.astro";
 import ServiceAreaMap from "../components/ServiceAreaMap.astro";
+import Reviews from "../components/Reviews.astro";
+import ProjectGallery from "../components/ProjectGallery.astro";
+import { services as allServices } from "../data/site";
 
-const services = [
-  {
-    icon: "power",
-    title: "Electrical Systems",
-    description: "Panels, wiring, and complete system installations.",
-    image: "/images/electrical-systems.webp",
-    alt: "Electrician completing a carefully organized electrical panel installation",
-  },
-  {
-    icon: "lighting",
-    title: "Lighting Solutions",
-    description: "Layered lighting that brings your space to life.",
-    image: "/images/lighting-solutions.webp",
-    alt: "Layered pendant and task lighting in a contemporary kitchen",
-  },
-  {
-    icon: "design",
-    title: "Design & Planning",
-    description: "Thoughtful electrical design coordinated from day one.",
-    image: "/images/design-planning.webp",
-    alt: "Electrical design being marked on an architectural plan",
-  },
-] as const;
+const railServices = allServices.slice(0, 3);
+const homepageServices = allServices.slice(0, 6);
 
 const process = [
   {
@@ -49,7 +31,7 @@ const process = [
 
 <BaseLayout
   title="V12 Electric | Power, Lighting & Design"
-  description="V12 Electric plans and builds residential and commercial electrical systems, lighting, and design."
+  description="V12 Electric serves the Coachella Valley with EV chargers, panel upgrades, residential and commercial electrical, inspections, repairs, smart-home wiring, and lighting controls."
 >
   <div id="top" class="site-shell">
     <header class="site-header" data-reveal="fade">
@@ -130,10 +112,10 @@ const process = [
 
       <section class="service-rail" aria-label="Core services">
         {
-          services.map((service) => (
+          railServices.map((service) => (
             <a href="#services" class="service-rail-item">
               <ServiceIcon name={service.icon} />
-              <span>{service.icon === "power" ? "Power" : service.icon === "lighting" ? "Lighting" : "Design"}</span>
+              <span>{service.shortTitle}</span>
             </a>
           ))
         }
@@ -168,7 +150,7 @@ const process = [
 
         <div class="service-grid">
           {
-            services.map((service, index) => (
+            homepageServices.map((service, index) => (
               <article class="service-item" data-reveal="up" data-delay={String(index)}>
                 <figure class="service-image media-frame">
                   <img
@@ -184,7 +166,7 @@ const process = [
                     <ServiceIcon name={service.icon} />
                     <h3>{service.title}</h3>
                   </div>
-                  <p>{service.description}</p>
+                  <p>{service.summary}</p>
                 </div>
               </article>
             ))
@@ -255,9 +237,9 @@ const process = [
         <div class="testimonial-copy" data-reveal="up">
           <span class="quote-mark" aria-hidden="true">“</span>
           <blockquote>
-            Clear communication. Clean work. Electrical systems built around your space.
+            Excellent work; awesome guys; top notch all around.
           </blockquote>
-          <p>The V12 standard</p>
+          <p>Gary W. · Google review</p>
         </div>
         <figure class="testimonial-media media-frame image-drift" data-reveal="image">
           <img
@@ -269,6 +251,10 @@ const process = [
           />
         </figure>
       </section>
+
+      <ProjectGallery />
+
+      <Reviews />
 
       <ServiceAreaMap />
 
@@ -290,12 +276,14 @@ const process = [
         <p>Power. Lighting. Design.<br />Built right from the start.</p>
       </div>
 
-      <div>
-        <h2>Services</h2>
-        <a href="/services/electrical-systems/">Electrical Systems</a>
-        <a href="/services/lighting-solutions/">Lighting Solutions</a>
-        <a href="/services/design-planning/">Design & Planning</a>
-      </div>
+        <div>
+          <h2>Services</h2>
+          <a href="/services/electrical-systems/">Electrical Systems</a>
+          <a href="/services/ev-charger-installation/">EV Charger Installation</a>
+          <a href="/services/panel-service-upgrades/">Panel & Service Upgrades</a>
+          <a href="/services/lutron-lighting-controls/">Lutron Lighting & Controls</a>
+          <a href="/services/design-planning/">Design & Planning</a>
+        </div>
 
       <div>
         <h2>Company</h2>
@@ -304,16 +292,17 @@ const process = [
         <a href="/projects/">Projects</a>
       </div>
 
-      <div id="project-inquiries">
-        <h2>Project inquiries</h2>
-        <p>Serving homes, businesses, and design teams across California.</p>
-        <a class="text-link" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a>
-      </div>
+        <div id="project-inquiries">
+          <h2>Project inquiries</h2>
+          <p>Serving Palm Springs through Coachella with power, lighting, and electrical service.</p>
+          <a class="footer-phone" href="tel:+17605676593">(760) 567-6593</a>
+          <a class="text-link" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a>
+        </div>
 
-      <div class="footer-meta">
-        <p>© 2026 V12 Electric. Concept website.</p>
-        <p>Temporary raster logo shown pending final vector artwork.</p>
-      </div>
+        <div class="footer-meta">
+          <p>© 2026 V12 Electric.</p>
+          <p><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
+        </div>
     </footer>
   </div>
 

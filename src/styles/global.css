@@ -2568,3 +2568,742 @@ blockquote {
     transform: none;
   }
 }
+
+/* Coachella Valley map and proof modules */
+.service-area {
+  position: relative;
+}
+
+.service-area > .service-area-directory {
+  grid-column: 1 / -1;
+}
+
+.service-area-note {
+  margin-top: 1rem !important;
+  color: rgb(229 239 255 / 62%) !important;
+  font-size: 0.78rem !important;
+  line-height: 1.6 !important;
+}
+
+.map-city-markers {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-city-marker {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  display: flex;
+  width: 7rem;
+  min-height: 4.1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.map-city-marker-face {
+  position: relative;
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border: 0.22rem solid var(--white);
+  border-radius: 0.8rem;
+  background: var(--electric);
+  box-shadow: 0 0.8rem 1.5rem rgb(0 9 28 / 42%);
+  overflow: hidden;
+  transition: transform 220ms var(--ease-out), background 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+}
+
+.map-city-marker-face img {
+  object-fit: cover;
+}
+
+.map-city-marker-pulse {
+  position: absolute;
+  top: 0.1rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  border: 1px solid rgb(185 213 255 / 60%);
+  border-radius: 0.8rem;
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.map-city-marker[aria-pressed="true"] .map-city-marker-pulse,
+.map-city-marker:hover .map-city-marker-pulse,
+.map-city-marker:focus-visible .map-city-marker-pulse {
+  animation: map-city-pulse 1.9s var(--ease-out) infinite;
+}
+
+.map-city-marker:hover .map-city-marker-face,
+.map-city-marker:focus-visible .map-city-marker-face,
+.map-city-marker[aria-pressed="true"] .map-city-marker-face {
+  background: var(--white);
+  box-shadow: 0 0 0 0.25rem rgb(185 213 255 / 25%), 0 1rem 2rem rgb(0 9 28 / 52%);
+  transform: translateY(-0.16rem) scale(1.06);
+}
+
+.map-city-label {
+  display: block;
+  max-width: 7rem;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid rgb(185 213 255 / 24%);
+  background: rgb(4 21 44 / 76%);
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.map-city-marker-secondary {
+  width: 6rem;
+  min-height: 3.5rem;
+}
+
+.map-city-marker-secondary .map-city-marker-face,
+.map-city-marker-secondary .map-city-marker-pulse {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.6rem;
+}
+
+.map-city-marker-secondary .map-city-label {
+  font-size: 0.52rem;
+}
+
+.valley-boundary-shape {
+  fill: rgb(6 91 255 / 18%);
+  fill-rule: evenodd;
+  stroke: rgb(185 213 255 / 74%);
+  stroke-width: 0.18;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-detail {
+  position: absolute;
+  z-index: 5;
+  right: 2rem;
+  bottom: 5.9rem;
+  left: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgb(185 213 255 / 24%);
+  background: rgb(4 21 44 / 82%);
+  box-shadow: 0 1.5rem 3rem rgb(0 9 28 / 30%);
+  backdrop-filter: blur(12px);
+}
+
+.map-detail-label {
+  margin: 0 0 0.2rem;
+  color: var(--blue);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map-detail h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.9rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.map-detail p:not(.map-detail-label):not(.map-detail-note) {
+  max-width: 35rem;
+  margin: 0.35rem 0 0;
+  color: rgb(229 239 255 / 82%);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.map-detail-note {
+  max-width: 36rem;
+  margin: 0.4rem 0 0;
+  color: rgb(229 239 255 / 56%);
+  font-size: 0.63rem;
+  line-height: 1.45;
+}
+
+.map-detail-link {
+  flex: 0 0 auto;
+  color: var(--blue);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.map-detail-link:hover,
+.map-detail-link:focus-visible {
+  color: var(--white);
+}
+
+.service-area-directory {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+  gap: 2rem;
+  padding: 2.25rem var(--gutter) 2.6rem;
+  border-top: 1px solid rgb(255 255 255 / 16%);
+  background: var(--deep);
+}
+
+.service-area-directory-heading > p:last-child {
+  max-width: 24rem;
+  margin-top: 0.75rem;
+  color: rgb(229 239 255 / 64%);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.service-area-city-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+.service-area-city-button {
+  display: flex;
+  min-height: 2.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgb(185 213 255 / 18%);
+  background: rgb(6 91 255 / 7%);
+  color: rgb(255 255 255 / 80%);
+  cursor: pointer;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: border-color 220ms var(--ease-out), background 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+
+.service-area-city-button:hover,
+.service-area-city-button:focus-visible,
+.service-area-city-button[aria-pressed="true"] {
+  border-color: var(--blue);
+  background: var(--electric);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.service-area-city-button > span:last-child {
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.service-area-city-button[aria-pressed="true"] > span:last-child {
+  color: var(--white);
+}
+
+.proof-section {
+  border-top: 1px solid var(--line);
+  background: var(--deep);
+}
+
+.proof-intro {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(20rem, 1.25fr);
+  align-items: end;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.proof-intro .section-label,
+.proof-intro h2,
+.proof-intro .proof-source-line {
+  grid-column: 1;
+}
+
+.proof-intro h2 {
+  max-width: 8ch;
+  margin-top: 0.75rem;
+}
+
+.proof-intro .body-large {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: end;
+  max-width: 34rem;
+  margin: 0;
+}
+
+.proof-source-line {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.35rem;
+}
+
+.proof-source-line span,
+.review-source {
+  display: inline-flex;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid rgb(185 213 255 / 25%);
+  color: var(--blue);
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 0;
+}
+
+.review-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 1.4rem;
+  border: 1px solid rgb(185 213 255 / 18%);
+  background: rgb(6 91 255 / 8%);
+}
+
+.review-card-featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgb(6 91 255 / 17%), rgb(4 21 44 / 74%));
+}
+
+.review-card-meta,
+.review-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.review-stars {
+  color: var(--blue);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.review-card blockquote {
+  margin: 1.15rem 0 1.25rem;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.review-card footer {
+  align-items: flex-end;
+  margin-top: auto;
+  color: rgb(229 239 255 / 58%);
+  font-size: 0.67rem;
+}
+
+.review-card footer strong {
+  color: var(--white);
+  font-size: 0.74rem;
+}
+
+.review-photo {
+  margin: 0.2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(185 213 255 / 14%);
+}
+
+.review-photo img {
+  aspect-ratio: 4 / 3;
+}
+
+.review-photo figcaption {
+  margin-top: 0.45rem;
+  color: rgb(229 239 255 / 46%);
+  font-size: 0.59rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.proof-disclosure {
+  max-width: 72rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  color: rgb(229 239 255 / 44%);
+  font-size: 0.62rem;
+  line-height: 1.6;
+}
+
+.project-proof-section {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  color: var(--deep);
+}
+
+.project-proof-section .section-heading {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.55fr) minmax(20rem, 1fr);
+  align-items: end;
+  gap: 2rem;
+}
+
+.project-proof-section .section-heading .section-label,
+.project-proof-section .section-heading h2 {
+  grid-column: 1;
+}
+
+.project-proof-section .section-heading h2 {
+  margin-top: 0.75rem;
+  color: var(--deep);
+}
+
+.project-proof-section .section-heading .body-large {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  max-width: 35rem;
+  margin: 0;
+  color: rgb(4 21 44 / 70%);
+}
+
+.project-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+  background: var(--deep);
+}
+
+.project-proof-card {
+  position: relative;
+  min-width: 0;
+  min-height: 18rem;
+  margin: 0;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.project-proof-card-wide {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 36rem;
+}
+
+.project-proof-card img {
+  transition: transform 800ms var(--ease-out), filter 800ms var(--ease-out);
+}
+
+.project-proof-card:hover img {
+  filter: saturate(1.07) contrast(1.03);
+  transform: scale(1.035);
+}
+
+.project-proof-card::after {
+  position: absolute;
+  inset: 42% 0 0;
+  background: linear-gradient(180deg, transparent, rgb(4 21 44 / 86%));
+  content: "";
+  pointer-events: none;
+}
+
+.project-proof-card figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: grid;
+  gap: 0.2rem;
+  color: var(--white);
+}
+
+.project-proof-card figcaption span {
+  color: var(--blue);
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-proof-card figcaption strong {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.booking-panel {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+.booking-panel p:not(.section-label) {
+  max-width: 24rem;
+  margin: 0.6rem 0 1rem;
+  color: rgb(229 239 255 / 72%);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.contact-phone,
+.footer-phone {
+  color: var(--blue);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.footer-phone {
+  display: inline-block;
+  margin: 0.6rem 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1.4rem;
+  color: rgb(229 239 255 / 76%);
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+
+.consent-check input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--electric);
+  flex: 0 0 auto;
+}
+
+.consent-check a {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+  text-underline-offset: 0.2em;
+}
+
+.form-grid label > span em {
+  color: rgb(4 21 44 / 58%);
+  font-size: 0.6rem;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.legal-page {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.legal-meta {
+  margin: 0 0 2.5rem;
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.legal-page h2 {
+  max-width: 18ch;
+  margin: 3.5rem 0 0.8rem;
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.legal-page h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal-page p {
+  max-width: 64ch;
+  color: rgb(229 239 255 / 76%);
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.legal-page a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgb(185 213 255 / 48%);
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 900px) {
+  .service-area-directory,
+  .proof-intro,
+  .project-proof-section .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-intro .body-large,
+  .project-proof-section .section-heading .body-large {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .proof-intro h2,
+  .project-proof-section .section-heading h2 {
+    max-width: 12ch;
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-card-featured {
+    grid-column: span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-city-marker[aria-pressed="true"] .map-city-marker-pulse,
+  .map-city-marker:hover .map-city-marker-pulse,
+  .map-city-marker:focus-visible .map-city-marker-pulse {
+    animation: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .service-map {
+    min-height: 43rem;
+  }
+
+  .service-map-meta {
+    top: 1.25rem;
+    right: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .map-city-marker {
+    width: 5.5rem;
+    min-height: 3.8rem;
+  }
+
+  .map-city-marker-face {
+    width: 2.15rem;
+    height: 2.15rem;
+    border-width: 0.18rem;
+    border-radius: 0.65rem;
+  }
+
+  .map-city-marker-pulse {
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 0.65rem;
+  }
+
+  .map-city-label {
+    max-width: 5.5rem;
+    font-size: 0.49rem;
+  }
+
+  .map-city-marker-secondary {
+    width: 4.7rem;
+  }
+
+  .map-city-marker-secondary .map-city-marker-face,
+  .map-city-marker-secondary .map-city-marker-pulse {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .map-detail {
+    right: 1.25rem;
+    bottom: 5.25rem;
+    left: 1.25rem;
+    display: block;
+    padding: 0.85rem;
+  }
+
+  .map-detail h3 {
+    font-size: 1.6rem;
+  }
+
+  .map-detail p:not(.map-detail-label):not(.map-detail-note) {
+    font-size: 0.65rem;
+  }
+
+  .map-detail-note {
+    display: none;
+  }
+
+  .map-detail-link {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: 0.6rem;
+  }
+
+  .service-area-city-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card-featured {
+    grid-column: auto;
+  }
+
+  .project-proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-proof-card,
+  .project-proof-card-wide {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 13rem;
+  }
+
+  .project-proof-card-wide {
+    grid-column: span 2;
+    min-height: 18rem;
+  }
+
+  .project-proof-card figcaption strong {
+    font-size: 1.45rem;
+  }
+}
+
+@keyframes map-city-pulse {
+  0% {
+    opacity: 0.62;
+    transform: scale(0.78);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

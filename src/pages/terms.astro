@@ -1,0 +1,64 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<InteriorLayout
+  title="Terms of Service | V12 Electric"
+  description="V12 Electric terms of service for website use, inquiries, scheduling, and project information."
+  showCta={false}
+>
+  <PageHero
+    eyebrow="Terms"
+    title="Clear expectations matter."
+    description="These terms describe how this website and its inquiry paths are intended to be used."
+    image="/images/design-planning.webp"
+    alt="Electrical design marked on an architectural plan"
+  />
+
+  <article class="legal-page section-pad">
+    <p class="legal-meta">Last reviewed: August 5, 2026</p>
+    <h2>Website information</h2>
+    <p>
+      This website shares general information about V12 Electric services and helps prospective
+      customers start a conversation. Information on the site is not a quote, diagnosis, permit,
+      engineering opinion, or promise that a project can be scheduled.
+    </p>
+
+    <h2>Inquiries and scheduling</h2>
+    <p>
+      Sending an inquiry or selecting a scheduling link does not by itself create a contractor or
+      customer relationship, work order, estimate, or service commitment. Scope, availability,
+      pricing, permits, utility coordination, and timing must be confirmed directly with V12
+      Electric.
+    </p>
+
+    <h2>Project responsibilities</h2>
+    <p>
+      Customers are responsible for providing accurate project information, obtaining property
+      access and required owner or association permissions, and identifying conditions that may
+      affect the work. Electrical work should be performed and evaluated according to the scope,
+      site conditions, applicable codes, and the required authority having jurisdiction.
+    </p>
+
+    <h2>Urgent conditions</h2>
+    <p>
+      This website is not an emergency response service. If there is fire, smoke, exposed
+      energized equipment, an immediate safety threat, or another dangerous condition, leave the
+      area and call 911 or the appropriate utility or emergency responder first.
+    </p>
+
+    <h2>Content and external links</h2>
+    <p>
+      V12 Electric may update, remove, or correct website content without notice. External booking,
+      review, social, map, and other linked services are controlled by their respective providers;
+      using one is subject to that provider's terms and privacy policy.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about these terms can be directed to V12 Electric at
+      <a href="tel:+17605676593">(760) 567-6593</a>.
+    </p>
+  </article>
+</InteriorLayout>

@@ -1,0 +1,182 @@
+export interface ServiceAreaCity {
+  slug: string;
+  city: string;
+  coords: { lat: number; lng: number };
+  tier: "primary" | "secondary";
+  focus: string;
+  fieldNote: string;
+  utility: string;
+  permitAuthority: string;
+  permitUrl: string;
+  localFaq: { question: string; answer: string };
+}
+
+/**
+ * Valley coverage and city notes adapted from the source business research.
+ * Coordinates are intentionally kept in one place so the map, contact form, and future city
+ * pages cannot drift apart.
+ */
+export const serviceAreaCities: ServiceAreaCity[] = [
+  {
+    slug: "palm-springs-electrician",
+    city: "Palm Springs",
+    coords: { lat: 33.8303, lng: -116.5453 },
+    tier: "primary",
+    focus: "Mid-century remodels, EV charging, architectural lighting, and panel modernization.",
+    fieldNote:
+      "Before adding a charger or new lighting, check the load behind the walls. Remodeled rooms can look brand-new while the panel feeding them is decades behind.",
+    utility: "Southern California Edison (SCE)",
+    permitAuthority: "City of Palm Springs Building Department",
+    permitUrl: "https://www.palmspringsca.gov/government/departments/building/permits",
+    localFaq: {
+      question: "Can you install an EV charger at a Palm Springs home?",
+      answer:
+        "Yes. We review panel capacity, charger location, conductor routing, permits, and inspection needs before installing a Tesla Wall Connector or universal Level 2 charger.",
+    },
+  },
+  {
+    slug: "cathedral-city-electrician",
+    city: "Cathedral City",
+    coords: { lat: 33.7797, lng: -116.4653 },
+    tier: "primary",
+    focus: "Troubleshooting, rental-turnover repairs, small-business service calls, and dedicated circuits.",
+    fieldNote:
+      "When a breaker keeps tripping, replacing it is not a diagnosis. Trace the load, devices, and wiring so the repair addresses the fault.",
+    utility: "Southern California Edison (SCE)",
+    permitAuthority: "Cathedral City Building and Safety Division",
+    permitUrl:
+      "https://www.cathedralcity.gov/departments/community-economic-development-department/building-and-safety",
+    localFaq: {
+      question: "Can you troubleshoot breakers that keep tripping?",
+      answer:
+        "Yes. We track down overloads, failing breakers, bad devices, damaged wiring, and equipment issues so the fix is based on the real cause.",
+    },
+  },
+  {
+    slug: "desert-hot-springs-electrician",
+    city: "Desert Hot Springs",
+    coords: { lat: 33.9611, lng: -116.5017 },
+    tier: "secondary",
+    focus: "Outdoor electrical, older-panel safety work, spa circuits, cooling loads, and EV charging.",
+    fieldNote:
+      "Exterior devices take the full desert afternoon. Outdoor electrical work needs the right enclosure, seal, mounting, and protection—not just a device labeled for exterior use.",
+    utility: "Southern California Edison (SCE)",
+    permitAuthority: "City of Desert Hot Springs Building Division",
+    permitUrl: "https://www.cityofdhs.org/building-and-safety/",
+    localFaq: {
+      question: "Can you inspect older electrical systems in Desert Hot Springs?",
+      answer:
+        "Yes. We inspect panels, breakers, grounding, GFCI protection, outlets, visible wiring, and common safety issues so you know what needs attention.",
+    },
+  },
+  {
+    slug: "rancho-mirage-electrician",
+    city: "Rancho Mirage",
+    coords: { lat: 33.7397, lng: -116.4127 },
+    tier: "primary",
+    focus: "Luxury lighting, discreet EV charger routing, estate-home capacity reviews, and controls.",
+    fieldNote:
+      "The cleanest route is rarely the most obvious one. Plan access, mounting, switching, and protection before tools touch a finished room.",
+    utility: "Confirm from the property: SCE and IID both serve parts of the city.",
+    permitAuthority: "Rancho Mirage Building and Safety Division",
+    permitUrl:
+      "https://ranchomirageca.gov/Building%20Plan%20Review%20Submittal%20Requirements%20March%202025.pdf",
+    localFaq: {
+      question: "Can you work around gated-community access and finished interiors?",
+      answer:
+        "Yes. We can coordinate service windows, access requirements, fixture protection, and clean finish work for homes and professional spaces.",
+    },
+  },
+  {
+    slug: "palm-desert-electrician",
+    city: "Palm Desert",
+    coords: { lat: 33.7222, lng: -116.3744 },
+    tier: "primary",
+    focus: "Gallery and retail lighting, EV charging, condo-aware upgrades, and commercial maintenance.",
+    fieldNote:
+      "In a display space, electrical work becomes part of what customers see. Beam spread, color, glare, control, and fixture alignment matter as much as whether the light turns on.",
+    utility: "Confirm from the property: IID east of Washington Street, SCE west.",
+    permitAuthority: "City of Palm Desert Building & Safety Division",
+    permitUrl: "https://www.palmdesert.gov/build-develop/building-and-safety",
+    localFaq: {
+      question: "Can you work on Palm Desert retail or gallery spaces?",
+      answer:
+        "Yes. We support commercial spaces with lighting, outlets, service repairs, maintenance, and code-compliance updates.",
+    },
+  },
+  {
+    slug: "indian-wells-electrician",
+    city: "Indian Wells",
+    coords: { lat: 33.7175, lng: -116.341 },
+    tier: "primary",
+    focus: "Seasonal-home checks, finished-interior lighting, guest-property charging, and dedicated circuits.",
+    fieldNote:
+      "A seasonal home needs more than a quick switch test. Check panel condition, exterior devices, controls, idle equipment, and the circuits expected to work while the house is quiet.",
+    utility: "Confirm from the meter or bill; SCE serves most of the city.",
+    permitAuthority: "City of Indian Wells Building Department",
+    permitUrl: "https://www.cityofindianwells.org/city-hall/departments/building",
+    localFaq: {
+      question: "What should be checked before an Indian Wells home sits empty?",
+      answer:
+        "Verify GFCI and AFCI protection, check panel condition and surge protection, and confirm exterior lighting, timers, and controls work before the season ends.",
+    },
+  },
+  {
+    slug: "la-quinta-electrician",
+    city: "La Quinta",
+    coords: { lat: 33.6634, lng: -116.31 },
+    tier: "primary",
+    focus: "EV charging, pool and spa electrical, outdoor living, remodel circuits, and IID coordination.",
+    fieldNote:
+      "Air conditioning, pool equipment, outdoor living, appliances, and an EV charger all meet at the same service. Review the combined load before treating one upgrade as isolated.",
+    utility: "Imperial Irrigation District (IID) across most of the city.",
+    permitAuthority: "City of La Quinta Building Division",
+    permitUrl: "https://www.laquintaca.gov/business/design-and-development/building-division",
+    localFaq: {
+      question: "Do I need a panel check before installing an EV charger in La Quinta?",
+      answer:
+        "Usually, yes. A panel and load review helps confirm whether the charger can be added safely or whether upgrades or load management are needed.",
+    },
+  },
+  {
+    slug: "indio-electrician",
+    city: "Indio",
+    coords: { lat: 33.7206, lng: -116.2156 },
+    tier: "primary",
+    focus: "Fast troubleshooting, newer-home EV and appliance loads, remodel wiring, and commercial service.",
+    fieldNote:
+      "A fast repair still starts with a real diagnosis. Isolate the failed device, overloaded circuit, damaged connection, or upstream problem before returning the system to service.",
+    utility: "Imperial Irrigation District (IID) Energy.",
+    permitAuthority: "City of Indio Building & Safety Division",
+    permitUrl:
+      "https://www.indio.org/departments/community-development-department/building-safety-division/permits",
+    localFaq: {
+      question: "Can you install EV chargers in Indio?",
+      answer:
+        "Yes. We install Tesla and universal Level 2 EV chargers, including dedicated circuits, load checks, routing, and permit or inspection coordination when needed.",
+    },
+  },
+  {
+    slug: "coachella-electrician",
+    city: "Coachella",
+    coords: { lat: 33.6803, lng: -116.1739 },
+    tier: "secondary",
+    focus: "Equipment circuits, family-home repairs, small-commercial service, and panel planning.",
+    fieldNote:
+      "Equipment circuits do not forgive guesswork. Conductor size, protection, disconnects, routing, and the real duty cycle all matter when a circuit works every day.",
+    utility: "Confirm the serving utility for the property; IID is primary across much of the city.",
+    permitAuthority: "City of Coachella Building & Safety Division",
+    permitUrl: "https://www.coachella.org/departments/development-services/building-division",
+    localFaq: {
+      question: "Can you fix outlets or lights that stopped working in Coachella?",
+      answer:
+        "Yes. We troubleshoot outlets, switches, lights, breakers, GFCI devices, and circuit issues so the repair targets the actual fault.",
+    },
+  },
+] as const;
+
+export const serviceAreaNames = serviceAreaCities.map((area) => area.city);
+
+export const serviceAreaBySlug = Object.fromEntries(
+  serviceAreaCities.map((area) => [area.slug, area]),
+) as Record<string, ServiceAreaCity>;
