@@ -1,0 +1,74 @@
+<section class="service-area" aria-labelledby="service-area-title">
+  <div class="service-area-copy section-pad" data-reveal="up">
+    <p class="section-label">Service area</p>
+    <h2 id="service-area-title">Powering projects across California.</h2>
+    <p>
+      We work with homeowners, builders, and design teams throughout California. Share your
+      project address and we’ll confirm availability for your area.
+    </p>
+    <a class="text-link" href="/contact/">
+      Check your address <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <div class="service-map" data-reveal="image">
+    <div class="service-map-meta" aria-hidden="true">
+      <span>V12 / CA</span>
+      <span>Project coverage</span>
+    </div>
+
+    <svg class="service-map-art" viewBox="0 0 780 640" role="img" aria-label="Stylized map of California service coverage">
+      <defs>
+        <clipPath id="california-clip">
+          <path d="M254 39 394 67 426 140 492 223 506 281 560 344 525 382 553 454 525 510 476 540 443 601 399 559 366 504 337 462 308 411 273 365 247 310 215 269 227 208 196 160 224 112Z" />
+        </clipPath>
+        <radialGradient id="coverage-glow" cx="50%" cy="48%" r="50%">
+          <stop offset="0" stop-color="#ffffff" stop-opacity=".3" />
+          <stop offset=".52" stop-color="#b9d5ff" stop-opacity=".13" />
+          <stop offset="1" stop-color="#b9d5ff" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <g class="map-grid" aria-hidden="true">
+        <path d="M0 80H780M0 160H780M0 240H780M0 320H780M0 400H780M0 480H780M0 560H780" />
+        <path d="M80 0V640M160 0V640M240 0V640M320 0V640M400 0V640M480 0V640M560 0V640M640 0V640M720 0V640" />
+      </g>
+
+      <circle class="coverage-ring coverage-ring-outer" cx="386" cy="322" r="245" />
+      <circle class="coverage-ring coverage-ring-inner" cx="386" cy="322" r="160" />
+      <circle cx="386" cy="322" r="252" fill="url(#coverage-glow)" />
+      <path class="california-fill" d="M254 39 394 67 426 140 492 223 506 281 560 344 525 382 553 454 525 510 476 540 443 601 399 559 366 504 337 462 308 411 273 365 247 310 215 269 227 208 196 160 224 112Z" />
+
+      <g class="map-routes" clip-path="url(#california-clip)" aria-hidden="true">
+        <path d="M223 88C310 164 284 229 358 300S423 451 491 571" />
+        <path d="M195 223C292 212 350 252 469 223S559 260 584 312" />
+        <path d="M247 356C338 338 425 347 545 401" />
+        <path d="M322 72C337 176 393 202 410 319S405 474 452 586" />
+        <path d="M253 447C329 432 375 467 507 493" />
+      </g>
+
+      <g class="map-nodes" aria-hidden="true">
+        <circle cx="319" cy="229" r="5" />
+        <circle cx="410" cy="319" r="5" />
+        <circle cx="372" cy="431" r="5" />
+        <circle cx="471" cy="493" r="5" />
+      </g>
+
+      <text class="map-state-label" x="430" y="170">CALIFORNIA</text>
+      <text class="map-coordinate" x="42" y="590">36.7783° N</text>
+      <text class="map-coordinate" x="615" y="590">119.4179° W</text>
+    </svg>
+
+    <div class="map-pin" aria-label="V12 Electric service location">
+      <span class="map-pin-pulse" aria-hidden="true"></span>
+      <span class="map-pin-face">
+        <img src="/images/icon-512.png" width="512" height="512" alt="V12 Electric" loading="lazy" />
+      </span>
+    </div>
+
+    <div class="service-map-status">
+      <span aria-hidden="true"></span>
+      California projects
+    </div>
+  </div>
+</section>
