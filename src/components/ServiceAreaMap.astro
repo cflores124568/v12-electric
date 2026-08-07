@@ -1,6 +1,8 @@
 ---
 import { serviceAreaCities } from "../data/service-areas";
 
+const canPrefillInquiryCity = Boolean(import.meta.env.PUBLIC_CONTACT_EMAIL);
+
 const mapBounds = {
   minLng: -116.87,
   maxLng: -115.82,
@@ -19,24 +21,24 @@ const hub = projectPoint(33.78, -116.37);
 <section class="service-area" aria-labelledby="service-area-title">
   <div class="service-area-copy section-pad" data-reveal="up">
     <p class="section-label">Coachella Valley coverage</p>
-    <h2 id="service-area-title">Power where the valley lives.</h2>
+    <h2 id="service-area-title">Electrical service across the Coachella Valley.</h2>
     <p>
       V12 Electric serves Palm Springs, Cathedral City, Desert Hot Springs, Rancho Mirage, Palm
       Desert, Indian Wells, La Quinta, Indio, and Coachella.
     </p>
     <p class="service-area-note">
-      Select a city to see the local project focus, then send the address and scope for a direct
-      next step.
+      Select a city to see local project considerations, then call or text us with the address and
+      scope.
     </p>
     <a class="text-link" href="/contact/">
       Check your address <span aria-hidden="true">↗</span>
     </a>
   </div>
 
-  <div class="service-map" data-service-area-map>
+  <div class="service-map" data-service-area-map data-prefill-inquiry-city={String(canPrefillInquiryCity)}>
     <div class="service-map-meta" aria-hidden="true">
       <span>V12 / CV</span>
-      <span>Field coverage / 09 nodes</span>
+      <span>9 cities served</span>
     </div>
 
     <svg
@@ -112,26 +114,30 @@ const hub = projectPoint(33.78, -116.37);
 
     <div class="map-detail" aria-live="polite">
       <div>
-        <p class="map-detail-label">Selected field node</p>
+        <p class="map-detail-label">Service in this area</p>
         <h3 data-map-city-name>{serviceAreaCities[0].city}</h3>
         <p data-map-city-focus>{serviceAreaCities[0].focus}</p>
         <p class="map-detail-note" data-map-city-note>{serviceAreaCities[0].fieldNote}</p>
       </div>
-      <a class="map-detail-link" data-map-contact href={`/contact/?city=${serviceAreaCities[0].slug}`}>
-        Start with this city <span aria-hidden="true">↗</span>
+      <a
+        class="map-detail-link"
+        data-map-contact
+        href={canPrefillInquiryCity ? `/contact/?city=${serviceAreaCities[0].slug}` : "/contact/"}
+      >
+        Contact V12 Electric <span aria-hidden="true">↗</span>
       </a>
     </div>
 
     <div class="service-map-status" data-map-status>
       <span aria-hidden="true"></span>
-      Boundary data / 9 cities
+      Serving 9 Coachella Valley cities
     </div>
   </div>
 
   <div class="service-area-directory" aria-label="V12 Electric service cities">
     <div class="service-area-directory-heading">
-      <p class="section-label">Field directory</p>
-      <p>Tap any node to focus the map and preselect the city in your inquiry.</p>
+      <p class="section-label">Choose your city</p>
+      <p>Select a city to view local project considerations.</p>
     </div>
     <div class="service-area-city-list">
       {
@@ -209,7 +215,9 @@ const hub = projectPoint(33.78, -116.37);
     if (cityName) cityName.textContent = trigger.dataset.cityName ?? "";
     if (cityFocus) cityFocus.textContent = trigger.dataset.cityFocus ?? "";
     if (cityNote) cityNote.textContent = trigger.dataset.cityNote ?? "";
-    if (contactLink) contactLink.href = `/contact/?city=${encodeURIComponent(slug)}`;
+    if (contactLink && mapRoot?.dataset.prefillInquiryCity === "true") {
+      contactLink.href = `/contact/?city=${encodeURIComponent(slug)}`;
+    }
   };
 
   cityTriggers.forEach((trigger) => {
@@ -223,9 +231,9 @@ const hub = projectPoint(33.78, -116.37);
     })
     .then((boundary) => {
       drawBoundary(boundary);
-      if (status) status.lastChild!.textContent = " Boundary data loaded / 9 cities";
+      if (status) status.lastChild!.textContent = " Serving 9 Coachella Valley cities";
     })
     .catch(() => {
-      if (status) status.lastChild!.textContent = " City nodes active / boundary unavailable";
+      if (status) status.lastChild!.textContent = " Serving 9 Coachella Valley cities";
     });
 </script>

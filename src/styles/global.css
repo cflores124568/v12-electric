@@ -1706,6 +1706,10 @@ blockquote {
   gap: clamp(4rem, 9vw, 10rem);
 }
 
+.contact-section-direct {
+  grid-template-columns: minmax(0, 46rem);
+}
+
 .contact-intro h2 {
   max-width: 10ch;
   font-size: clamp(3.8rem, 5.5vw, 6.2rem);
@@ -3052,18 +3056,27 @@ blockquote {
   text-transform: uppercase;
 }
 
+.contact-action-panel,
 .booking-panel {
   margin-top: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgb(255 255 255 / 20%);
 }
 
+.contact-action-panel p:not(.section-label),
 .booking-panel p:not(.section-label) {
   max-width: 24rem;
   margin: 0.6rem 0 1rem;
   color: rgb(229 239 255 / 72%);
   font-size: 0.78rem;
   line-height: 1.6;
+}
+
+.contact-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
 }
 
 .contact-phone,
