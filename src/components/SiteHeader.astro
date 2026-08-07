@@ -10,7 +10,7 @@ const { active = "" } = Astro.props;
 ---
 
 <header class="site-header" data-reveal="fade">
-  <BrandLogo class="header-logo" />
+  <BrandLogo class="header-logo" variant="light" />
 
   <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
     {
@@ -22,7 +22,7 @@ const { active = "" } = Astro.props;
     }
   </nav>
 
-  <a class="button button-primary header-cta" href="/contact/">Plan Your Project</a>
+  <a class="button button-primary header-cta" href="tel:+17605676593">Call or text Eric</a>
 
   <button
     class="menu-toggle"
@@ -46,6 +46,6 @@ const { active = "" } = Astro.props;
         ))
       }
     </nav>
-    <a class="button button-light" href="/contact/">Plan Your Project</a>
+    <a class="button button-primary" href="tel:+17605676593">Call Eric</a>
   </div>
 </header>

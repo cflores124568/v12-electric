@@ -2,238 +2,110 @@
 import { serviceAreaCities } from "../data/service-areas";
 
 const canPrefillInquiryCity = Boolean(import.meta.env.PUBLIC_CONTACT_EMAIL);
+const regions = [
+  {
+    name: "West Valley",
+    cities: ["palm-springs-electrician", "cathedral-city-electrician", "desert-hot-springs-electrician"],
+  },
+  {
+    name: "Central Valley",
+    cities: ["rancho-mirage-electrician", "palm-desert-electrician", "indian-wells-electrician", "la-quinta-electrician"],
+  },
+  {
+    name: "East Valley",
+    cities: ["indio-electrician", "coachella-electrician"],
+  },
+] as const;
 
-const mapBounds = {
-  minLng: -116.87,
-  maxLng: -115.82,
-  minLat: 33.2,
-  maxLat: 34.19,
-};
-
-const projectPoint = (lat: number, lng: number) => ({
-  x: ((lng - mapBounds.minLng) / (mapBounds.maxLng - mapBounds.minLng)) * 100,
-  y: ((mapBounds.maxLat - lat) / (mapBounds.maxLat - mapBounds.minLat)) * 100,
-});
-
-const hub = projectPoint(33.78, -116.37);
+const cityBySlug = Object.fromEntries(serviceAreaCities.map((city) => [city.slug, city]));
+const selectedCity = serviceAreaCities[0];
 ---
 
-<section class="service-area" aria-labelledby="service-area-title">
-  <div class="service-area-copy section-pad" data-reveal="up">
+<section
+  class="service-area-index"
+  aria-labelledby="service-area-title"
+  data-service-area-index
+  data-prefill-city={String(canPrefillInquiryCity)}
+>
+  <div class="service-area-index-intro section-pad">
     <p class="section-label">Coachella Valley coverage</p>
-    <h2 id="service-area-title">Electrical service across the Coachella Valley.</h2>
+    <h2 id="service-area-title">Where we work.</h2>
     <p>
-      V12 Electric serves Palm Springs, Cathedral City, Desert Hot Springs, Rancho Mirage, Palm
-      Desert, Indian Wells, La Quinta, Indio, and Coachella.
+      Select a city to see the project types we are asked about most often, then call or text us
+      with the address and scope.
     </p>
-    <p class="service-area-note">
-      Select a city to see local project considerations, then call or text us with the address and
-      scope.
-    </p>
-    <a class="text-link" href="/contact/">
-      Check your address <span aria-hidden="true">↗</span>
-    </a>
-  </div>
-
-  <div class="service-map" data-service-area-map data-prefill-inquiry-city={String(canPrefillInquiryCity)}>
-    <div class="service-map-meta" aria-hidden="true">
-      <span>V12 / CV</span>
-      <span>9 cities served</span>
-    </div>
-
-    <svg
-      class="service-map-art"
-      viewBox="0 0 100 100"
-      role="img"
-      aria-label="Coachella Valley service area boundary with V12 Electric city markers"
-    >
-      <defs>
-        <radialGradient id="valley-coverage-glow" cx="50%" cy="48%" r="55%">
-          <stop offset="0" stop-color="#ffffff" stop-opacity=".24" />
-          <stop offset=".5" stop-color="#b9d5ff" stop-opacity=".12" />
-          <stop offset="1" stop-color="#b9d5ff" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-
-      <g class="map-grid" aria-hidden="true">
-        <path d="M0 12H100M0 25H100M0 38H100M0 51H100M0 64H100M0 77H100M0 90H100" />
-        <path d="M10 0V100M22 0V100M34 0V100M46 0V100M58 0V100M70 0V100M82 0V100M94 0V100" />
-      </g>
-
-      <circle class="coverage-ring coverage-ring-outer" cx={hub.x} cy={hub.y} r="35" />
-      <circle class="coverage-ring coverage-ring-inner" cx={hub.x} cy={hub.y} r="21" />
-      <circle cx={hub.x} cy={hub.y} r="38" fill="url(#valley-coverage-glow)" />
-
-      <g class="map-routes" aria-hidden="true">
-        {
-          serviceAreaCities.map((area) => {
-            const point = projectPoint(area.coords.lat, area.coords.lng);
-            return <path d={`M ${hub.x} ${hub.y} L ${point.x} ${point.y}`} />;
-          })
-        }
-      </g>
-
-      <g class="valley-boundary" data-map-boundary aria-hidden="true"></g>
-
-      <text class="map-state-label" x="7" y="92">COACHELLA VALLEY / CA</text>
-      <text class="map-coordinate" x="7" y="97">33.78° N</text>
-      <text class="map-coordinate" x="78" y="97">116.37° W</text>
-    </svg>
-
-    <div class="map-city-markers" aria-label="Cities served">
-      {
-        serviceAreaCities.map((area) => {
-          const point = projectPoint(area.coords.lat, area.coords.lng);
-          return (
-            <button
-              type="button"
-              class:list={[
-                "map-city-marker",
-                area.tier === "secondary" && "map-city-marker-secondary",
-              ]}
-              style={`--x: ${point.x}%; --y: ${point.y}%;`}
-              data-city-trigger={area.slug}
-              data-city-name={area.city}
-              data-city-focus={area.focus}
-              data-city-note={area.fieldNote}
-              data-city-faq={area.localFaq.question}
-              data-city-slug={area.slug}
-              aria-label={`Show V12 Electric service details for ${area.city}`}
-              aria-pressed={area.slug === serviceAreaCities[0].slug ? "true" : "false"}
-            >
-              <span class="map-city-marker-pulse" aria-hidden="true"></span>
-              <span class="map-city-marker-face">
-                <img src="/images/icon-512.png" width="512" height="512" alt="" loading="lazy" />
-              </span>
-              <span class="map-city-label">{area.city}</span>
-            </button>
-          );
-        })
-      }
-    </div>
-
-    <div class="map-detail" aria-live="polite">
-      <div>
-        <p class="map-detail-label">Service in this area</p>
-        <h3 data-map-city-name>{serviceAreaCities[0].city}</h3>
-        <p data-map-city-focus>{serviceAreaCities[0].focus}</p>
-        <p class="map-detail-note" data-map-city-note>{serviceAreaCities[0].fieldNote}</p>
-      </div>
-      <a
-        class="map-detail-link"
-        data-map-contact
-        href={canPrefillInquiryCity ? `/contact/?city=${serviceAreaCities[0].slug}` : "/contact/"}
-      >
-        Contact V12 Electric <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-
-    <div class="service-map-status" data-map-status>
-      <span aria-hidden="true"></span>
-      Serving 9 Coachella Valley cities
+    <div class="service-area-mark" aria-hidden="true">
+      <span>Coachella</span>
+      <strong>Valley</strong>
+      <i></i>
     </div>
   </div>
 
-  <div class="service-area-directory" aria-label="V12 Electric service cities">
-    <div class="service-area-directory-heading">
-      <p class="section-label">Choose your city</p>
-      <p>Select a city to view local project considerations.</p>
-    </div>
-    <div class="service-area-city-list">
+  <div class="service-area-index-content section-pad">
+    <div class="service-area-groups" aria-label="Cities served">
       {
-        serviceAreaCities.map((area) => (
-          <button
-            type="button"
-            class="service-area-city-button"
-            data-city-trigger={area.slug}
-            data-city-name={area.city}
-            data-city-focus={area.focus}
-            data-city-note={area.fieldNote}
-            data-city-faq={area.localFaq.question}
-            data-city-slug={area.slug}
-            aria-pressed={area.slug === serviceAreaCities[0].slug ? "true" : "false"}
-          >
-            <span>{area.city}</span>
-            <span aria-hidden="true">↗</span>
-          </button>
+        regions.map((region) => (
+          <section class="service-area-group">
+            <h3>{region.name}</h3>
+            <div>
+              {
+                region.cities.map((slug) => {
+                  const city = cityBySlug[slug];
+                  return (
+                    <button
+                      type="button"
+                      data-city-trigger={city.slug}
+                      data-city-name={city.city}
+                      data-city-focus={city.focus}
+                      data-city-note={city.fieldNote}
+                      aria-pressed={city.slug === selectedCity.slug ? "true" : "false"}
+                    >
+                      {city.city}
+                    </button>
+                  );
+                })
+              }
+            </div>
+          </section>
         ))
       }
     </div>
+
+    <aside class="service-area-detail" aria-live="polite">
+      <p class="section-label">Selected area</p>
+      <h3 data-city-name>{selectedCity.city}</h3>
+      <p data-city-focus>{selectedCity.focus}</p>
+      <p class="service-area-detail-note" data-city-note>{selectedCity.fieldNote}</p>
+      <a
+        class="text-link"
+        data-city-contact
+        href={canPrefillInquiryCity ? `/contact/?city=${selectedCity.slug}` : "/contact/"}
+      >
+        Text us about your project <span aria-hidden="true">→</span>
+      </a>
+    </aside>
   </div>
 </section>
 
 <script>
-  type BoundaryRing = [number, number][];
-  type BoundaryGeometry = { type: "MultiPolygon"; coordinates: BoundaryRing[][] };
-  type BoundaryFeature = { geometry: BoundaryGeometry };
-  type BoundaryCollection = { type: "FeatureCollection"; features: BoundaryFeature[] };
+  const serviceAreaRoot = document.querySelector<HTMLElement>("[data-service-area-index]");
+  const cityTriggers = serviceAreaRoot?.querySelectorAll<HTMLButtonElement>("[data-city-trigger]");
+  const cityName = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-name]");
+  const cityFocus = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-focus]");
+  const cityNote = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-note]");
+  const cityContact = serviceAreaRoot?.querySelector<HTMLAnchorElement>("[data-city-contact]");
 
-  const mapRoot = document.querySelector<HTMLElement>("[data-service-area-map]");
-  const boundaryTarget = mapRoot?.querySelector<SVGGElement>("[data-map-boundary]");
-  const status = mapRoot?.querySelector<HTMLElement>("[data-map-status]");
-  const cityTriggers = document.querySelectorAll<HTMLButtonElement>("[data-city-trigger]");
-  const cityName = mapRoot?.querySelector<HTMLElement>("[data-map-city-name]");
-  const cityFocus = mapRoot?.querySelector<HTMLElement>("[data-map-city-focus]");
-  const cityNote = mapRoot?.querySelector<HTMLElement>("[data-map-city-note]");
-  const contactLink = mapRoot?.querySelector<HTMLAnchorElement>("[data-map-contact]");
-
-  const bounds = {
-    minLng: -116.87,
-    maxLng: -115.82,
-    minLat: 33.2,
-    maxLat: 34.19,
-  };
-
-  const projectPoint = (lat: number, lng: number) => ({
-    x: ((lng - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 100,
-    y: ((bounds.maxLat - lat) / (bounds.maxLat - bounds.minLat)) * 100,
-  });
-
-  const drawRing = (ring: BoundaryRing) =>
-    `${ring
-      .map(([lng, lat], index) => {
-        const point = projectPoint(lat, lng);
-        return `${index === 0 ? "M" : "L"} ${point.x.toFixed(3)} ${point.y.toFixed(3)}`;
-      })
-      .join(" ")} Z`;
-
-  const drawBoundary = (boundary: BoundaryCollection) => {
-    if (!boundaryTarget) return;
-    const paths = boundary.features.flatMap((feature) =>
-      feature.geometry.coordinates.map((polygon) => polygon.map(drawRing).join(" ")),
-    );
-    boundaryTarget.innerHTML = paths
-      .map((path) => `<path class="valley-boundary-shape" d="${path}" />`)
-      .join("");
-  };
-
-  const selectCity = (trigger: HTMLButtonElement) => {
-    const slug = trigger.dataset.citySlug ?? "";
-    cityTriggers.forEach((item) => {
-      item.setAttribute("aria-pressed", String(item.dataset.citySlug === slug));
+  cityTriggers?.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      cityTriggers.forEach((item) => {
+        item.setAttribute("aria-pressed", String(item === trigger));
+      });
+      if (cityName) cityName.textContent = trigger.dataset.cityName ?? "";
+      if (cityFocus) cityFocus.textContent = trigger.dataset.cityFocus ?? "";
+      if (cityNote) cityNote.textContent = trigger.dataset.cityNote ?? "";
+      if (cityContact && serviceAreaRoot?.dataset.prefillCity === "true") {
+        cityContact.href = `/contact/?city=${encodeURIComponent(trigger.dataset.cityTrigger ?? "")}`;
+      }
     });
-    if (cityName) cityName.textContent = trigger.dataset.cityName ?? "";
-    if (cityFocus) cityFocus.textContent = trigger.dataset.cityFocus ?? "";
-    if (cityNote) cityNote.textContent = trigger.dataset.cityNote ?? "";
-    if (contactLink && mapRoot?.dataset.prefillInquiryCity === "true") {
-      contactLink.href = `/contact/?city=${encodeURIComponent(slug)}`;
-    }
-  };
-
-  cityTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => selectCity(trigger));
   });
-
-  fetch("/data/coachella-valley-boundary.geojson")
-    .then((response) => {
-      if (!response.ok) throw new Error(`Boundary request failed: ${response.status}`);
-      return response.json() as Promise<BoundaryCollection>;
-    })
-    .then((boundary) => {
-      drawBoundary(boundary);
-      if (status) status.lastChild!.textContent = " Serving 9 Coachella Valley cities";
-    })
-    .catch(() => {
-      if (status) status.lastChild!.textContent = " Serving 9 Coachella Valley cities";
-    });
 </script>
