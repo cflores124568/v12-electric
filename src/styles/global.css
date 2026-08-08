@@ -2077,6 +2077,10 @@ blockquote {
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
 }
 
+.process-collaboration figure img {
+  object-position: center 60%;
+}
+
 .process-collaboration > div {
   display: flex;
   min-width: 0;
