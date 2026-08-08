@@ -3508,10 +3508,13 @@ blockquote {
 }
 
 .home-shell .hero h1 {
-  max-width: 7ch;
-  font-size: clamp(4.25rem, 7vw, 8rem);
-  line-height: 0.86;
-  letter-spacing: -0.07em;
+  max-width: 10ch;
+  font-family: "Goldman", var(--body);
+  font-size: clamp(3.8rem, 6.1vw, 7rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
 }
 
 .home-shell .hero-accent {
@@ -4323,8 +4326,9 @@ blockquote {
   }
 
   .home-shell .hero h1 {
-    max-width: 6.2ch;
-    font-size: clamp(3.85rem, 16vw, 5.25rem);
+    max-width: 100%;
+    font-size: clamp(2.75rem, 11vw, 4rem);
+    line-height: 0.94;
   }
 
   .home-shell .hero-media {
