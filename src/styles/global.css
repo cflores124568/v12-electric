@@ -3946,7 +3946,7 @@ blockquote {
 }
 
 /* Cinematic home hero - adapted from the supplied night-property reference. */
-.home-shell .site-header {
+.site-header-overlay {
   position: absolute;
   inset: 0 0 auto;
   border-bottom-color: rgb(255 253 248 / 16%);
@@ -3955,23 +3955,27 @@ blockquote {
   backdrop-filter: none;
 }
 
-.home-shell .primary-nav a {
+.site-header-overlay .primary-nav a {
   color: var(--white);
 }
 
-.home-shell .primary-nav a::after {
+.site-header-overlay .primary-nav a::after {
   background: var(--blue);
 }
 
-.home-shell .primary-nav a:hover,
-.home-shell .primary-nav a:focus-visible,
-.home-shell .primary-nav a[aria-current="page"] {
+.site-header-overlay .primary-nav a:hover,
+.site-header-overlay .primary-nav a:focus-visible,
+.site-header-overlay .primary-nav a[aria-current="page"] {
   color: var(--white);
 }
 
-.home-shell .header-cta {
+.site-header-overlay .header-cta {
   background: var(--blue);
   color: var(--white);
+}
+
+.site-header-overlay .menu-toggle span {
+  background: var(--white);
 }
 
 .home-shell .hero {
@@ -5440,35 +5444,6 @@ blockquote {
   background: var(--city-ivory);
 }
 
-.city-shell .site-header {
-  position: absolute;
-  inset: 0 0 auto;
-  border-bottom-color: rgb(244 240 232 / 20%);
-  background: linear-gradient(180deg, rgb(4 13 25 / 88%), rgb(4 13 25 / 22%) 76%, transparent);
-  color: var(--city-ivory);
-  backdrop-filter: none;
-}
-
-.city-shell .primary-nav a,
-.city-shell .primary-nav a:hover,
-.city-shell .primary-nav a:focus-visible,
-.city-shell .primary-nav a[aria-current="page"] {
-  color: var(--city-ivory);
-}
-
-.city-shell .primary-nav a::after {
-  background: var(--city-blue);
-}
-
-.city-shell .header-cta {
-  background: var(--city-blue);
-  color: #fff;
-}
-
-.city-shell .menu-toggle span {
-  background: var(--city-ivory);
-}
-
 .city-hero {
   position: relative;
   isolation: isolate;
@@ -5990,10 +5965,6 @@ blockquote {
 }
 
 @media (max-width: 620px) {
-  .city-shell .site-header {
-    min-height: 4.5rem;
-  }
-
   .city-hero,
   .city-hero-copy {
     min-height: 47rem;

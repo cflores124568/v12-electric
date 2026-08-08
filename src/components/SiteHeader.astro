@@ -4,13 +4,14 @@ import { navItems } from "../data/site";
 
 interface Props {
   active?: string;
+  overlay?: boolean;
 }
 
-const { active = "" } = Astro.props;
+const { active = "", overlay = false } = Astro.props;
 ---
 
-<header class="site-header" data-reveal="fade">
-  <BrandLogo class="header-logo" variant="light" />
+<header class:list={["site-header", { "site-header-overlay": overlay }]} data-reveal="fade">
+  <BrandLogo class="header-logo" variant={overlay ? "dark" : "light"} />
 
   <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
     {

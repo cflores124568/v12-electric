@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BrandLogo from "../components/BrandLogo.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import ServiceAreaMap from "../components/ServiceAreaMap.astro";
 import Reviews from "../components/Reviews.astro";
@@ -43,42 +43,7 @@ const homepageServices = allServices.slice(0, 6);
   description="V12 Electric serves the Coachella Valley with EV chargers, panel upgrades, residential and commercial electrical, inspections, repairs, smart-home wiring, and lighting controls."
 >
   <div id="top" class="site-shell home-shell">
-    <header class="site-header" data-reveal="fade">
-      <BrandLogo class="header-logo" />
-
-      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-        <a href="/services/">Services</a>
-        <a href="/projects/">Projects</a>
-        <a href="/about/">About</a>
-        <a href="/process/">Process</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-
-      <a class="button button-primary header-cta" href="tel:+17605676593">Call or text us</a>
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Open menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert>
-        <nav aria-label="Mobile navigation">
-          <a href="/services/">Services</a>
-          <a href="/projects/">Projects</a>
-          <a href="/about/">About</a>
-          <a href="/process/">Process</a>
-          <a href="/contact/">Contact</a>
-        </nav>
-        <a class="button button-primary" href="tel:+17605676593">Call us</a>
-      </div>
-    </header>
+    <SiteHeader overlay />
 
     <main id="main-content">
       <section class="hero" aria-labelledby="hero-title">
