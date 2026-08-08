@@ -33,8 +33,8 @@ export const services = [
     summary: "Level 2 charging planned around service capacity, routing, parking, and inspection requirements.",
     image: "/images/proof/ev-charger-installation.webp",
     alt: "Installed EV charging equipment and organized service hardware",
-    proofImage: "/images/proof/ev-charger-installation.webp",
-    proofAlt: "Installed EV charging equipment and organized service hardware",
+    proofImage: "/images/proof/ev-charger-hardwired-240.webp",
+    proofAlt: "Hardwired Level 2 charger with conduit, disconnect, and a labeled 240-volt junction box",
     intro:
       "An EV charger is only as useful as the electrical system behind it. We review the existing service, choose the right circuit and route, and coordinate the details that make daily charging practical.",
     inclusions: [
