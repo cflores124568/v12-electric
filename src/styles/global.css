@@ -653,6 +653,117 @@ blockquote {
   color: var(--blue);
 }
 
+.lutron-credential {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: clamp(1.35rem, 2.5vw, 2.25rem) var(--gutter);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--mist);
+}
+
+.lutron-credential-mark {
+  display: flex;
+  width: 7.2rem;
+  height: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.32rem 0.5rem;
+  background: var(--white);
+}
+
+.lutron-credential-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lutron-credential-copy .section-label {
+  margin: 0;
+}
+
+.lutron-credential-copy h2 {
+  margin-top: 0.35rem;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lutron-credential-copy > p:last-child {
+  max-width: 42rem;
+  margin-top: 0.55rem;
+  color: rgb(20 36 51 / 74%);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.lutron-credential-link {
+  white-space: nowrap;
+}
+
+.lutron-credential-compact {
+  display: inline-flex;
+  width: fit-content;
+  grid-template-columns: none;
+  gap: 0.65rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--steel);
+  background: transparent;
+}
+
+.lutron-credential-compact .lutron-credential-mark {
+  width: 5.25rem;
+  height: 1.75rem;
+  padding: 0.22rem 0.32rem;
+}
+
+.lutron-credential-compact .lutron-credential-copy {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.lutron-credential-compact .lutron-credential-copy .section-label {
+  display: none;
+}
+
+.lutron-credential-compact .lutron-credential-copy h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.lutron-credential-compact .lutron-credential-link {
+  margin-left: 0.15rem;
+  font-size: 0.7rem;
+}
+
+.home-shell .lutron-credential-compact {
+  border-color: rgb(255 253 248 / 24%);
+  background: transparent;
+}
+
+.home-shell .lutron-credential-compact .lutron-credential-copy h2,
+.home-shell .lutron-credential-compact .lutron-credential-link {
+  color: rgb(255 253 248 / 82%);
+}
+
+.home-shell .lutron-credential-compact .lutron-credential-link:hover,
+.home-shell .lutron-credential-compact .lutron-credential-link:focus-visible {
+  color: var(--white);
+}
+
 .featured-project {
   border-top: 1px solid var(--line);
   background: var(--deep);
@@ -1954,6 +2065,27 @@ blockquote {
   overflow-wrap: break-word;
 }
 
+.about-grid-copy .lutron-credential {
+  margin-top: 2rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  background: transparent;
+}
+
+.about-grid-copy .lutron-credential .lutron-credential-mark {
+  width: 5.2rem;
+  height: 1.7rem;
+  padding: 0.2rem 0.3rem;
+}
+
+.about-grid-copy .lutron-credential .lutron-credential-copy h2 {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .values {
   background: var(--mist);
 }
@@ -2429,6 +2561,15 @@ blockquote {
 @media (max-width: 900px) {
   html {
     scroll-padding-top: 4.5rem;
+  }
+
+  .lutron-credential:not(.lutron-credential-compact) {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .lutron-credential:not(.lutron-credential-compact) .lutron-credential-link {
+    grid-column: 2;
+    justify-self: start;
   }
 
   .site-header {

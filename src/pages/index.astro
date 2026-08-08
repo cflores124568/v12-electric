@@ -7,6 +7,7 @@ import Reviews from "../components/Reviews.astro";
 import ProjectGallery from "../components/ProjectGallery.astro";
 import ServiceIcon from "../components/ServiceIcon.astro";
 import FaqSection from "../components/FaqSection.astro";
+import LutronCredential from "../components/LutronCredential.astro";
 import { services as allServices } from "../data/site";
 import { homeFaqs, toFaqSchema } from "../data/seo";
 
@@ -77,6 +78,7 @@ const homepageServices = allServices.slice(0, 6);
               <li><ServiceIcon name="shield-check" /> Insured</li>
             </ul>
             <p class="hero-trust-license">CA Lic. #<span>1114737</span></p>
+            <LutronCredential compact link />
           </div>
         </div>
 

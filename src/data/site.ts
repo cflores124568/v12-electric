@@ -243,6 +243,14 @@ export const services = [
 
 export type Service = (typeof services)[number];
 
+export const lutronCredential = {
+  eyebrow: "Lighting controls credential",
+  label: "Lutron lighting controls certification",
+  shortLabel: "Lutron certification",
+  description:
+    "Specialized lighting-control planning and installation for homes, remodels, and new construction.",
+} as const;
+
 export const projects = [
   {
     title: "Layered Kitchen Lighting",

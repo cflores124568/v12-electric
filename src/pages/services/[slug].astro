@@ -6,6 +6,7 @@ import ServiceStatement from "../../components/ServiceStatement.astro";
 import ServiceScope from "../../components/ServiceScope.astro";
 import ServiceProof from "../../components/ServiceProof.astro";
 import ServiceNav from "../../components/ServiceNav.astro";
+import LutronCredential from "../../components/LutronCredential.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import { services, type Service } from "../../data/site";
 import { serviceFaqs, toFaqSchema } from "../../data/seo";
@@ -70,6 +71,8 @@ const sectionOrder = {
   shellClass={`service-shell service-shell-${service.layout}`}
 >
   <ServiceHero service={service} sequence={sequence} total={total} />
+
+  {service.slug === "lutron-lighting-controls" && <LutronCredential link />}
 
   {
     sectionOrder.map((block) => (
