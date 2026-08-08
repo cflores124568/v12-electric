@@ -10,15 +10,19 @@ const supportingReviews = remainingReviews.slice(0, 3);
     <div class="review-feature-copy">
       <p class="section-label">What customers say</p>
       <h2 id="reviews-title">Straight answers. Clean work.</h2>
-      <blockquote>“{featuredReview.text}”</blockquote>
+      <blockquote>“{featuredReview.excerpt ?? featuredReview.text}”</blockquote>
       <footer>
         <strong>{featuredReview.author}</strong>
         <span>{featuredReview.source}{featuredReview.date && ` · ${featuredReview.date}`}</span>
       </footer>
-      <p class="review-continuity">
-        Reviews appear as customers wrote them. Some were published under our previous business
-        name, TruLuxe Electric.
-      </p>
+      <details class="review-full">
+        <summary>Read full review <span aria-hidden="true">↗</span></summary>
+        <p>“{featuredReview.text}”</p>
+        <p class="review-continuity">
+          Reviews appear as customers wrote them. Some were published under our previous business
+          name, TruLuxe Electric.
+        </p>
+      </details>
     </div>
 
     {
@@ -31,21 +35,19 @@ const supportingReviews = remainingReviews.slice(0, 3);
             alt={featuredReview.photo.alt}
             loading="lazy"
           />
-          <figcaption>Project photo shared with this review</figcaption>
+          <figcaption>Palm Springs / lighting installation</figcaption>
         </figure>
       )
     }
   </div>
 
   <aside class="contact-prompt section-pad" aria-label="Contact V12 Electric">
-    <p class="section-label">Start with a conversation</p>
-    <h2>Call or text us.</h2>
+    <h2>Call or text Eric.</h2>
     <a class="contact-prompt-phone" href="tel:+17605676593">(760) 567-6593</a>
     <div class="contact-prompt-actions">
-      <a class="button button-primary" href="tel:+17605676593">Call <span aria-hidden="true">→</span></a>
+      <a class="button button-outline" href="tel:+17605676593">Call <span aria-hidden="true">→</span></a>
       <a class="button button-outline" href="sms:+17605676593">Text <span aria-hidden="true">→</span></a>
     </div>
-    <p>Send your city, the issue, and a photo if you have one.</p>
   </aside>
 </section>
 

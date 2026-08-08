@@ -7,6 +7,7 @@ export interface ReviewProof {
   rating: 5;
   date: string;
   text: string;
+  excerpt?: string;
   photo?: { src: string; alt: string };
 }
 
@@ -22,6 +23,8 @@ export const reviewProof: ReviewProof[] = [
     rating: 5,
     date: "",
     text: "Came out on short notice and solved our electrical issue. Eric gave very detailed explanation of all services being recommended. They even agreed to return later the same day to install a couple of pendant lights as well. The service was friendly and affordable. We will definitely be calling TruLuxe for all electrical issues in the future.",
+    excerpt:
+      "Came out on short notice and solved our electrical issue. Eric gave very detailed explanation of all services being recommended.",
     photo: {
       src: "/images/proof/reviews/kirk-b-pendants.webp",
       alt: "Mid-century pendant lights installed over a dining area",
