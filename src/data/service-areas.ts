@@ -1,6 +1,13 @@
 export interface ServiceAreaCity {
   slug: string;
   city: string;
+  headlineLead: string;
+  headlineAccent: string;
+  heroImage: string;
+  heroAlt: string;
+  projectCta: string;
+  localNote: string;
+  serviceSlugs: readonly string[];
   coords: { lat: number; lng: number };
   tier: "primary" | "secondary";
   focus: string;
@@ -20,6 +27,19 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "palm-springs-electrician",
     city: "Palm Springs",
+    headlineLead: "Power, planned for",
+    headlineAccent: "Palm Springs.",
+    heroImage: "/images/cities/palm-springs-hero.webp",
+    heroAlt:
+      "Palm Springs mid-century home at dusk with architectural lighting, an electric vehicle, and a wall charger",
+    projectCta: "Start a Palm Springs project",
+    localNote: "SCE service area • Palm Springs permits • Desert-local planning",
+    serviceSlugs: [
+      "ev-charger-installation",
+      "panel-service-upgrades",
+      "lutron-lighting-controls",
+      "residential-electrical",
+    ],
     coords: { lat: 33.8303, lng: -116.5453 },
     tier: "primary",
     focus: "Mid-century remodels, EV charging, architectural lighting, and panel modernization.",
@@ -37,6 +57,19 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "cathedral-city-electrician",
     city: "Cathedral City",
+    headlineLead: "Clear answers for",
+    headlineAccent: "Cathedral City.",
+    heroImage: "/images/cities/cathedral-city-hero.webp",
+    heroAlt:
+      "Cathedral City desert home at dusk with a neatly installed service panel and exterior lighting",
+    projectCta: "Start a Cathedral City project",
+    localNote: "SCE service area • Cathedral City permits • Diagnosis before replacement",
+    serviceSlugs: [
+      "troubleshooting-repairs",
+      "residential-electrical",
+      "commercial-electrical",
+      "panel-service-upgrades",
+    ],
     coords: { lat: 33.7797, lng: -116.4653 },
     tier: "primary",
     focus: "Troubleshooting, rental-turnover repairs, small-business service calls, and dedicated circuits.",
@@ -55,6 +88,20 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "desert-hot-springs-electrician",
     city: "Desert Hot Springs",
+    headlineLead: "Built for",
+    headlineAccent: "Desert Hot Springs.",
+    heroImage: "/images/cities/desert-hot-springs-hero.webp",
+    heroAlt:
+      "Desert Hot Springs residence at dusk with pool, spa, landscape lighting, and weatherproof electrical equipment",
+    projectCta: "Start a Desert Hot Springs project",
+    localNote:
+      "SCE service area • Desert Hot Springs permits • Exterior work built for desert exposure",
+    serviceSlugs: [
+      "residential-electrical",
+      "electrical-inspections",
+      "panel-service-upgrades",
+      "ev-charger-installation",
+    ],
     coords: { lat: 33.9611, lng: -116.5017 },
     tier: "secondary",
     focus: "Outdoor electrical, older-panel safety work, spa circuits, cooling loads, and EV charging.",
@@ -72,6 +119,20 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "rancho-mirage-electrician",
     city: "Rancho Mirage",
+    headlineLead: "Finished work for",
+    headlineAccent: "Rancho Mirage.",
+    heroImage: "/images/cities/rancho-mirage-hero.webp",
+    heroAlt:
+      "Rancho Mirage estate at dusk with architectural lighting, an electric vehicle, and a discreet charger",
+    projectCta: "Start a Rancho Mirage project",
+    localNote:
+      "SCE + IID vary by property • Rancho Mirage permits • Clean routes through finished spaces",
+    serviceSlugs: [
+      "lutron-lighting-controls",
+      "ev-charger-installation",
+      "design-planning",
+      "panel-service-upgrades",
+    ],
     coords: { lat: 33.7397, lng: -116.4127 },
     tier: "primary",
     focus: "Luxury lighting, discreet EV charger routing, estate-home capacity reviews, and controls.",
@@ -90,6 +151,20 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "palm-desert-electrician",
     city: "Palm Desert",
+    headlineLead: "Designed for",
+    headlineAccent: "Palm Desert.",
+    heroImage: "/images/cities/palm-desert-hero.webp",
+    heroAlt:
+      "Palm Desert design gallery and residences at dusk with display lighting and EV charging",
+    projectCta: "Start a Palm Desert project",
+    localNote:
+      "IID east of Washington • SCE west • Palm Desert permits • Lighting with visual discipline",
+    serviceSlugs: [
+      "commercial-electrical",
+      "lutron-lighting-controls",
+      "ev-charger-installation",
+      "residential-electrical",
+    ],
     coords: { lat: 33.7222, lng: -116.3744 },
     tier: "primary",
     focus: "Gallery and retail lighting, EV charging, condo-aware upgrades, and commercial maintenance.",
@@ -107,6 +182,20 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "indian-wells-electrician",
     city: "Indian Wells",
+    headlineLead: "Quiet confidence for",
+    headlineAccent: "Indian Wells.",
+    heroImage: "/images/cities/indian-wells-hero.webp",
+    heroAlt:
+      "Indian Wells seasonal residence at dusk with pathway lighting, an electric vehicle, and a guest charger",
+    projectCta: "Start an Indian Wells project",
+    localNote:
+      "SCE serves most properties • Indian Wells permits • Systems checked before the season ends",
+    serviceSlugs: [
+      "electrical-inspections",
+      "lutron-lighting-controls",
+      "ev-charger-installation",
+      "smart-home-wiring",
+    ],
     coords: { lat: 33.7175, lng: -116.341 },
     tier: "primary",
     focus: "Seasonal-home checks, finished-interior lighting, guest-property charging, and dedicated circuits.",
@@ -124,6 +213,19 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "la-quinta-electrician",
     city: "La Quinta",
+    headlineLead: "Every load, planned for",
+    headlineAccent: "La Quinta.",
+    heroImage: "/images/cities/la-quinta-hero.webp",
+    heroAlt:
+      "La Quinta home at dusk with pool, spa, outdoor living, electrical service equipment, and EV charging",
+    projectCta: "Start a La Quinta project",
+    localNote: "IID service area • La Quinta permits • Combined-load planning before installation",
+    serviceSlugs: [
+      "ev-charger-installation",
+      "residential-electrical",
+      "panel-service-upgrades",
+      "design-planning",
+    ],
     coords: { lat: 33.6634, lng: -116.31 },
     tier: "primary",
     focus: "EV charging, pool and spa electrical, outdoor living, remodel circuits, and IID coordination.",
@@ -141,6 +243,19 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "indio-electrician",
     city: "Indio",
+    headlineLead: "Ready for what",
+    headlineAccent: "Indio adds next.",
+    heroImage: "/images/cities/indio-hero.webp",
+    heroAlt:
+      "Contemporary Indio home at dusk with an EV charger, service panel, and illuminated kitchen and office",
+    projectCta: "Start an Indio project",
+    localNote: "IID Energy • Indio permits • Real diagnosis before a fast repair",
+    serviceSlugs: [
+      "troubleshooting-repairs",
+      "ev-charger-installation",
+      "commercial-electrical",
+      "residential-electrical",
+    ],
     coords: { lat: 33.7206, lng: -116.2156 },
     tier: "primary",
     focus: "Fast troubleshooting, newer-home EV and appliance loads, remodel wiring, and commercial service.",
@@ -159,6 +274,20 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   {
     slug: "coachella-electrician",
     city: "Coachella",
+    headlineLead: "Working power for",
+    headlineAccent: "Coachella.",
+    heroImage: "/images/cities/coachella-hero.webp",
+    heroAlt:
+      "Coachella family property and small workshop at dusk with dedicated circuits and service panels",
+    projectCta: "Start a Coachella project",
+    localNote:
+      "IID serves much of the city • Coachella permits • Equipment circuits planned for real duty",
+    serviceSlugs: [
+      "commercial-electrical",
+      "troubleshooting-repairs",
+      "residential-electrical",
+      "panel-service-upgrades",
+    ],
     coords: { lat: 33.6803, lng: -116.1739 },
     tier: "secondary",
     focus: "Equipment circuits, family-home repairs, small-commercial service, and panel planning.",

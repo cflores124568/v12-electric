@@ -58,6 +58,7 @@ const selectedCity = serviceAreaCities[0];
                       data-city-name={city.city}
                       data-city-focus={city.focus}
                       data-city-note={city.fieldNote}
+                      data-city-url={`/service-areas/${city.slug}/`}
                       aria-pressed={city.slug === selectedCity.slug ? "true" : "false"}
                     >
                       {city.city}
@@ -76,13 +77,19 @@ const selectedCity = serviceAreaCities[0];
       <h3 data-city-name>{selectedCity.city}</h3>
       <p data-city-focus>{selectedCity.focus}</p>
       <p class="service-area-detail-note" data-city-note>{selectedCity.fieldNote}</p>
-      <a
-        class="text-link"
-        data-city-contact
-        href={canPrefillInquiryCity ? `/contact/?city=${selectedCity.slug}` : "/contact/"}
-      >
-        Text us about your project <span aria-hidden="true">→</span>
-      </a>
+      <div class="service-area-detail-actions">
+        <a class="text-link" data-city-page href={`/service-areas/${selectedCity.slug}/`}>
+          <span data-city-page-label>View {selectedCity.city} page</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          class="text-link"
+          data-city-contact
+          href={canPrefillInquiryCity ? `/contact/?city=${selectedCity.slug}` : "/contact/"}
+        >
+          Text us about your project <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </aside>
   </div>
 </section>
@@ -93,6 +100,8 @@ const selectedCity = serviceAreaCities[0];
   const cityName = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-name]");
   const cityFocus = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-focus]");
   const cityNote = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-note]");
+  const cityPage = serviceAreaRoot?.querySelector<HTMLAnchorElement>("[data-city-page]");
+  const cityPageLabel = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-page-label]");
   const cityContact = serviceAreaRoot?.querySelector<HTMLAnchorElement>("[data-city-contact]");
 
   cityTriggers?.forEach((trigger) => {
@@ -103,6 +112,10 @@ const selectedCity = serviceAreaCities[0];
       if (cityName) cityName.textContent = trigger.dataset.cityName ?? "";
       if (cityFocus) cityFocus.textContent = trigger.dataset.cityFocus ?? "";
       if (cityNote) cityNote.textContent = trigger.dataset.cityNote ?? "";
+      if (cityPage) {
+        cityPage.href = trigger.dataset.cityUrl ?? "/";
+      }
+      if (cityPageLabel) cityPageLabel.textContent = `View ${trigger.dataset.cityName ?? "city"} page`;
       if (cityContact && serviceAreaRoot?.dataset.prefillCity === "true") {
         cityContact.href = `/contact/?city=${encodeURIComponent(trigger.dataset.cityTrigger ?? "")}`;
       }

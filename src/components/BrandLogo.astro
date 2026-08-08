@@ -10,9 +10,9 @@ const variant = Astro.props.variant ?? "dark";
 
 <a class:list={["brand-logo", `brand-logo-${variant}`, className]} href="/" aria-label="V12 Electric home">
   <img
-    src={variant === "light" ? "/images/v12-electric-logo-source.png" : "/images/v12-electric-logo-white-on-blue.png"}
-    width={variant === "light" ? 1536 : 853}
-    height={variant === "light" ? 1024 : 1844}
+    src={variant === "light" ? "/images/v12-electric-logo-alt.png" : "/images/v12-electric-logo-white-on-blue.png"}
+    width={variant === "light" ? 1113 : 853}
+    height={variant === "light" ? 564 : 1844}
     alt="V12 Electric"
   />
 </a>

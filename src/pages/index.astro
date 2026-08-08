@@ -4,7 +4,35 @@ import BrandLogo from "../components/BrandLogo.astro";
 import ServiceAreaMap from "../components/ServiceAreaMap.astro";
 import Reviews from "../components/Reviews.astro";
 import ProjectGallery from "../components/ProjectGallery.astro";
+import ServiceIcon from "../components/ServiceIcon.astro";
 import { services as allServices } from "../data/site";
+
+const categoryStrip = [
+  {
+    icon: "power" as const,
+    title: "Residential",
+    summary: "Custom electrical work for desert homes.",
+    href: "/services/residential-electrical/",
+  },
+  {
+    icon: "commercial" as const,
+    title: "Commercial",
+    summary: "Reliable power systems for growing businesses.",
+    href: "/services/commercial-electrical/",
+  },
+  {
+    icon: "ev-charging" as const,
+    title: "EV Charging",
+    summary: "Level 2 charger installs, done right.",
+    href: "/services/ev-charger-installation/",
+  },
+  {
+    icon: "lighting" as const,
+    title: "Lighting Design",
+    summary: "Layered lighting and Lutron control systems.",
+    href: "/services/lutron-lighting-controls/",
+  },
+];
 
 const homepageServices = allServices.slice(0, 6);
 ---
@@ -71,6 +99,15 @@ const homepageServices = allServices.slice(0, 6);
             </a>
             <a class="button button-outline" href="#projects">See recent work</a>
           </div>
+
+          <div class="hero-trust-row" data-reveal="up" data-delay="3">
+            <ul class="hero-trust-badges">
+              <li><ServiceIcon name="shield-check" /> Licensed</li>
+              <li><ServiceIcon name="shield-check" /> Bonded</li>
+              <li><ServiceIcon name="shield-check" /> Insured</li>
+            </ul>
+            <p class="hero-trust-license">CA Lic. #<span>1114737</span></p>
+          </div>
         </div>
 
         <div class="hero-media" data-reveal="image">
@@ -82,6 +119,30 @@ const homepageServices = allServices.slice(0, 6);
             fetchpriority="high"
           />
         </div>
+      </section>
+
+      <section class="category-strip">
+        <div class="category-grid">
+          {
+            categoryStrip.map((category, index) => (
+              <article class="category-item" data-reveal="up" data-delay={String(index)}>
+                <ServiceIcon name={category.icon} />
+                <h3>{category.title}</h3>
+                <p>{category.summary}</p>
+                <a class="text-link" href={category.href}>
+                  Learn more <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+
+        <p class="category-tagline">
+          <span>Quality work.</span>
+          <ServiceIcon name="power" />
+          <span>Premium service.</span>
+          <span>Powering your vision.</span>
+        </p>
       </section>
 
       <section id="services" class="services section-pad">
