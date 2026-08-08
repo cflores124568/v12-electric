@@ -6,7 +6,7 @@ import { services } from "../data/site";
 
 const bookingUrl = import.meta.env.PUBLIC_HOUSECALL_PRO_BOOKING_URL;
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
-const hasInquiryEmail = Boolean(contactEmail);
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT;
 const phoneNumber = "+17605676593";
 const phoneDisplay = "(760) 567-6593";
 const textLink = `sms:${phoneNumber}`;
@@ -26,7 +26,7 @@ const textLink = `sms:${phoneNumber}`;
     alt="V12 Electric service van ready for an appointment in the Coachella Valley"
   />
 
-  <section class:list={["contact-section", "section-pad", !hasInquiryEmail && "contact-section-direct"]}>
+  <section class="contact-section section-pad">
     <div class="contact-intro" data-reveal="up">
       <p class="section-label">Start a conversation</p>
       <h2>Call or text to get started.</h2>
@@ -71,89 +71,80 @@ const textLink = `sms:${phoneNumber}`;
       }
     </div>
 
-    {
-      hasInquiryEmail && (
-        <form
-          class="inquiry-form"
-          data-inquiry-form
-          data-contact-email={contactEmail}
-          data-reveal="up"
-        >
-          <div class="form-grid">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              <span>Phone</span>
-              <input type="tel" name="phone" autocomplete="tel" required />
-            </label>
-            <label>
-              <span>Email <em>(optional)</em></span>
-              <input type="email" name="email" autocomplete="email" />
-            </label>
-            <label>
-              <span>City</span>
-              <select name="city" required>
-                <option value="">Select your city</option>
-                {
-                  serviceAreaCities.map((area) => <option value={area.slug}>{area.city}</option>)
-                }
-              </select>
-            </label>
-            <label class="form-span">
-              <span>Property address</span>
-              <input type="text" name="address" autocomplete="street-address" required />
-            </label>
-            <label class="form-span">
-              <span>Service needed</span>
-              <select name="service" required>
-                <option value="">Select a service</option>
-                {
-                  services.map((service) => <option value={service.title}>{service.title}</option>)
-                }
-              </select>
-            </label>
-            <label>
-              <span>Preferred timing <em>(optional)</em></span>
-              <select name="timing">
-                <option value="">Select timing</option>
-                <option>As soon as practical</option>
-                <option>Within the next 2–4 weeks</option>
-                <option>Planning ahead</option>
-              </select>
-            </label>
-            <label>
-              <span>Project stage <em>(optional)</em></span>
-              <select name="stage">
-                <option value="">Select stage</option>
-                <option>Repair or troubleshooting</option>
-                <option>Planning or estimate</option>
-                <option>In construction</option>
-                <option>Ready to schedule</option>
-              </select>
-            </label>
-            <label class="form-span">
-              <span>Project details</span>
-              <textarea name="details" rows="6" required placeholder="What needs power, lighting, inspection, repair, or upgrade?"></textarea>
-            </label>
-          </div>
+    <div class="inquiry-panel" data-reveal="up">
+      <div class="inquiry-head">
+        <h2>Request a quote.</h2>
+        <p>Four quick questions. We answer within one business day.</p>
+      </div>
 
-          <label class="consent-check">
-            <input type="checkbox" name="consent" required />
-            <span>I acknowledge the <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms of Service</a>.</span>
+      <a class="inquiry-call" href={`tel:${phoneNumber}`}>
+        <span>Need someone today?</span>
+        <strong>Call {phoneDisplay}</strong>
+      </a>
+
+      <form
+        class="inquiry-form"
+        data-inquiry-form
+        data-contact-email={contactEmail}
+        data-form-endpoint={formEndpoint}
+        novalidate
+      >
+        <div class="form-grid">
+          <label>
+            <span>Name <b aria-hidden="true">*</b></span>
+            <input type="text" name="name" autocomplete="name" required />
           </label>
+          <label>
+            <span>Phone <b aria-hidden="true">*</b></span>
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" required />
+          </label>
+          <label>
+            <span>City <b aria-hidden="true">*</b></span>
+            <select name="city" required>
+              <option value="">Select your city</option>
+              {serviceAreaCities.map((area) => <option value={area.slug}>{area.city}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Service needed <b aria-hidden="true">*</b></span>
+            <select name="service" required>
+              <option value="">Select a service</option>
+              {services.map((service) => <option value={service.title}>{service.title}</option>)}
+              <option>Something else</option>
+            </select>
+          </label>
+          <label class="form-span">
+            <span>Project details <em>(optional)</em></span>
+            <textarea name="details" rows="4" placeholder="What is happening, or what are you planning? Photos help once we reply."></textarea>
+          </label>
+          <label class="form-span">
+            <span>Email <em>(optional)</em></span>
+            <input type="email" name="email" inputmode="email" autocomplete="email" />
+          </label>
+        </div>
 
-          <button class="button button-primary" type="submit">
-            Send inquiry by email <span aria-hidden="true">↗</span>
-          </button>
-          <p class="form-note">
-            Your email app will open with the project details filled in for V12 Electric.
-          </p>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      )
-    }
+        <p class="form-hp" aria-hidden="true">
+          <label>Do not fill this in <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <button class="button button-primary" type="submit">
+          Request my quote <span aria-hidden="true">→</span>
+        </button>
+
+        <p class="form-trust">Licensed · Insured · Code-compliant. We never share your information.</p>
+        <p class="form-note">
+          Prefer to talk it through? Call or text <a href={`tel:${phoneNumber}`}>{phoneDisplay}</a>.
+        </p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="inquiry-success" data-inquiry-success hidden>
+        <p class="section-label">Request received</p>
+        <h3>Thanks. We have your details.</h3>
+        <p>We will call you back within one business day. If it cannot wait, call or text {phoneDisplay} and we will pick it up now.</p>
+        <a class="button button-primary" href={`tel:${phoneNumber}`}>Call {phoneDisplay}</a>
+      </div>
+    </div>
   </section>
 
   <section class="contact-close">
@@ -166,7 +157,9 @@ const textLink = `sms:${phoneNumber}`;
 
   <script>
     const form = document.querySelector<HTMLFormElement>("[data-inquiry-form]");
+    const success = document.querySelector<HTMLElement>("[data-inquiry-success]");
     const status = form?.querySelector<HTMLElement>(".form-status");
+    const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
     const citySelect = form?.querySelector<HTMLSelectElement>('select[name="city"]');
     const queryCity = new URLSearchParams(window.location.search).get("city");
 
@@ -174,31 +167,103 @@ const textLink = `sms:${phoneNumber}`;
       citySelect.value = queryCity;
     }
 
-    form?.addEventListener("submit", (event) => {
+    /** Marks the first invalid field so the visitor is not left hunting for it. */
+    const findFirstInvalid = () => {
+      const fields = form?.querySelectorAll<HTMLInputElement | HTMLSelectElement>("[required]") ?? [];
+      for (const field of fields) {
+        const invalid = !field.value.trim();
+        field.closest("label")?.classList.toggle("is-invalid", invalid);
+        if (invalid) return field;
+      }
+      return null;
+    };
+
+    form?.addEventListener("input", (event) => {
+      const field = event.target as HTMLElement;
+      if (field.closest("label.is-invalid")?.querySelector<HTMLInputElement>("[required]")?.value.trim()) {
+        field.closest("label")?.classList.remove("is-invalid");
+      }
+    });
+
+    form?.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!status) return;
+      if (!status || !submit) return;
+
+      const firstInvalid = findFirstInvalid();
+      if (firstInvalid) {
+        status.textContent = "Add the highlighted details and we will get straight back to you.";
+        status.dataset.tone = "error";
+        firstInvalid.focus();
+        return;
+      }
 
       const formData = new FormData(form);
+      if (formData.get("company")) return; // honeypot: silently drop bots
+
       const city = citySelect?.selectedOptions[0]?.textContent ?? "";
+      const payload = {
+        name: String(formData.get("name") ?? ""),
+        phone: String(formData.get("phone") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        city,
+        service: String(formData.get("service") ?? ""),
+        details: String(formData.get("details") ?? ""),
+      };
+
+      const showSuccess = () => {
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.setAttribute("tabindex", "-1");
+          success.focus();
+        }
+      };
+
+      const endpoint = form.dataset.formEndpoint;
+      if (endpoint) {
+        submit.disabled = true;
+        status.dataset.tone = "";
+        status.textContent = "Sending your request…";
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!response.ok) throw new Error(String(response.status));
+          showSuccess();
+          return;
+        } catch {
+          status.dataset.tone = "error";
+          status.textContent = "That did not send. Call or text (760) 567-6593 and we will take the details directly.";
+          submit.disabled = false;
+          return;
+        }
+      }
+
+      // No endpoint configured: fall back to opening the visitor's mail client.
       const email = form.dataset.contactEmail;
-      const subject = `V12 Electric inquiry: ${String(formData.get("service") ?? "Electrical service")}`;
+      if (!email) {
+        status.dataset.tone = "error";
+        status.textContent = "The form is not connected yet. Call or text (760) 567-6593 and we will help right now.";
+        return;
+      }
+
+      const subject = `V12 Electric inquiry: ${payload.service || "Electrical service"}`;
       const body = [
-        `Name: ${formData.get("name") ?? ""}`,
-        `Phone: ${formData.get("phone") ?? ""}`,
-        `Email: ${formData.get("email") ?? ""}`,
-        `City: ${city}`,
-        `Property address: ${formData.get("address") ?? ""}`,
-        `Service: ${formData.get("service") ?? ""}`,
-        `Preferred timing: ${formData.get("timing") ?? ""}`,
-        `Project stage: ${formData.get("stage") ?? ""}`,
+        `Name: ${payload.name}`,
+        `Phone: ${payload.phone}`,
+        `Email: ${payload.email}`,
+        `City: ${payload.city}`,
+        `Service: ${payload.service}`,
         "",
         "Project details:",
-        `${formData.get("details") ?? ""}`,
+        payload.details,
       ].join("\n");
 
-      if (!email) return;
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = "Your email app is opening with the inquiry prepared.";
+      status.dataset.tone = "";
+      status.textContent = "Your email app is opening with the inquiry prepared. Press send to finish.";
     });
   </script>
 </InteriorLayout>

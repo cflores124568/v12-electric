@@ -2115,10 +2115,6 @@ blockquote {
   gap: clamp(4rem, 9vw, 10rem);
 }
 
-.contact-section-direct {
-  grid-template-columns: minmax(0, 46rem);
-}
-
 .contact-intro h2 {
   max-width: 10ch;
   overflow-wrap: break-word;
@@ -2148,9 +2144,55 @@ blockquote {
   font-size: 0.9rem;
 }
 
-.inquiry-form {
-  padding: clamp(2rem, 4vw, 4rem);
+.inquiry-panel {
+  align-self: start;
+  padding: clamp(1.75rem, 3.4vw, 3.25rem);
   background: var(--mist);
+}
+
+.inquiry-head h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+}
+
+.inquiry-head p {
+  margin: 0.7rem 0 0;
+  color: rgb(20 36 51 / 74%);
+  font-size: 0.92rem;
+}
+
+/* Phone is the faster path for urgent electrical work; keep it ahead of the fields. */
+.inquiry-call {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.75rem;
+  margin: 1.75rem 0 2rem;
+  padding: 0.95rem 1.15rem;
+  border: 1px solid var(--steel);
+  color: var(--navy);
+  text-decoration: none;
+  transition:
+    border-color 240ms var(--ease-out),
+    background-color 240ms var(--ease-out);
+}
+
+.inquiry-call:hover,
+.inquiry-call:focus-visible {
+  border-color: var(--blue);
+  background: rgb(10 91 255 / 6%);
+}
+
+.inquiry-call span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.inquiry-call strong {
+  color: var(--blue);
+  font-size: 1.05rem;
 }
 
 .form-grid {
@@ -2170,6 +2212,11 @@ blockquote {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.form-grid label > span b {
+  color: var(--blue);
+  font-weight: inherit;
 }
 
 .form-span {
@@ -2194,7 +2241,7 @@ blockquote {
 }
 
 .form-grid textarea {
-  min-height: 10rem;
+  min-height: 7rem;
   padding-block: 0.8rem;
   resize: vertical;
 }
@@ -2206,22 +2253,77 @@ blockquote {
   outline: none;
 }
 
-.inquiry-form > .button {
-  margin-top: 2rem;
+.form-grid label.is-invalid > span {
+  color: #b3261e;
 }
 
+.form-grid label.is-invalid input,
+.form-grid label.is-invalid select {
+  border-color: #b3261e;
+}
+
+.form-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.inquiry-form > .button {
+  width: 100%;
+  min-height: 3.6rem;
+  margin-top: 2rem;
+  font-size: 0.92rem;
+}
+
+.form-trust,
 .form-note,
 .form-status {
   max-width: 40rem;
-  margin-top: 1rem;
-  color: rgb(229 239 255 / 64%);
+  margin-top: 0.85rem;
+  color: rgb(20 36 51 / 68%);
   font-size: 0.72rem;
   line-height: 1.6;
+}
+
+.form-note a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.form-status:empty {
+  margin-top: 0;
 }
 
 .form-status {
   color: var(--blue);
   font-weight: 600;
+}
+
+.form-status[data-tone="error"] {
+  color: #b3261e;
+}
+
+.inquiry-success h3 {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+}
+
+.inquiry-success p {
+  margin: 0.9rem 0 0;
+  color: rgb(20 36 51 / 76%);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.inquiry-success .button {
+  margin-top: 1.75rem;
+}
+
+.inquiry-success:focus {
+  outline: none;
 }
 
 .contact-close {
@@ -2999,16 +3101,12 @@ blockquote {
     font-size: 5.5rem;
   }
 
-  .inquiry-form {
+  .inquiry-panel {
     padding: 1.5rem;
   }
 
   .form-span {
     grid-column: auto;
-  }
-
-  .inquiry-form > .button {
-    width: 100%;
   }
 }
 
@@ -3572,31 +3670,6 @@ blockquote {
   display: inline-block;
   margin: 0.6rem 0 0.35rem;
   font-size: 0.9rem;
-}
-
-.consent-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  margin-top: 1.4rem;
-  color: rgb(229 239 255 / 76%);
-  font-size: 0.68rem;
-  line-height: 1.55;
-}
-
-.consent-check input {
-  width: 1rem;
-  height: 1rem;
-  margin: 0.1rem 0 0;
-  accent-color: var(--electric);
-  flex: 0 0 auto;
-}
-
-.consent-check a {
-  color: var(--white);
-  text-decoration: underline;
-  text-decoration-color: var(--blue);
-  text-underline-offset: 0.2em;
 }
 
 .form-grid label > span em {
@@ -5572,12 +5645,12 @@ blockquote {
 
 .city-hero::before {
   background:
-    linear-gradient(90deg, rgb(3 10 19 / 97%) 0%, rgb(3 10 19 / 88%) 31%, rgb(3 10 19 / 52%) 52%, rgb(3 10 19 / 9%) 78%),
-    linear-gradient(180deg, rgb(3 10 19 / 42%), transparent 32%);
+    linear-gradient(90deg, rgb(var(--city-hero-scrim) / 97%) 0%, rgb(var(--city-hero-scrim) / 88%) 31%, rgb(var(--city-hero-scrim) / 52%) 52%, rgb(var(--city-hero-scrim) / 9%) 78%),
+    linear-gradient(180deg, rgb(var(--city-hero-scrim) / 42%), transparent 32%);
 }
 
 .city-hero::after {
-  background: linear-gradient(0deg, rgb(3 10 19 / 86%) 0%, transparent 32%);
+  background: linear-gradient(0deg, rgb(var(--city-hero-scrim) / 86%) 0%, transparent 32%);
 }
 
 .city-hero-media {
@@ -6040,8 +6113,8 @@ blockquote {
 
   .city-hero::before {
     background:
-      linear-gradient(90deg, rgb(3 10 19 / 95%) 0%, rgb(3 10 19 / 80%) 48%, rgb(3 10 19 / 30%) 80%),
-      linear-gradient(180deg, rgb(3 10 19 / 48%), transparent 30%);
+      linear-gradient(90deg, rgb(var(--city-hero-scrim) / 95%) 0%, rgb(var(--city-hero-scrim) / 80%) 48%, rgb(var(--city-hero-scrim) / 30%) 80%),
+      linear-gradient(180deg, rgb(var(--city-hero-scrim) / 48%), transparent 30%);
   }
 
   .city-intro,
@@ -6088,8 +6161,8 @@ blockquote {
 
   .city-hero::before {
     background:
-      linear-gradient(90deg, rgb(3 10 19 / 96%) 0%, rgb(3 10 19 / 76%) 75%, rgb(3 10 19 / 46%)),
-      linear-gradient(0deg, rgb(3 10 19 / 82%), transparent 50%);
+      linear-gradient(90deg, rgb(var(--city-hero-scrim) / 96%) 0%, rgb(var(--city-hero-scrim) / 76%) 75%, rgb(var(--city-hero-scrim) / 46%)),
+      linear-gradient(0deg, rgb(var(--city-hero-scrim) / 82%), transparent 50%);
   }
 
   .city-sequence {

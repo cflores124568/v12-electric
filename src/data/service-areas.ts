@@ -5,6 +5,7 @@ export interface ServiceAreaCity {
   headlineAccent: string;
   heroImage: string;
   heroAlt: string;
+  heroScrim: string;
   projectCta: string;
   localNote: string;
   serviceSlugs: readonly string[];
@@ -31,7 +32,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Palm Springs.",
     heroImage: "/images/cities/palm-springs-hero.webp",
     heroAlt:
-      "Palm Springs mid-century home at dusk with architectural lighting, an electric vehicle, and a wall charger",
+      "Restored Palm Springs mid-century home in late-afternoon mountain shade with a wall-mounted EV charger and parked sedan",
+    heroScrim: "44 54 64",
     projectCta: "Start a Palm Springs project",
     localNote: "SCE service area • Palm Springs permits • Desert-local planning",
     serviceSlugs: [
@@ -61,7 +63,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Cathedral City.",
     heroImage: "/images/cities/cathedral-city-hero.webp",
     heroAlt:
-      "Cathedral City desert home at dusk with a neatly installed service panel and exterior lighting",
+      "Cathedral City tract house in hard midday sun with an open meter panel and diagnostic tools beside the garage",
+    heroScrim: "48 45 42",
     projectCta: "Start a Cathedral City project",
     localNote: "SCE service area • Cathedral City permits • Diagnosis before replacement",
     serviceSlugs: [
@@ -92,7 +95,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Desert Hot Springs.",
     heroImage: "/images/cities/desert-hot-springs-hero.webp",
     heroAlt:
-      "Desert Hot Springs residence at dusk with pool, spa, landscape lighting, and weatherproof electrical equipment",
+      "Desert Hot Springs stucco home after sunrise amid creosote scrub, with a new service panel and distant wind turbines",
+    heroScrim: "50 56 48",
     projectCta: "Start a Desert Hot Springs project",
     localNote:
       "SCE service area • Desert Hot Springs permits • Exterior work built for desert exposure",
@@ -123,7 +127,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Rancho Mirage.",
     heroImage: "/images/cities/rancho-mirage-hero.webp",
     heroAlt:
-      "Rancho Mirage estate at dusk with architectural lighting, an electric vehicle, and a discreet charger",
+      "Rancho Mirage desert-modern entry in golden-hour sun with olive trees, green lawn, and architectural lighting",
+    heroScrim: "37 49 33",
     projectCta: "Start a Rancho Mirage project",
     localNote:
       "SCE + IID vary by property • Rancho Mirage permits • Clean routes through finished spaces",
@@ -155,7 +160,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Palm Desert.",
     heroImage: "/images/cities/palm-desert-hero.webp",
     heroAlt:
-      "Palm Desert design gallery and residences at dusk with display lighting and EV charging",
+      "Palm Desert retail storefront under jacaranda shade with warm display lighting visible through the glass",
+    heroScrim: "47 45 56",
     projectCta: "Start a Palm Desert project",
     localNote:
       "IID east of Washington • SCE west • Palm Desert permits • Lighting with visual discipline",
@@ -186,7 +192,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Indian Wells.",
     heroImage: "/images/cities/indian-wells-hero.webp",
     heroAlt:
-      "Indian Wells seasonal residence at dusk with pathway lighting, an electric vehicle, and a guest charger",
+      "Indian Wells boulevard at sunrise with ranked date palms, pink-lit mountains, and a contemporary residence",
+    heroScrim: "42 56 75",
     projectCta: "Start an Indian Wells project",
     localNote:
       "SCE serves most properties • Indian Wells permits • Systems checked before the season ends",
@@ -217,7 +224,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "La Quinta.",
     heroImage: "/images/cities/la-quinta-hero.webp",
     heroAlt:
-      "La Quinta home at dusk with pool, spa, outdoor living, electrical service equipment, and EV charging",
+      "La Quinta Spanish colonial home in mid-morning sun with a wall charger, parked SUV, and red Santa Rosa Mountains",
+    heroScrim: "73 45 31",
     projectCta: "Start a La Quinta project",
     localNote: "IID service area • La Quinta permits • Combined-load planning before installation",
     serviceSlugs: [
@@ -247,7 +255,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Indio adds next.",
     heroImage: "/images/cities/indio-hero.webp",
     heroAlt:
-      "Contemporary Indio home at dusk with an EV charger, service panel, and illuminated kitchen and office",
+      "Indio ranch at sunset beside orderly rows of date palms, with an exterior electrical panel and irrigation controls",
+    heroScrim: "43 31 37",
     projectCta: "Start an Indio project",
     localNote: "IID Energy • Indio permits • Real diagnosis before a fast repair",
     serviceSlugs: [
@@ -278,7 +287,8 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     headlineAccent: "Coachella.",
     heroImage: "/images/cities/coachella-hero.webp",
     heroAlt:
-      "Coachella family property and small workshop at dusk with dedicated circuits and service panels",
+      "Coachella grape vineyard at deep blue hour beside a brightly lit packing shed and three-phase electrical service",
+    heroScrim: "3 10 19",
     projectCta: "Start a Coachella project",
     localNote:
       "IID serves much of the city • Coachella permits • Equipment circuits planned for real duty",
