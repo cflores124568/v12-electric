@@ -1,124 +1,273 @@
 ---
+import "leaflet/dist/leaflet.css";
 import { serviceAreaCities } from "../data/service-areas";
 
-const canPrefillInquiryCity = Boolean(import.meta.env.PUBLIC_CONTACT_EMAIL);
-const regions = [
-  {
-    name: "West Valley",
-    cities: ["palm-springs-electrician", "cathedral-city-electrician", "desert-hot-springs-electrician"],
-  },
-  {
-    name: "Central Valley",
-    cities: ["rancho-mirage-electrician", "palm-desert-electrician", "indian-wells-electrician", "la-quinta-electrician"],
-  },
-  {
-    name: "East Valley",
-    cities: ["indio-electrician", "coachella-electrician"],
-  },
-] as const;
-
-const cityBySlug = Object.fromEntries(serviceAreaCities.map((city) => [city.slug, city]));
 const selectedCity = serviceAreaCities[0];
+const mapCities = serviceAreaCities.map((city) => ({
+  slug: city.slug,
+  city: city.city,
+  lat: city.coords.lat,
+  lng: city.coords.lng,
+  focus: city.focus,
+  tier: city.tier,
+  url: `/service-areas/${city.slug}/`,
+}));
 ---
 
 <section
   class="service-area-index"
   aria-labelledby="service-area-title"
   data-service-area-index
-  data-prefill-city={String(canPrefillInquiryCity)}
 >
-  <div class="service-area-index-intro section-pad">
-    <p class="section-label">Coachella Valley coverage</p>
-    <h2 id="service-area-title">Where we work.</h2>
-    <p>
-      Select a city to see the project types we are asked about most often, then call or text us
-      with the address and scope.
-    </p>
-    <div class="service-area-mark" aria-hidden="true">
-      <span>Coachella</span>
-      <strong>Valley</strong>
-      <i></i>
-    </div>
-  </div>
+  <aside class="service-area-index-intro">
+    <a class="service-map-logo" href="/" aria-label="V12 Electric home">
+      <img src="/images/v12-map-pin-mark.png" width="1089" height="446" alt="" />
+      <span>Electric</span>
+    </a>
 
-  <div class="service-area-index-content section-pad">
-    <div class="service-area-groups" aria-label="Cities served">
-      {
-        regions.map((region) => (
-          <section class="service-area-group">
-            <h3>{region.name}</h3>
-            <div>
-              {
-                region.cities.map((slug) => {
-                  const city = cityBySlug[slug];
-                  return (
-                    <button
-                      type="button"
-                      data-city-trigger={city.slug}
-                      data-city-name={city.city}
-                      data-city-focus={city.focus}
-                      data-city-note={city.fieldNote}
-                      data-city-url={`/service-areas/${city.slug}/`}
-                      aria-pressed={city.slug === selectedCity.slug ? "true" : "false"}
-                    >
-                      {city.city}
-                    </button>
-                  );
-                })
-              }
-            </div>
-          </section>
-        ))
-      }
-    </div>
+    <div class="service-map-panel-copy">
+      <p class="section-label">Service area</p>
+      <h2 id="service-area-title">Power across the Coachella Valley</h2>
+      <p>Select a city to explore local services and project guidance.</p>
 
-    <aside class="service-area-detail" aria-live="polite">
-      <p class="section-label">Selected area</p>
-      <h3 data-city-name>{selectedCity.city}</h3>
-      <p data-city-focus>{selectedCity.focus}</p>
-      <p class="service-area-detail-note" data-city-note>{selectedCity.fieldNote}</p>
-      <div class="service-area-detail-actions">
-        <a class="text-link" data-city-page href={`/service-areas/${selectedCity.slug}/`}>
-          <span data-city-page-label>View {selectedCity.city} page</span>
-          <span aria-hidden="true">→</span>
-        </a>
-        <a
-          class="text-link"
-          data-city-contact
-          href={canPrefillInquiryCity ? `/contact/?city=${selectedCity.slug}` : "/contact/"}
-        >
-          Text us about your project <span aria-hidden="true">→</span>
-        </a>
+      <div class="service-area-cities" aria-label="Cities served">
+        {
+          serviceAreaCities.map((city) => (
+            <button
+              type="button"
+              data-city-trigger={city.slug}
+              aria-pressed={city.slug === selectedCity.slug ? "true" : "false"}
+            >
+              <span class="service-city-indicator" aria-hidden="true"></span>
+              <span>{city.city}</span>
+            </button>
+          ))
+        }
       </div>
-    </aside>
+
+      <a class="service-map-cta" data-city-page href={`/service-areas/${selectedCity.slug}/`}>
+        <span data-city-page-label>View {selectedCity.city} services</span>
+      </a>
+
+      <p class="service-map-status" data-city-status aria-live="polite">
+        Showing {selectedCity.city} on the service-area map.
+      </p>
+    </div>
+  </aside>
+
+  <div class="service-area-map-frame">
+    <div
+      class="service-area-map-surface"
+      data-leaflet-map
+      role="region"
+      aria-label="Interactive map of V12 Electric service areas in the Coachella Valley"
+      tabindex="0"
+    ></div>
+    <noscript>
+      <p class="service-map-fallback">
+        The interactive map requires JavaScript. Use the city links in the service-area panel.
+      </p>
+    </noscript>
   </div>
+
+  <script
+    type="application/json"
+    data-service-area-cities
+    set:html={JSON.stringify(mapCities)}
+  ></script>
 </section>
 
 <script>
-  const serviceAreaRoot = document.querySelector<HTMLElement>("[data-service-area-index]");
-  const cityTriggers = serviceAreaRoot?.querySelectorAll<HTMLButtonElement>("[data-city-trigger]");
-  const cityName = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-name]");
-  const cityFocus = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-focus]");
-  const cityNote = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-note]");
-  const cityPage = serviceAreaRoot?.querySelector<HTMLAnchorElement>("[data-city-page]");
-  const cityPageLabel = serviceAreaRoot?.querySelector<HTMLElement>("[data-city-page-label]");
-  const cityContact = serviceAreaRoot?.querySelector<HTMLAnchorElement>("[data-city-contact]");
+  import L from "leaflet";
 
-  cityTriggers?.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      cityTriggers.forEach((item) => {
-        item.setAttribute("aria-pressed", String(item === trigger));
-      });
-      if (cityName) cityName.textContent = trigger.dataset.cityName ?? "";
-      if (cityFocus) cityFocus.textContent = trigger.dataset.cityFocus ?? "";
-      if (cityNote) cityNote.textContent = trigger.dataset.cityNote ?? "";
-      if (cityPage) {
-        cityPage.href = trigger.dataset.cityUrl ?? "/";
-      }
-      if (cityPageLabel) cityPageLabel.textContent = `View ${trigger.dataset.cityName ?? "city"} page`;
-      if (cityContact && serviceAreaRoot?.dataset.prefillCity === "true") {
-        cityContact.href = `/contact/?city=${encodeURIComponent(trigger.dataset.cityTrigger ?? "")}`;
-      }
+  interface MapCity {
+    slug: string;
+    city: string;
+    lat: number;
+    lng: number;
+    focus: string;
+    tier: "primary" | "secondary";
+    url: string;
+  }
+
+  const root = document.querySelector<HTMLElement>("[data-service-area-index]");
+  const mapElement = root?.querySelector<HTMLElement>("[data-leaflet-map]");
+  const cityDataElement = root?.querySelector<HTMLScriptElement>("[data-service-area-cities]");
+
+  if (root && mapElement && cityDataElement) {
+    const cities = JSON.parse(cityDataElement.textContent ?? "[]") as MapCity[];
+    const cityTriggers = root.querySelectorAll<HTMLButtonElement>("[data-city-trigger]");
+    const cityPage = root.querySelector<HTMLAnchorElement>("[data-city-page]");
+    const cityPageLabel = root.querySelector<HTMLElement>("[data-city-page-label]");
+    const cityStatus = root.querySelector<HTMLElement>("[data-city-status]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const map = L.map(mapElement, {
+      attributionControl: true,
+      zoomControl: false,
+      minZoom: 8,
+      maxZoom: 17,
+      scrollWheelZoom: true,
+      doubleClickZoom: true,
+      touchZoom: true,
+      boxZoom: true,
+      keyboard: true,
+      preferCanvas: true,
     });
-  });
+
+    const darkTiles = L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      {
+        subdomains: "abcd",
+        maxZoom: 20,
+        attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+      },
+    ).addTo(map);
+
+    const coverageBoundary: L.LatLngExpression[] = [
+      [33.99, -116.66],
+      [34.08, -116.5],
+      [33.98, -116.25],
+      [33.8, -116.08],
+      [33.62, -116.08],
+      [33.58, -116.29],
+      [33.62, -116.49],
+      [33.76, -116.64],
+    ];
+
+    const serviceBoundary = L.polygon(coverageBoundary, {
+      color: "#1264f3",
+      weight: 2,
+      opacity: 0.9,
+      fillColor: "#1264f3",
+      fillOpacity: 0.075,
+      interactive: false,
+    }).addTo(map);
+
+    L.control.zoom({ position: "topleft" }).addTo(map);
+    L.control
+      .layers(
+        { "Dark map": darkTiles },
+        { "Service boundary": serviceBoundary },
+        { position: "topright", collapsed: true },
+      )
+      .addTo(map);
+    L.control
+      .scale({ position: "bottomleft", imperial: true, metric: true, maxWidth: 110 })
+      .addTo(map);
+
+    const makeMarkerIcon = (selected: boolean, primary: boolean) => {
+      const classNames = ["v12-map-pin"];
+      if (selected) classNames.push("is-selected");
+      if (!primary) classNames.push("is-secondary");
+
+      return L.divIcon({
+        className: "v12-map-marker",
+        html: `<span class="${classNames.join(" ")}"><span class="v12-map-pin-face"><img src="/images/v12-map-pin-mark.png" alt="" /></span></span>`,
+        iconSize: selected ? [62, 76] : [46, 58],
+        iconAnchor: selected ? [31, 72] : [23, 55],
+        popupAnchor: selected ? [0, -66] : [0, -50],
+        tooltipAnchor: selected ? [0, 2] : [0, 1],
+      });
+    };
+
+    const makePopupContent = (city: MapCity) => {
+      const content = document.createElement("div");
+      content.className = "service-map-popup-content";
+
+      const heading = document.createElement("h3");
+      heading.textContent = city.city;
+
+      const summary = document.createElement("p");
+      summary.textContent = city.focus;
+
+      const link = document.createElement("a");
+      link.href = city.url;
+      link.textContent = "View city";
+
+      content.append(heading, summary, link);
+      return content;
+    };
+
+    const markerBySlug = new Map<string, L.Marker>();
+
+    cities.forEach((city, index) => {
+      const marker = L.marker([city.lat, city.lng], {
+        icon: makeMarkerIcon(index === 0, city.tier === "primary"),
+        keyboard: true,
+        title: city.city,
+        alt: `${city.city} service-area marker`,
+        riseOnHover: true,
+        riseOffset: 500,
+      }).addTo(map);
+
+      marker.bindTooltip(city.city, {
+        permanent: true,
+        direction: "bottom",
+        offset: [0, 4],
+        opacity: 1,
+        className: "v12-city-label",
+      });
+      marker.bindPopup(makePopupContent(city), {
+        className: "v12-city-popup",
+        closeButton: true,
+        autoPanPadding: [42, 42],
+        maxWidth: 290,
+        minWidth: 225,
+      });
+      marker.on("click", () => selectCity(city.slug, false));
+      markerBySlug.set(city.slug, marker);
+    });
+
+    const cityBounds = L.latLngBounds(cities.map((city) => [city.lat, city.lng] as [number, number]));
+    map.fitBounds(cityBounds.pad(0.24), { animate: false, padding: [36, 36] });
+
+    function selectCity(slug: string, moveMap: boolean) {
+      const selected = cities.find((city) => city.slug === slug);
+      if (!selected) return;
+
+      cityTriggers.forEach((trigger) => {
+        trigger.setAttribute("aria-pressed", String(trigger.dataset.cityTrigger === slug));
+      });
+
+      cities.forEach((city) => {
+        markerBySlug
+          .get(city.slug)
+          ?.setIcon(makeMarkerIcon(city.slug === slug, city.tier === "primary"));
+      });
+
+      if (cityPage) cityPage.href = selected.url;
+      if (cityPageLabel) cityPageLabel.textContent = `View ${selected.city} services`;
+      if (cityStatus) cityStatus.textContent = `Showing ${selected.city} on the service-area map.`;
+
+      const marker = markerBySlug.get(slug);
+      if (!marker) return;
+
+      if (moveMap) {
+        const targetZoom = Math.max(map.getZoom(), 11);
+        if (reduceMotion) {
+          map.setView([selected.lat, selected.lng], targetZoom, { animate: false });
+        } else {
+          map.flyTo([selected.lat, selected.lng], targetZoom, { duration: 0.75 });
+        }
+      }
+
+      marker.openPopup();
+    }
+
+    cityTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        selectCity(trigger.dataset.cityTrigger ?? "", true);
+      });
+    });
+
+    map.whenReady(() => {
+      markerBySlug.get(cities[0]?.slug ?? "")?.openPopup();
+    });
+
+    const resizeObserver = new ResizeObserver(() => map.invalidateSize({ pan: false }));
+    resizeObserver.observe(mapElement);
+
+    mapElement.addEventListener("click", () => mapElement.focus({ preventScroll: true }));
+  }
 </script>
