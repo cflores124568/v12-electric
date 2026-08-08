@@ -63,6 +63,7 @@ const mapCities = serviceAreaCities.map((city) => ({
       aria-label="Interactive map of V12 Electric service areas in the Coachella Valley"
       tabindex="0"
     ></div>
+    <p class="service-map-gesture-hint" data-map-hint aria-hidden="true"></p>
     <noscript>
       <p class="service-map-fallback">
         The interactive map requires JavaScript. Use the city links in the service-area panel.
@@ -102,12 +103,19 @@ const mapCities = serviceAreaCities.map((city) => ({
     const cityStatus = root.querySelector<HTMLElement>("[data-city-status]");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    const mapHint = root.querySelector<HTMLElement>("[data-map-hint]");
+    const touchDevice = L.Browser.mobile;
+
     const map = L.map(mapElement, {
       attributionControl: true,
       zoomControl: false,
       minZoom: 8,
       maxZoom: 17,
-      scrollWheelZoom: true,
+      // The page scrolls past this map, so the wheel belongs to the page.
+      // Zooming is opt-in: ctrl/⌘ + wheel (and trackpad pinch, which fires
+      // wheel with ctrlKey) on desktop, two fingers on touch.
+      scrollWheelZoom: false,
+      dragging: !touchDevice,
       doubleClickZoom: true,
       touchZoom: true,
       boxZoom: true,
@@ -269,5 +277,52 @@ const mapCities = serviceAreaCities.map((city) => ({
     resizeObserver.observe(mapElement);
 
     mapElement.addEventListener("click", () => mapElement.focus({ preventScroll: true }));
+
+    let hintTimer = 0;
+
+    const showHint = (message: string) => {
+      if (!mapHint) return;
+      mapHint.textContent = message;
+      mapHint.classList.add("is-visible");
+      window.clearTimeout(hintTimer);
+      hintTimer = window.setTimeout(() => mapHint.classList.remove("is-visible"), 1400);
+    };
+
+    const hideHint = () => {
+      if (!mapHint) return;
+      window.clearTimeout(hintTimer);
+      mapHint.classList.remove("is-visible");
+    };
+
+    // Hand the wheel to Leaflet only while a zoom modifier is held; otherwise
+    // the gesture stays a page scroll and we say why nothing happened.
+    mapElement.addEventListener(
+      "wheel",
+      (event) => {
+        if (event.ctrlKey || event.metaKey) {
+          if (!map.scrollWheelZoom.enabled()) map.scrollWheelZoom.enable();
+          hideHint();
+          return;
+        }
+
+        if (map.scrollWheelZoom.enabled()) map.scrollWheelZoom.disable();
+        showHint("Hold ⌘ or Ctrl and scroll to zoom the map");
+      },
+      { passive: true, capture: true },
+    );
+
+    if (touchDevice) {
+      mapElement.addEventListener(
+        "touchstart",
+        (event) => {
+          if (event.touches.length > 1) {
+            hideHint();
+            return;
+          }
+          showHint("Use two fingers to move and zoom the map");
+        },
+        { passive: true },
+      );
+    }
   }
 </script>
