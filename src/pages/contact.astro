@@ -13,8 +13,16 @@ const textLink = `sms:${phoneNumber}`;
 ---
 
 <InteriorLayout
-  title="Contact | V12 Electric"
-  description="Contact V12 Electric for EV chargers, panel upgrades, residential and commercial electrical work, inspections, repairs, smart-home wiring, and lighting controls across the Coachella Valley."
+  title="Contact V12 Electric | Coachella Valley Electrician"
+  description="Call or text V12 Electric at (760) 567-6593, or request a quote for electrical service in Palm Springs and across the Coachella Valley."
+  image="/images/contact-hero-service-van-v2.webp"
+  imageAlt="V12 Electric service van ready for an appointment in the Coachella Valley"
+  breadcrumbs={[{ name: "Contact", path: "/contact/" }]}
+  structuredData={{
+    "@type": "ContactPage",
+    "@id": "https://v12electric.com/contact/#webpage",
+    about: { "@id": "https://v12electric.com/#business" },
+  }}
   active="contact"
   showCta={false}
 >

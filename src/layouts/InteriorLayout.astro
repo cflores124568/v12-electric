@@ -8,14 +8,20 @@ import SiteScripts from "../components/SiteScripts.astro";
 interface Props {
   title: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
+  pageType?: "website" | "article";
+  breadcrumbs?: readonly { name: string; path: string }[];
+  structuredData?: Record<string, unknown> | readonly Record<string, unknown>[];
+  noIndex?: boolean;
   active?: string;
   showCta?: boolean;
 }
 
-const { title, description, active = "", showCta = true } = Astro.props;
+const { active = "", showCta = true, ...seoProps } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout {...seoProps}>
   <div id="top" class="site-shell">
     <SiteHeader active={active} />
     <main id="main-content">

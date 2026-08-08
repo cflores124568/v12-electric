@@ -1,17 +1,10 @@
+import { serviceAreaCities } from "../data/service-areas";
+import { services } from "../data/site";
+
 const siteUrl = "https://v12electric.com";
-const paths = [
+const staticPaths = [
   "/",
   "/services/",
-  "/services/electrical-systems/",
-  "/services/ev-charger-installation/",
-  "/services/panel-service-upgrades/",
-  "/services/residential-electrical/",
-  "/services/commercial-electrical/",
-  "/services/electrical-inspections/",
-  "/services/troubleshooting-repairs/",
-  "/services/smart-home-wiring/",
-  "/services/lutron-lighting-controls/",
-  "/services/design-planning/",
   "/projects/",
   "/about/",
   "/process/",
@@ -20,13 +13,24 @@ const paths = [
   "/terms/",
 ];
 
+const paths = [
+  ...staticPaths,
+  ...services.map((service) => `/services/${service.slug}/`),
+  ...serviceAreaCities.map((area) => `/service-areas/${area.slug}/`),
+];
+
 export function GET() {
   const urls = paths
-    .map((path) => `  <url><loc>${siteUrl}${path}</loc></url>`)
+    .map((path) => `  <url>\n    <loc>${siteUrl}${path}</loc>\n  </url>`)
     .join("\n");
 
   return new Response(
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`,
-    { headers: { "Content-Type": "application/xml; charset=utf-8" } },
+    {
+      headers: {
+        "Content-Type": "application/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600",
+      },
+    },
   );
 }

@@ -3,7 +3,9 @@ import type { GetStaticPaths } from "astro";
 import InteriorLayout from "../../layouts/InteriorLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ServiceIcon from "../../components/ServiceIcon.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import { services } from "../../data/site";
+import { serviceFaqs, toFaqSchema } from "../../data/seo";
 
 export const getStaticPaths = (() =>
   services.map((service) => ({
@@ -13,11 +15,44 @@ export const getStaticPaths = (() =>
 
 type Service = (typeof services)[number];
 const { service } = Astro.props as { service: Service };
+const faqs = serviceFaqs[service.slug] ?? [];
+const pageUrl = `https://v12electric.com/services/${service.slug}/`;
+const title = `${service.title} | V12 Electric Coachella Valley`;
+const description = `V12 Electric provides ${service.title.toLowerCase()} across Palm Springs and the Coachella Valley, with clear planning, clean installation, and final testing.`;
+const serviceSchema = {
+  "@type": "Service",
+  "@id": `${pageUrl}#service`,
+  name: service.title,
+  description,
+  url: pageUrl,
+  image: `https://v12electric.com${service.image}`,
+  provider: { "@id": "https://v12electric.com/#business" },
+  areaServed: {
+    "@type": "Place",
+    name: "Coachella Valley, California",
+  },
+  serviceType: service.title,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `${service.title} scope`,
+    itemListElement: service.inclusions.map((item) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: item },
+    })),
+  },
+};
 ---
 
 <InteriorLayout
-  title={`${service.title} | V12 Electric`}
-  description={service.summary}
+  title={title}
+  description={description}
+  image={service.image}
+  imageAlt={service.alt}
+  breadcrumbs={[
+    { name: "Services", path: "/services/" },
+    { name: service.title, path: `/services/${service.slug}/` },
+  ]}
+  structuredData={[serviceSchema, toFaqSchema(faqs)]}
   active="services"
 >
   <PageHero
@@ -55,6 +90,13 @@ const { service } = Astro.props as { service: Service };
       }
     </ul>
   </section>
+
+  <FaqSection
+    faqs={faqs}
+    eyebrow={`${service.shortTitle} answers`}
+    title={`Questions about ${service.title.toLowerCase()}.`}
+    id={`${service.slug}-faq`}
+  />
 
   <section class="service-proof">
     <figure class="service-proof-media media-frame image-drift" data-reveal="image">

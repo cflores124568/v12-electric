@@ -1,0 +1,31 @@
+---
+import type { FaqItem } from "../data/seo";
+
+interface Props {
+  faqs: readonly FaqItem[];
+  eyebrow?: string;
+  title: string;
+  id?: string;
+}
+
+const { faqs, eyebrow = "Frequently asked questions", title, id = "frequently-asked-questions" } =
+  Astro.props;
+---
+
+<section class="city-faq answer-faq section-pad" aria-labelledby={`${id}-title`}>
+  <div class="city-faq-heading" data-reveal="up">
+    <p class="section-label">{eyebrow}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+  </div>
+
+  <div class="city-faq-content">
+    {
+      faqs.map((faq, index) => (
+        <details open={index === 0} data-reveal="up">
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

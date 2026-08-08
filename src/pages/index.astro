@@ -6,7 +6,9 @@ import ServiceAreaMap from "../components/ServiceAreaMap.astro";
 import Reviews from "../components/Reviews.astro";
 import ProjectGallery from "../components/ProjectGallery.astro";
 import ServiceIcon from "../components/ServiceIcon.astro";
+import FaqSection from "../components/FaqSection.astro";
 import { services as allServices } from "../data/site";
+import { homeFaqs, toFaqSchema } from "../data/seo";
 
 const categoryStrip = [
   {
@@ -39,8 +41,10 @@ const homepageServices = allServices.slice(0, 6);
 ---
 
 <BaseLayout
-  title="V12 Electric | Power, Lighting & Design"
-  description="V12 Electric serves the Coachella Valley with EV chargers, panel upgrades, residential and commercial electrical, inspections, repairs, smart-home wiring, and lighting controls."
+  title="Coachella Valley Electrician | V12 Electric"
+  description="V12 Electric provides EV charger installation, panel upgrades, repairs, lighting, and residential and commercial electrical service across the Coachella Valley."
+  image="/images/og-card.jpg"
+  structuredData={toFaqSchema(homeFaqs)}
 >
   <div id="top" class="site-shell home-shell">
     <SiteHeader overlay />
@@ -220,6 +224,13 @@ const homepageServices = allServices.slice(0, 6);
       <Reviews />
 
       <ServiceAreaMap />
+
+      <FaqSection
+        faqs={homeFaqs}
+        eyebrow="Electrical service answers"
+        title="Before you call an electrician."
+        id="home-faq"
+      />
 
     </main>
 

@@ -33,14 +33,14 @@ const mapCities = serviceAreaCities.map((city) => ({
       <div class="service-area-cities" aria-label="Cities served">
         {
           serviceAreaCities.map((city) => (
-            <button
-              type="button"
+            <a
+              href={`/service-areas/${city.slug}/`}
               data-city-trigger={city.slug}
-              aria-pressed={city.slug === selectedCity.slug ? "true" : "false"}
+              aria-current={city.slug === selectedCity.slug ? "true" : undefined}
             >
               <span class="service-city-indicator" aria-hidden="true"></span>
               <span>{city.city}</span>
-            </button>
+            </a>
           ))
         }
       </div>
@@ -97,7 +97,7 @@ const mapCities = serviceAreaCities.map((city) => ({
 
   if (root && mapElement && cityDataElement) {
     const cities = JSON.parse(cityDataElement.textContent ?? "[]") as MapCity[];
-    const cityTriggers = root.querySelectorAll<HTMLButtonElement>("[data-city-trigger]");
+    const cityTriggers = root.querySelectorAll<HTMLAnchorElement>("[data-city-trigger]");
     const cityPage = root.querySelector<HTMLAnchorElement>("[data-city-page]");
     const cityPageLabel = root.querySelector<HTMLElement>("[data-city-page-label]");
     const cityStatus = root.querySelector<HTMLElement>("[data-city-status]");
@@ -235,7 +235,8 @@ const mapCities = serviceAreaCities.map((city) => ({
       if (!selected) return;
 
       cityTriggers.forEach((trigger) => {
-        trigger.setAttribute("aria-pressed", String(trigger.dataset.cityTrigger === slug));
+        if (trigger.dataset.cityTrigger === slug) trigger.setAttribute("aria-current", "true");
+        else trigger.removeAttribute("aria-current");
       });
 
       cities.forEach((city) => {
@@ -264,7 +265,8 @@ const mapCities = serviceAreaCities.map((city) => ({
     }
 
     cityTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
         selectCity(trigger.dataset.cityTrigger ?? "", true);
       });
     });

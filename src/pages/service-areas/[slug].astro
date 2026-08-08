@@ -8,6 +8,7 @@ import ServiceIcon from "../../components/ServiceIcon.astro";
 import SiteScripts from "../../components/SiteScripts.astro";
 import { serviceAreaCities } from "../../data/service-areas";
 import { services } from "../../data/site";
+import { toFaqSchema } from "../../data/seo";
 
 export const getStaticPaths = (() =>
   serviceAreaCities.map((city, cityIndex) => ({
@@ -25,28 +26,49 @@ const cityTotal = String(serviceAreaCities.length).padStart(2, "0");
 const nearbyCities = serviceAreaCities.filter((area) => area.slug !== city.slug);
 const contactHref = `/contact/?city=${city.slug}`;
 const title = `${city.city} Electrician | V12 Electric`;
-const description = `${city.focus} V12 Electric serves ${city.city}, California with planned, permitted electrical work.`;
+const description = `V12 Electric: ${city.focus} Electrical service in ${city.city}, CA.`;
+const cityFaqs = [
+  city.localFaq,
+  {
+    question: `Do electrical projects in ${city.city} need permits?`,
+    answer: `Permit requirements depend on the scope. V12 Electric identifies the likely path, coordinates with ${city.permitAuthority}, and accounts for inspection before installation is scheduled.`,
+  },
+  {
+    question: "What should I send before calling?",
+    answer:
+      "Send the property address, a short description of the problem or planned equipment, and photos of the panel and work area when available. That gives V12 Electric a useful place to start.",
+  },
+];
 const citySchema = {
-  "@context": "https://schema.org",
   "@type": "Service",
+  "@id": `https://v12electric.com/service-areas/${city.slug}/#service`,
   name: `${city.city} electrical service`,
   description,
+  url: `https://v12electric.com/service-areas/${city.slug}/`,
+  image: `https://v12electric.com${city.heroImage}`,
   areaServed: {
     "@type": "City",
     name: city.city,
     containedInPlace: { "@type": "State", name: "California" },
   },
   provider: {
-    "@type": "Electrician",
-    name: "V12 Electric",
-    telephone: "+17605676593",
-    url: "https://v12electric.com/",
+    "@id": "https://v12electric.com/#business",
   },
   serviceType: localServices.map((service) => service.title),
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={city.heroImage}
+  imageAlt={city.heroAlt}
+  breadcrumbs={[
+    { name: "Service Areas", path: "/#service-area-title" },
+    { name: `${city.city} Electrician`, path: `/service-areas/${city.slug}/` },
+  ]}
+  structuredData={[citySchema, toFaqSchema(cityFaqs)]}
+>
   <div id="top" class="site-shell city-shell">
     <SiteHeader overlay />
 
@@ -173,24 +195,14 @@ const citySchema = {
         </div>
 
         <div class="city-faq-content">
-          <details open data-reveal="up">
-            <summary>{city.localFaq.question}</summary>
-            <p>{city.localFaq.answer}</p>
-          </details>
-          <details data-reveal="up">
-            <summary>Do electrical projects in {city.city} need permits?</summary>
-            <p>
-              Permit requirements depend on the scope. We identify the likely path, coordinate with
-              {` ${city.permitAuthority}`}, and account for inspection before installation is scheduled.
-            </p>
-          </details>
-          <details data-reveal="up">
-            <summary>What should I send before calling?</summary>
-            <p>
-              Send the property address, a short description of the problem or planned equipment,
-              and photos of the panel and work area when available. That gives us a useful place to start.
-            </p>
-          </details>
+          {
+            cityFaqs.map((faq, index) => (
+              <details open={index === 0} data-reveal="up">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))
+          }
         </div>
       </section>
 
@@ -214,6 +226,5 @@ const citySchema = {
     <SiteFooter />
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify(citySchema)}></script>
   <SiteScripts />
 </BaseLayout>

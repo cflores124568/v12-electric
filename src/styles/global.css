@@ -1615,12 +1615,15 @@ blockquote {
 .service-overview-item {
   display: grid;
   grid-template-columns: minmax(25rem, 1.15fr) minmax(22rem, 0.85fr);
-  min-height: 38rem;
+  min-height: clamp(24rem, 33vw, 29rem);
   border-top: 1px solid var(--line);
 }
 
+/* Two tones only, alternating with the image side so the zigzag reads as
+   one rhythm instead of ten identical rows. */
 .service-overview-item:nth-child(even) {
   grid-template-columns: minmax(22rem, 0.85fr) minmax(25rem, 1.15fr);
+  background: var(--mist);
 }
 
 .service-overview-item:nth-child(even) .service-overview-media {
@@ -1629,21 +1632,24 @@ blockquote {
 }
 
 .service-overview-media {
-  min-height: 38rem;
+  min-height: clamp(24rem, 33vw, 29rem);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
 }
 
+/* A repeated row gets its own rhythm — .section-pad is page-level spacing
+   and stacks into dead air when it lands on ten list items in a row. */
 .service-overview-copy {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: clamp(2.75rem, 4vw, 4rem) var(--gutter);
 }
 
 .index-number {
   color: var(--blue);
   font-family: var(--display);
-  font-size: 2.2rem;
+  font-size: 1.25rem;
   font-style: normal;
   line-height: 1;
 }
@@ -1652,7 +1658,7 @@ blockquote {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-top: 2.5rem;
+  margin-top: 1.4rem;
 }
 
 .service-overview-title svg,
@@ -1666,10 +1672,14 @@ blockquote {
   margin: 0;
 }
 
+/* Sits one step below the page h1 (clamp(2.2rem, 3.3vw, 3.7rem)); a list
+   item shouldn't outshout the page title. Wider measure so titles land in
+   two lines instead of four. */
 .service-overview-copy h2 {
-  max-width: 10ch;
+  max-width: 17ch;
   margin-top: 0.8rem;
-  font-size: clamp(2.4rem, 3.8vw, 4.2rem);
+  font-size: clamp(1.75rem, 2.4vw, 2.6rem);
+  line-height: 1;
   overflow-wrap: break-word;
 }
 
@@ -3030,13 +3040,17 @@ blockquote {
   .intro-split h2,
   .process-intro h2,
   .service-detail-intro h2,
-  .service-overview-copy h2,
   .project-card h2,
   .about-statement h2,
   .about-grid h2,
   .process-collaboration h2,
   .contact-intro h2 {
     font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  /* Stays a list item at every width — section headings above run larger. */
+  .service-overview-copy h2 {
+    font-size: clamp(1.7rem, 6.4vw, 2.3rem);
   }
 
   .service-overview-media,
@@ -3047,7 +3061,7 @@ blockquote {
   }
 
   .service-overview-copy {
-    padding-block: 4.5rem;
+    padding-block: 3rem;
   }
 
   .capability-list,
@@ -4696,7 +4710,7 @@ blockquote {
   margin-top: clamp(2rem, 4vh, 3rem);
 }
 
-.service-area-cities button {
+.service-area-cities a {
   position: relative;
   display: grid;
   min-height: 2.4rem;
@@ -4717,7 +4731,7 @@ blockquote {
   text-transform: uppercase;
 }
 
-.service-area-cities button:nth-child(n + 6)::after {
+.service-area-cities a:nth-child(n + 6)::after {
   position: absolute;
   top: -0.2rem;
   bottom: -0.2rem;
@@ -4748,18 +4762,18 @@ blockquote {
   content: "";
 }
 
-.service-area-cities button:hover,
-.service-area-cities button:focus-visible,
-.service-area-cities button[aria-pressed="true"] {
+.service-area-cities a:hover,
+.service-area-cities a:focus-visible,
+.service-area-cities a[aria-current="true"] {
   color: #4e8cff;
 }
 
-.service-area-cities button:focus-visible {
+.service-area-cities a:focus-visible {
   outline: 2px solid #8eb2ff;
   outline-offset: 0.25rem;
 }
 
-.service-area-cities button[aria-pressed="true"] .service-city-indicator {
+.service-area-cities a[aria-current="true"] .service-city-indicator {
   opacity: 1;
   transform: rotate(-45deg) scale(1);
 }
@@ -5349,11 +5363,11 @@ blockquote {
     gap: 0.35rem 1rem;
   }
 
-  .service-area-cities button:nth-child(n + 6)::after {
+  .service-area-cities a:nth-child(n + 6)::after {
     display: none;
   }
 
-  .service-area-cities button {
+  .service-area-cities a {
     font-size: 0.7rem;
   }
 
@@ -6048,6 +6062,12 @@ blockquote {
   padding-block: clamp(7rem, 10vw, 10rem);
   background: var(--city-ivory);
   color: var(--city-ink);
+}
+
+.answer-faq {
+  --city-ink: var(--navy);
+  --city-ivory: var(--white);
+  --city-blue: var(--blue);
 }
 
 .city-faq h2 {

@@ -3,11 +3,26 @@ import InteriorLayout from "../../layouts/InteriorLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ServiceIcon from "../../components/ServiceIcon.astro";
 import { services } from "../../data/site";
+
+const serviceListSchema = {
+  "@type": "ItemList",
+  name: "V12 Electric services",
+  itemListElement: services.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: service.title,
+    url: `https://v12electric.com/services/${service.slug}/`,
+  })),
+};
 ---
 
 <InteriorLayout
-  title="Electrical Services | V12 Electric"
-  description="Explore V12 Electric services for EV charging, panel and service upgrades, residential and commercial electrical, inspections, repairs, smart-home wiring, Lutron controls, and design planning."
+  title="Electrical Services in Coachella Valley | V12 Electric"
+  description="Explore EV charging, panel upgrades, repairs, lighting controls, inspections, and residential and commercial electrical services across the Coachella Valley."
+  image="/images/electrical-systems.webp"
+  imageAlt="Electrician working inside an organized electrical panel"
+  breadcrumbs={[{ name: "Services", path: "/services/" }]}
+  structuredData={serviceListSchema}
   active="services"
 >
   <PageHero
@@ -36,7 +51,7 @@ import { services } from "../../data/site";
           <figure class="service-overview-media media-frame" data-reveal="image">
             <img src={service.image} width="1536" height="1024" alt={service.alt} loading="lazy" />
           </figure>
-          <div class="service-overview-copy section-pad" data-reveal="up">
+          <div class="service-overview-copy" data-reveal="up">
             <span class="index-number">0{index + 1}</span>
             <div class="service-overview-title">
               <ServiceIcon name={service.icon} />

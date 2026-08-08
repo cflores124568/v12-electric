@@ -4,8 +4,16 @@ import PageHero from "../components/PageHero.astro";
 ---
 
 <InteriorLayout
-  title="About | V12 Electric"
-  description="Learn about V12 Electric's plan-first approach to power, lighting, and electrical design."
+  title="About V12 Electric | Coachella Valley Electrician"
+  description="Learn how V12 Electric plans safe, serviceable power, lighting, and electrical systems for homes and businesses across the Coachella Valley."
+  image="/images/hero-electricians-plans.webp"
+  imageAlt="Electricians reviewing project plans together on site"
+  breadcrumbs={[{ name: "About", path: "/about/" }]}
+  structuredData={{
+    "@type": "AboutPage",
+    "@id": "https://v12electric.com/about/#webpage",
+    about: { "@id": "https://v12electric.com/#business" },
+  }}
   active="about"
 >
   <PageHero

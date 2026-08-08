@@ -2,11 +2,27 @@
 import InteriorLayout from "../layouts/InteriorLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { projects } from "../data/site";
+
+const projectListSchema = {
+  "@type": "ItemList",
+  name: "Selected V12 Electric projects",
+  itemListElement: projects.map((project, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: project.title,
+    description: project.description,
+    image: `https://v12electric.com${project.image}`,
+  })),
+};
 ---
 
 <InteriorLayout
-  title="Projects | V12 Electric"
-  description="Explore V12 Electric project work across electrical systems, lighting, and planning."
+  title="Electrical Projects in Coachella Valley | V12 Electric"
+  description="See selected V12 Electric panel, lighting, wiring, and electrical planning work completed for Coachella Valley homes and businesses."
+  image="/images/featured-kitchen.webp"
+  imageAlt="Contemporary kitchen with carefully coordinated architectural lighting"
+  breadcrumbs={[{ name: "Projects", path: "/projects/" }]}
+  structuredData={projectListSchema}
   active="projects"
 >
   <PageHero

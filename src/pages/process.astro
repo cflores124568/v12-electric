@@ -24,11 +24,29 @@ const steps = [
     copy: "We test the system, review the finished work, and walk through the result with the project team.",
   },
 ] as const;
+
+const processSchema = {
+  "@type": "HowTo",
+  name: "How V12 Electric completes an electrical project",
+  description:
+    "V12 Electric's process for moving electrical repairs, upgrades, and planned projects from the first call through final testing.",
+  step: steps.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.title,
+    text: step.copy,
+    url: `https://v12electric.com/process/#step-${step.number}`,
+  })),
+};
 ---
 
 <InteriorLayout
-  title="Our Process | V12 Electric"
-  description="See how V12 Electric moves an electrical project from discovery through coordination, installation, and verification."
+  title="Electrical Project Process | V12 Electric"
+  description="See how V12 Electric moves electrical repairs, upgrades, and planned projects through discovery, coordination, installation, testing, and handoff."
+  image="/images/proof/process-hero-test.webp"
+  imageAlt="Electrician testing an energized circuit with a circuit tracer"
+  breadcrumbs={[{ name: "Process", path: "/process/" }]}
+  structuredData={processSchema}
   active="process"
 >
   <PageHero
@@ -53,7 +71,7 @@ const steps = [
   <section class="process-timeline section-pad">
     {
       steps.map((step) => (
-        <article data-reveal="up">
+        <article id={`step-${step.number}`} data-reveal="up">
           <span class="process-big-number">{step.number}</span>
           <div>
             <h2>{step.title}</h2>
