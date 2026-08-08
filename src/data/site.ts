@@ -253,25 +253,47 @@ export const lutronCredential = {
 
 export const projects = [
   {
+    title: "Desert Home Lighting & EV",
+    category: "Lighting + EV charging",
+    image: "/images/projects/desert-home-landscape-lighting.webp",
+    alt: "Modern desert home at dusk with facade, step, and landscape lighting and an EV charging pedestal",
+    description:
+      "Facade, path, and step lighting tied together with a driveway charging pedestal.",
+  },
+  {
     title: "Layered Kitchen Lighting",
     category: "Lighting + Controls",
-    image: "/images/featured-kitchen.webp",
-    alt: "Contemporary kitchen with layered architectural and task lighting",
+    image: "/images/projects/kitchen-pendant-lighting.webp",
+    alt: "Contemporary kitchen with pendant fixtures over the island and recessed ceiling lighting",
     description: "Ambient, task, and decorative lighting coordinated as a single system.",
   },
   {
-    title: "Service & Panel Modernization",
+    title: "Home EV Charging",
+    category: "EV charging",
+    image: "/images/projects/ev-charger-desert.webp",
+    alt: "Wall-mounted EV charging connector at a desert home with a vehicle parked alongside",
+    description: "A dedicated circuit and wall connector placed for how the driveway actually gets used.",
+  },
+  {
+    title: "Service & Panel Verification",
     category: "Electrical Systems",
-    image: "/images/panel-upgrade.webp",
-    alt: "Modern electrical panel with organized conductors",
-    description: "A cleaner, safer electrical backbone designed for current and future demand.",
+    image: "/images/projects/panel-verification.webp",
+    alt: "Electrician measuring voltage at a panel's main lugs with a Fluke tester",
+    description: "A cleaner, safer electrical backbone, measured and confirmed before handoff.",
   },
   {
     title: "New-Build Coordination",
     category: "Design & Planning",
-    image: "/images/conduit-installation.webp",
-    alt: "Organized conduit installation inside a framed commercial wall",
+    image: "/images/projects/new-build-conduit.webp",
+    alt: "Neatly bent conduit runs and a junction box installed before wall finishes",
     description: "Careful routing and trade coordination before the walls close.",
+  },
+  {
+    title: "Commercial Rough-In",
+    category: "Commercial",
+    image: "/images/projects/commercial-rough-in.webp",
+    alt: "Labeled junction boxes and flexible conduit runs during a commercial rough-in",
+    description: "Every circuit labeled at rough-in so the next trade and the next tech both know what is what.",
   },
 ] as const;
 

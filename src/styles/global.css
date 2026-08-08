@@ -1965,7 +1965,7 @@ blockquote {
 }
 
 .project-card-media {
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 16 / 9;
   clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
 }
 
