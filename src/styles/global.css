@@ -122,27 +122,6 @@ blockquote {
   backdrop-filter: blur(18px);
 }
 
-.brand-logo {
-  position: relative;
-  display: block;
-  width: 9rem;
-  height: 3.5rem;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.brand-logo img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 7.8rem;
-  height: auto;
-  max-width: none;
-  object-fit: unset;
-  mix-blend-mode: lighten;
-  transform: translate(-50%, -41%);
-}
-
 .primary-nav {
   display: flex;
   justify-content: center;
@@ -1216,8 +1195,8 @@ blockquote {
 }
 
 .footer-brand .brand-logo {
-  width: clamp(9rem, 12vw, 12rem);
-  height: 5.6rem;
+  width: auto;
+  height: clamp(4.4rem, 6vw, 5.6rem);
   transition:
     filter 240ms ease,
     transform 240ms ease;
@@ -2421,10 +2400,6 @@ blockquote {
     grid-template-columns: 8rem 1fr auto;
   }
 
-  .brand-logo {
-    width: 7.5rem;
-  }
-
   /* Six nav items have to clear the logo and the call button here. */
   .primary-nav {
     gap: 1.05rem;
@@ -2839,11 +2814,6 @@ blockquote {
   :root {
     --gutter: 1.35rem;
     --section-space: 5.5rem;
-  }
-
-  .brand-logo {
-    width: 7rem;
-    height: 3.25rem;
   }
 
   .hero-copy {
@@ -3925,14 +3895,15 @@ blockquote {
   backdrop-filter: blur(14px);
 }
 
-.brand-logo-light {
+/* Both variants are transparent PNGs of the same mark, so they share one rule. */
+.brand-logo {
   display: inline-block;
   width: auto;
   height: 3.8rem;
   overflow: visible;
 }
 
-.brand-logo-light img {
+.brand-logo img {
   position: static;
   display: block;
   width: auto;
@@ -5262,7 +5233,7 @@ blockquote {
     min-height: 4.5rem;
   }
 
-  .brand-logo-light {
+  .brand-logo {
     width: auto;
     height: 3rem;
   }
