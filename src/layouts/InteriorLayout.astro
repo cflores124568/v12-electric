@@ -16,14 +16,18 @@ interface Props {
   noIndex?: boolean;
   active?: string;
   showCta?: boolean;
+  /** Let the first section run under a transparent header (full-bleed heroes). */
+  overlayHeader?: boolean;
+  shellClass?: string;
 }
 
-const { active = "", showCta = true, ...seoProps } = Astro.props;
+const { active = "", showCta = true, overlayHeader = false, shellClass = "", ...seoProps } =
+  Astro.props;
 ---
 
 <BaseLayout {...seoProps}>
-  <div id="top" class="site-shell">
-    <SiteHeader active={active} />
+  <div id="top" class:list={["site-shell", shellClass]}>
+    <SiteHeader active={active} overlay={overlayHeader} />
     <main id="main-content">
       <slot />
       {showCta && <ProjectCTA />}

@@ -11,6 +11,7 @@
   --line: rgb(20 36 51 / 16%);
   --display: "Michroma", "Arial Narrow", sans-serif;
   --body: "Montserrat", system-ui, sans-serif;
+  --hero: "K2D", "Oxanium", var(--body);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(1.5rem, 5vw, 5rem);
   --section-space: clamp(5rem, 9vw, 9rem);
@@ -4101,12 +4102,12 @@ blockquote {
 
 .home-shell .hero h1 {
   max-width: 10ch;
-  font-family: "Oxanium", var(--body);
-  font-size: clamp(3.8rem, 6.1vw, 7rem);
+  font-family: var(--hero);
+  font-size: clamp(3.9rem, 6.3vw, 7.2rem);
   font-style: normal;
   font-weight: 700;
   line-height: 0.9;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .home-shell .hero-accent {
@@ -4556,9 +4557,9 @@ blockquote {
 
 .contact-prompt {
   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 1fr) auto;
+  grid-template-columns: minmax(10rem, 1fr) auto auto;
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 4rem);
+  gap: clamp(1.25rem, 3vw, 3rem);
   margin: 0 var(--gutter) var(--gutter);
   padding-block: clamp(1.4rem, 2.5vw, 2.25rem);
   background: var(--blue);
@@ -4573,7 +4574,7 @@ blockquote {
   margin: 0;
   color: var(--white);
   font-family: var(--display);
-  font-size: clamp(1.8rem, 3.2vw, 3.45rem);
+  font-size: clamp(1.6rem, 2.3vw, 2.5rem);
   font-style: normal;
   letter-spacing: -0.01em;
   line-height: 1;
@@ -6299,4 +6300,750 @@ blockquote {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* Service page layouts
+   Every service page is built from the same blocks, but each service is
+   assigned one of three stagings — split, cinematic, ledger — so consecutive
+   pages do not unfold the same way. Shared tokens keep them on brand. */
+
+.service-shell {
+  --service-ink: #0b1823;
+  --service-ivory: #f4f0e8;
+  --service-spark: #3d84ff;
+}
+
+.service-hero-cinematic {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(48rem, 100svh);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--service-ink);
+  color: var(--service-ivory);
+}
+
+.service-hero-cinematic::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(11 24 35 / 90%) 0%, rgb(11 24 35 / 70%) 44%, rgb(11 24 35 / 14%) 84%),
+    linear-gradient(0deg, rgb(11 24 35 / 88%) 0%, transparent 48%),
+    linear-gradient(180deg, rgb(11 24 35 / 52%), transparent 30%);
+  pointer-events: none;
+  content: "";
+}
+
+.service-hero-cinematic-media {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+
+.service-hero-cinematic-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 58rem);
+  padding: clamp(8.5rem, 15vh, 11.5rem) var(--gutter) clamp(3rem, 7vh, 5rem);
+}
+
+.service-sequence {
+  color: rgb(244 240 232 / 76%);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.service-sequence span {
+  color: var(--service-spark);
+}
+
+.service-hero-mark {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(2.4rem, 6vh, 4rem);
+  color: var(--service-spark);
+}
+
+.service-hero-mark svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  flex: 0 0 auto;
+}
+
+.service-hero-mark p {
+  font-size: clamp(0.66rem, 0.85vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.service-hero-cinematic h1 {
+  max-width: 14ch;
+  margin-top: clamp(1.5rem, 3.5vh, 2.4rem);
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 4.6vw, 4.9rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.93;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-hero-summary {
+  max-width: 37rem;
+  margin-top: clamp(1.6rem, 3.5vh, 2.4rem);
+  color: rgb(244 240 232 / 82%);
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  line-height: 1.68;
+}
+
+.service-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem 2rem;
+  margin-top: clamp(1.7rem, 3.5vh, 2.5rem);
+}
+
+.service-hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.65rem;
+  border-bottom: 1px solid var(--service-spark);
+  color: var(--service-ivory);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 220ms var(--ease-out);
+}
+
+.service-hero-link:hover,
+.service-hero-link:focus-visible {
+  color: var(--service-spark);
+}
+
+.service-hero-ledger {
+  background: var(--service-ink);
+  color: var(--service-ivory);
+}
+
+.service-hero-ledger-copy {
+  padding: clamp(6rem, 11vh, 9rem) var(--gutter) clamp(2.6rem, 5vh, 4rem);
+}
+
+.service-hero-ledger h1 {
+  max-width: 15ch;
+  margin-top: clamp(1.5rem, 4vh, 2.6rem);
+  font-family: var(--body);
+  font-size: clamp(2.7rem, 5.6vw, 5.4rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-hero-ledger-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-top: clamp(2.4rem, 5vh, 3.4rem);
+  padding-top: clamp(1.8rem, 3vh, 2.4rem);
+  border-top: 1px solid rgb(244 240 232 / 22%);
+}
+
+.service-hero-ledger-meta > p {
+  max-width: 36rem;
+  color: rgb(244 240 232 / 80%);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.72;
+}
+
+.service-hero-ledger-meta dl {
+  display: grid;
+  align-content: start;
+  margin: 0;
+}
+
+.service-hero-ledger-meta dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid rgb(244 240 232 / 14%);
+}
+
+.service-hero-ledger-meta dt {
+  color: rgb(244 240 232 / 58%);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.service-hero-ledger-meta dd {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service-hero-ledger-media {
+  aspect-ratio: 21 / 7;
+}
+
+.service-statement-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 clamp(3rem, 8vw, 8rem);
+  background: var(--mist);
+}
+
+.service-statement-band-mark {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.service-statement-band-mark svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+}
+
+.service-statement-band h2 {
+  max-width: 13ch;
+  font-family: var(--display);
+  font-size: clamp(2.3rem, 3.9vw, 4.3rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-statement-band > p:last-child {
+  max-width: 34rem;
+  align-self: end;
+  color: rgb(20 36 51 / 74%);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.8;
+}
+
+.service-statement-rule {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.24fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  background: var(--white);
+}
+
+.service-statement-rule > .section-label {
+  align-self: start;
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--blue);
+}
+
+.service-statement-rule-copy h2 {
+  max-width: 17ch;
+  font-family: var(--body);
+  font-size: clamp(1.9rem, 3.3vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.03;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-statement-rule-copy .body-large {
+  color: rgb(20 36 51 / 74%);
+}
+
+.service-scope-index {
+  background: var(--white);
+}
+
+.service-scope-index-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 1.5rem 3rem;
+  padding-bottom: clamp(2rem, 3.5vw, 3.2rem);
+}
+
+.service-scope-index-heading .section-label {
+  grid-column: 1 / -1;
+}
+
+.service-scope-index-heading h2 {
+  max-width: 11ch;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 3.6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-scope-index-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.service-scope-index-list li {
+  display: grid;
+  grid-template-columns: clamp(3.5rem, 7vw, 7rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.2rem, 4vw, 4rem);
+  padding: clamp(1.4rem, 2.4vw, 2.3rem) var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-scope-index-list li:nth-child(even) {
+  background: rgb(20 36 51 / 3%);
+}
+
+.service-scope-index-list span {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.8vw, 2.6rem);
+  font-style: normal;
+}
+
+.service-scope-index-list strong {
+  font-size: clamp(1.02rem, 1.7vw, 1.55rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.service-scope-ledger {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.34fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  background: var(--mist);
+}
+
+.service-scope-ledger-heading {
+  align-self: start;
+}
+
+.service-scope-ledger-heading h2 {
+  max-width: 10ch;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.98;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-scope-ledger-list {
+  margin: 0;
+  border-top: 1px solid var(--steel);
+}
+
+.service-scope-ledger-list > div {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1.25rem;
+  padding-block: clamp(1.1rem, 1.9vw, 1.65rem);
+  border-bottom: 1px solid var(--steel);
+}
+
+.service-scope-ledger-list dt {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: 1.05rem;
+}
+
+.service-scope-ledger-list dd {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  letter-spacing: -0.015em;
+}
+
+.service-proof-overlay {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(40rem, 88svh);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--service-ink);
+  color: var(--service-ivory);
+}
+
+.service-proof-overlay-media {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+
+.service-proof-overlay::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(11 24 35 / 92%) 8%, rgb(11 24 35 / 46%) 62%, rgb(11 24 35 / 22%));
+  pointer-events: none;
+  content: "";
+}
+
+.service-proof-overlay-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 52rem);
+}
+
+.service-proof-overlay .section-label {
+  color: var(--service-spark);
+}
+
+.service-proof-overlay blockquote {
+  max-width: 19ch;
+  margin: clamp(1.2rem, 2.5vw, 1.9rem) 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.85rem, 3.3vw, 3.5rem);
+  font-style: normal;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-proof-overlay .button {
+  margin-top: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.service-proof-inset {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  background: var(--white);
+}
+
+.service-proof-inset blockquote {
+  max-width: 16ch;
+  margin: clamp(1.2rem, 2.5vw, 1.9rem) 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.1vw, 3.3rem);
+  font-style: normal;
+  line-height: 1.06;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-proof-inset .button {
+  margin-top: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.service-proof-inset-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+}
+
+.service-proof-inset-media figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.85rem 1.2rem;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-service-rail {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.next-service-rail-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.next-service-rail-heading .section-label {
+  grid-column: 1 / -1;
+}
+
+.next-service-rail-heading h2 {
+  max-width: 10ch;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.98;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.next-service-rail ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.next-service-rail li {
+  border-bottom: 1px solid var(--line);
+}
+
+.next-service-rail li:not(:nth-child(3n)) {
+  border-right: 1px solid var(--line);
+}
+
+.next-service-rail a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 5.5rem;
+  padding: 1.3rem clamp(1rem, 2vw, 1.6rem);
+  transition: background 240ms var(--ease-out);
+}
+
+.next-service-rail a:hover,
+.next-service-rail a:focus-visible {
+  background: var(--mist);
+}
+
+.next-service-rail a > span:first-child {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: 0.95rem;
+}
+
+.next-service-rail a strong {
+  min-width: 0;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .service-hero-cinematic {
+    min-height: min(42rem, 96svh);
+  }
+
+  .service-hero-cinematic::after {
+    background:
+      linear-gradient(0deg, rgb(11 24 35 / 92%) 12%, rgb(11 24 35 / 46%) 68%, rgb(11 24 35 / 26%)),
+      linear-gradient(180deg, rgb(11 24 35 / 58%), transparent 34%);
+  }
+
+  .service-hero-cinematic-copy,
+  .service-proof-overlay-copy {
+    width: 100%;
+  }
+
+  .service-hero-ledger-meta {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .service-hero-ledger-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .service-statement-band,
+  .service-statement-rule,
+  .service-scope-ledger,
+  .service-proof-inset {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .service-statement-band h2,
+  .service-scope-index-heading h2,
+  .service-scope-ledger-heading h2,
+  .next-service-rail-heading h2 {
+    max-width: 16ch;
+  }
+
+  .service-scope-index-heading,
+  .next-service-rail-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .service-proof-inset {
+    gap: 2.5rem;
+  }
+
+  .service-proof-inset-copy {
+    order: 2;
+  }
+
+  .service-proof-overlay {
+    min-height: auto;
+    padding-top: clamp(6rem, 22vh, 10rem);
+  }
+
+  .next-service-rail ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .next-service-rail li:not(:nth-child(3n)) {
+    border-right: 0;
+  }
+
+  .next-service-rail li:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 620px) {
+  .service-hero-cinematic h1,
+  .service-hero-ledger h1 {
+    max-width: 100%;
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+  }
+
+  .service-hero-ledger-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-statement-band h2,
+  .service-statement-rule-copy h2,
+  .service-scope-index-heading h2,
+  .service-scope-ledger-heading h2,
+  .next-service-rail-heading h2 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  }
+
+  .service-scope-index-list li {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.2rem;
+  }
+
+  .service-scope-ledger-list > div {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .service-proof-overlay blockquote,
+  .service-proof-inset blockquote {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 8vw, 2.4rem);
+  }
+
+  .service-proof-inset-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .next-service-rail ul {
+    grid-template-columns: 1fr;
+  }
+
+  .next-service-rail li:nth-child(odd) {
+    border-right: 0;
+  }
+}
+
+/* Hero typeface
+   Every page headline runs in K2D; Michroma stays on section headings so the
+   heroes read as their own register. Sizes are retuned because K2D sets much
+   narrower than Michroma at the same value. */
+
+.interior-hero h1 {
+  font-family: var(--hero);
+  font-size: clamp(2.5rem, 4.3vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
+}
+
+.city-hero h1 {
+  font-family: var(--hero);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.service-hero-cinematic h1 {
+  font-family: var(--hero);
+  font-size: clamp(2.7rem, 5.2vw, 5.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
+}
+
+.service-hero-ledger h1 {
+  font-family: var(--hero);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+/* Hero legibility
+   Text over photography only. Two tinted layers — a tight one for edge
+   definition against light patches, a wide soft one to separate the headline
+   from the image. Heroes on flat color stay shadow-free; a shadow there just
+   muddies the type. */
+
+.home-shell .hero-copy,
+.city-hero-copy,
+.service-hero-cinematic-copy,
+.service-proof-overlay-copy {
+  --hero-shadow: 0 1px 2px rgb(4 13 25 / 42%), 0 10px 34px rgb(4 13 25 / 34%);
+  --hero-shadow-soft: 0 1px 2px rgb(4 13 25 / 34%), 0 6px 20px rgb(4 13 25 / 28%);
+}
+
+.home-shell .hero h1,
+.city-hero h1,
+.service-hero-cinematic h1,
+.service-proof-overlay blockquote {
+  text-shadow: var(--hero-shadow);
+}
+
+.home-shell .hero-kicker,
+.home-shell .hero-copy > p,
+.home-shell .hero-trust-row,
+.city-sequence,
+.city-eyebrow p,
+.city-hero-summary,
+.city-local-note,
+.service-hero-cinematic .service-sequence,
+.service-hero-mark p,
+.service-hero-cinematic .service-hero-summary,
+.service-hero-cinematic .service-hero-link,
+.service-proof-overlay .section-label {
+  text-shadow: var(--hero-shadow-soft);
+}
+
+/* The accent line is the brightest thing in the frame — give it a touch of
+   its own color instead of more black. */
+.home-shell .hero-accent {
+  text-shadow:
+    0 1px 2px rgb(4 13 25 / 46%),
+    0 10px 34px rgb(4 13 25 / 34%),
+    0 0 42px rgb(10 91 255 / 34%);
 }

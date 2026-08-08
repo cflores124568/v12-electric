@@ -109,7 +109,7 @@ const mapCities = serviceAreaCities.map((city) => ({
     const map = L.map(mapElement, {
       attributionControl: true,
       zoomControl: false,
-      minZoom: 8,
+      minZoom: 9,
       maxZoom: 17,
       // The page scrolls past this map, so the wheel belongs to the page.
       // Zooming is opt-in: ctrl/⌘ + wheel (and trackpad pinch, which fires
@@ -228,7 +228,22 @@ const mapCities = serviceAreaCities.map((city) => ({
     });
 
     const cityBounds = L.latLngBounds(cities.map((city) => [city.lat, city.lng] as [number, number]));
-    map.fitBounds(cityBounds.pad(0.24), { animate: false, padding: [36, 36] });
+
+    // The first fit can run before the container has its final size, which
+    // leaves the valley as a speck. Keep re-fitting until the visitor takes
+    // the map over themselves.
+    let mapTouched = false;
+
+    function fitCities() {
+      map.invalidateSize({ pan: false });
+      map.fitBounds(cityBounds.pad(0.08), {
+        animate: false,
+        padding: [28, 28],
+        maxZoom: 12,
+      });
+    }
+
+    fitCities();
 
     function selectCity(slug: string, moveMap: boolean) {
       const selected = cities.find((city) => city.slug === slug);
@@ -253,7 +268,8 @@ const mapCities = serviceAreaCities.map((city) => ({
       if (!marker) return;
 
       if (moveMap) {
-        const targetZoom = Math.max(map.getZoom(), 11);
+        mapTouched = true;
+        const targetZoom = Math.max(map.getZoom(), 12);
         if (reduceMotion) {
           map.setView([selected.lat, selected.lng], targetZoom, { animate: false });
         } else {
@@ -275,8 +291,17 @@ const mapCities = serviceAreaCities.map((city) => ({
       markerBySlug.get(cities[0]?.slug ?? "")?.openPopup();
     });
 
-    const resizeObserver = new ResizeObserver(() => map.invalidateSize({ pan: false }));
+    const resizeObserver = new ResizeObserver(() => {
+      if (mapTouched) map.invalidateSize({ pan: false });
+      else fitCities();
+    });
     resizeObserver.observe(mapElement);
+
+    ["pointerdown", "wheel", "touchstart", "keydown"].forEach((type) => {
+      mapElement.addEventListener(type, () => {
+        mapTouched = true;
+      }, { passive: true });
+    });
 
     mapElement.addEventListener("click", () => mapElement.focus({ preventScroll: true }));
 

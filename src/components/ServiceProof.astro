@@ -1,0 +1,81 @@
+---
+import type { Service } from "../data/site";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+{
+  service.layout === "split" && (
+    <section class="service-proof">
+      <figure class="service-proof-media media-frame image-drift" data-reveal="image">
+        <img
+          src={service.proofImage}
+          width="1842"
+          height="1024"
+          alt={service.proofAlt}
+          loading="lazy"
+        />
+      </figure>
+      <div class="service-proof-copy section-pad" data-reveal="up">
+        <p class="section-label">The V12 approach</p>
+        <blockquote>{service.closing}</blockquote>
+        <a class="button button-primary" href="/contact/">
+          Plan Your Project <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  )
+}
+
+{
+  service.layout === "cinematic" && (
+    <section class="service-proof-overlay">
+      <figure class="service-proof-overlay-media">
+        <img
+          src={service.proofImage}
+          width="1842"
+          height="1024"
+          alt={service.proofAlt}
+          loading="lazy"
+        />
+      </figure>
+      <div class="service-proof-overlay-copy section-pad">
+        <p class="section-label" data-reveal="up">
+          The V12 approach
+        </p>
+        <blockquote data-reveal="up">{service.closing}</blockquote>
+        <a class="button button-light" href="/contact/" data-reveal="up" data-delay="1">
+          Plan Your Project <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  )
+}
+
+{
+  service.layout === "ledger" && (
+    <section class="service-proof-inset section-pad">
+      <div class="service-proof-inset-copy" data-reveal="up">
+        <p class="section-label">The V12 approach</p>
+        <blockquote>{service.closing}</blockquote>
+        <a class="button button-primary" href="/contact/">
+          Plan Your Project <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="service-proof-inset-media media-frame image-drift" data-reveal="image">
+        <img
+          src={service.proofImage}
+          width="1842"
+          height="1024"
+          alt={service.proofAlt}
+          loading="lazy"
+        />
+        <figcaption>{service.shortTitle} · Coachella Valley</figcaption>
+      </figure>
+    </section>
+  )
+}

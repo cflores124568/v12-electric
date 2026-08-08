@@ -1,0 +1,52 @@
+---
+import { services, type Service } from "../data/site";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const others = services
+  .map((item, index) => ({ item, number: String(index + 1).padStart(2, "0") }))
+  .filter(({ item }) => item.slug !== service.slug);
+const variant = service.layout === "split" ? "grid" : "rail";
+---
+
+{
+  variant === "grid" && (
+    <nav class="next-service section-pad" aria-label="More services">
+      <p class="section-label">Continue exploring</p>
+      <div>
+        {others.map(({ item }) => (
+          <a href={`/services/${item.slug}/`}>
+            <span>{item.shortTitle}</span>
+            <strong>{item.title}</strong>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+  )
+}
+
+{
+  variant === "rail" && (
+    <nav class="next-service-rail section-pad" aria-label="More services">
+      <div class="next-service-rail-heading" data-reveal="up">
+        <p class="section-label">Continue exploring</p>
+        <h2>The rest of the work.</h2>
+      </div>
+      <ul>
+        {others.map(({ item, number }, index) => (
+          <li data-reveal="up" data-delay={String(index % 3)}>
+            <a href={`/services/${item.slug}/`}>
+              <span>{number}</span>
+              <strong>{item.title}</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

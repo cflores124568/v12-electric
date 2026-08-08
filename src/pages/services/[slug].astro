@@ -1,21 +1,25 @@
 ---
 import type { GetStaticPaths } from "astro";
 import InteriorLayout from "../../layouts/InteriorLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import ServiceIcon from "../../components/ServiceIcon.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import ServiceStatement from "../../components/ServiceStatement.astro";
+import ServiceScope from "../../components/ServiceScope.astro";
+import ServiceProof from "../../components/ServiceProof.astro";
+import ServiceNav from "../../components/ServiceNav.astro";
 import FaqSection from "../../components/FaqSection.astro";
-import { services } from "../../data/site";
+import { services, type Service } from "../../data/site";
 import { serviceFaqs, toFaqSchema } from "../../data/seo";
 
 export const getStaticPaths = (() =>
-  services.map((service) => ({
+  services.map((service, index) => ({
     params: { slug: service.slug },
-    props: { service },
+    props: { service, index },
   }))) satisfies GetStaticPaths;
 
-type Service = (typeof services)[number];
-const { service } = Astro.props as { service: Service };
+const { service, index } = Astro.props as { service: Service; index: number };
 const faqs = serviceFaqs[service.slug] ?? [];
+const sequence = String(index + 1).padStart(2, "0");
+const total = String(services.length).padStart(2, "0");
 const pageUrl = `https://v12electric.com/services/${service.slug}/`;
 const title = `${service.title} | V12 Electric Coachella Valley`;
 const description = `V12 Electric provides ${service.title.toLowerCase()} across Palm Springs and the Coachella Valley, with clear planning, clean installation, and final testing.`;
@@ -41,6 +45,14 @@ const serviceSchema = {
     })),
   },
 };
+
+// Each layout runs the same blocks in its own order so consecutive service
+// pages never unfold the same way.
+const sectionOrder = {
+  split: ["statement", "scope", "faq", "proof"],
+  cinematic: ["scope", "statement", "proof", "faq"],
+  ledger: ["statement", "scope", "proof", "faq"],
+}[service.layout];
 ---
 
 <InteriorLayout
@@ -54,83 +66,28 @@ const serviceSchema = {
   ]}
   structuredData={[serviceSchema, toFaqSchema(faqs)]}
   active="services"
+  overlayHeader={service.layout === "cinematic"}
+  shellClass={`service-shell service-shell-${service.layout}`}
 >
-  <PageHero
-    eyebrow={service.shortTitle}
-    title={service.title}
-    description={service.summary}
-    image={service.image}
-    alt={service.alt}
-  />
+  <ServiceHero service={service} sequence={sequence} total={total} />
 
-  <section class="service-detail-intro section-pad">
-    <div class="service-detail-mark" data-reveal="up">
-      <ServiceIcon name={service.icon} />
-      <span>{service.shortTitle}</span>
-    </div>
-    <div data-reveal="up">
-      <h2>Built into the plan, not added at the end.</h2>
-      <p class="body-large">{service.intro}</p>
-    </div>
-  </section>
+  {
+    sectionOrder.map((block) => (
+      <Fragment>
+        {block === "statement" && <ServiceStatement service={service} />}
+        {block === "scope" && <ServiceScope service={service} />}
+        {block === "proof" && <ServiceProof service={service} />}
+        {block === "faq" && (
+          <FaqSection
+            faqs={faqs}
+            eyebrow={`${service.shortTitle} answers`}
+            title={`Questions about ${service.title.toLowerCase()}.`}
+            id={`${service.slug}-faq`}
+          />
+        )}
+      </Fragment>
+    ))
+  }
 
-  <section class="service-inclusions section-pad">
-    <div class="section-heading compact" data-reveal="up">
-      <p class="section-label">Typical scope</p>
-      <h2>What we can coordinate.</h2>
-    </div>
-    <ul class="inclusion-list">
-      {
-        service.inclusions.map((item, index) => (
-          <li data-reveal="up" data-delay={String(index % 3)}>
-            <span>0{index + 1}</span>
-            <strong>{item}</strong>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <FaqSection
-    faqs={faqs}
-    eyebrow={`${service.shortTitle} answers`}
-    title={`Questions about ${service.title.toLowerCase()}.`}
-    id={`${service.slug}-faq`}
-  />
-
-  <section class="service-proof">
-    <figure class="service-proof-media media-frame image-drift" data-reveal="image">
-      <img
-        src={service.proofImage}
-        width="1842"
-        height="1024"
-        alt={service.proofAlt}
-        loading="lazy"
-      />
-    </figure>
-    <div class="service-proof-copy section-pad" data-reveal="up">
-      <p class="section-label">The V12 approach</p>
-      <blockquote>{service.closing}</blockquote>
-      <a class="button button-primary" href="/contact/">
-        Plan Your Project <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </section>
-
-  <nav class="next-service section-pad" aria-label="More services">
-    <p class="section-label">Continue exploring</p>
-    <div>
-      {
-        services
-          .filter((item) => item.slug !== service.slug)
-          .map((item) => (
-            <a href={`/services/${item.slug}/`}>
-              <span>{item.shortTitle}</span>
-              <strong>{item.title}</strong>
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))
-      }
-    </div>
-  </nav>
+  <ServiceNav service={service} />
 </InteriorLayout>

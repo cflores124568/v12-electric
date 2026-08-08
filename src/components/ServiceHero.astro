@@ -1,0 +1,127 @@
+---
+import ServiceIcon from "./ServiceIcon.astro";
+import type { Service } from "../data/site";
+
+interface Props {
+  service: Service;
+  sequence: string;
+  total: string;
+}
+
+const { service, sequence, total } = Astro.props;
+const scopeHref = `#${service.slug}-scope`;
+---
+
+{
+  service.layout === "split" && (
+    <section class="interior-hero service-hero-split">
+      <div class="interior-hero-copy">
+        <p class="section-label" data-reveal="up">
+          {service.shortTitle} · {sequence} / {total}
+        </p>
+        <h1 data-reveal="up">{service.title}</h1>
+        <p data-reveal="up" data-delay="1">
+          {service.summary}
+        </p>
+      </div>
+
+      <div class="page-strike" aria-hidden="true">
+        <svg viewBox="0 0 96 240" role="presentation">
+          <path d="M60 0 8 138h30l-6 102 56-140H58L60 0Z" />
+        </svg>
+      </div>
+
+      <figure class="interior-hero-media" data-reveal="image">
+        <img
+          src={service.image}
+          width="1536"
+          height="1024"
+          alt={service.alt}
+          fetchpriority="high"
+        />
+      </figure>
+    </section>
+  )
+}
+
+{
+  service.layout === "cinematic" && (
+    <section class="service-hero-cinematic" aria-labelledby="service-hero-title">
+      <figure class="service-hero-cinematic-media">
+        <img
+          src={service.image}
+          width="1672"
+          height="941"
+          alt={service.alt}
+          fetchpriority="high"
+        />
+      </figure>
+
+      <div class="service-hero-cinematic-copy">
+        <p class="service-sequence" data-reveal="up">
+          <span>Service</span> {sequence} / {total}
+        </p>
+
+        <div class="service-hero-mark" data-reveal="up">
+          <ServiceIcon name={service.icon} />
+          <p>{service.shortTitle}</p>
+        </div>
+
+        <h1 id="service-hero-title" data-reveal="up">
+          {service.title}
+        </h1>
+
+        <p class="service-hero-summary" data-reveal="up" data-delay="1">
+          {service.summary}
+        </p>
+
+        <div class="service-hero-actions" data-reveal="up" data-delay="2">
+          <a class="button button-primary" href="/contact/">
+            Plan your project <span aria-hidden="true">→</span>
+          </a>
+          <a class="service-hero-link" href={scopeHref}>
+            See the scope <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  service.layout === "ledger" && (
+    <section class="service-hero-ledger" aria-labelledby="service-hero-title">
+      <div class="service-hero-ledger-copy">
+        <p class="service-sequence" data-reveal="up">
+          <span>Service</span> {sequence} / {total}
+        </p>
+
+        <h1 id="service-hero-title" data-reveal="up">
+          {service.title}
+        </h1>
+
+        <div class="service-hero-ledger-meta">
+          <p data-reveal="up" data-delay="1">{service.summary}</p>
+          <dl data-reveal="up" data-delay="2">
+            <div>
+              <dt>Focus</dt>
+              <dd>{service.shortTitle}</dd>
+            </div>
+            <div>
+              <dt>Scope items</dt>
+              <dd>{String(service.inclusions.length).padStart(2, "0")}</dd>
+            </div>
+            <div>
+              <dt>Coverage</dt>
+              <dd>Coachella Valley</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <figure class="service-hero-ledger-media" data-reveal="image">
+        <img src={service.image} width="1672" height="941" alt={service.alt} fetchpriority="high" />
+      </figure>
+    </section>
+  )
+}

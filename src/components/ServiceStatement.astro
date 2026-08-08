@@ -1,0 +1,52 @@
+---
+import ServiceIcon from "./ServiceIcon.astro";
+import type { Service } from "../data/site";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+{
+  service.layout === "split" && (
+    <section class="service-detail-intro section-pad">
+      <div class="service-detail-mark" data-reveal="up">
+        <ServiceIcon name={service.icon} />
+        <span>{service.shortTitle}</span>
+      </div>
+      <div data-reveal="up">
+        <h2>{service.statementTitle}</h2>
+        <p class="body-large">{service.intro}</p>
+      </div>
+    </section>
+  )
+}
+
+{
+  service.layout === "cinematic" && (
+    <section class="service-statement-band section-pad">
+      <div class="service-statement-band-mark" data-reveal="up">
+        <ServiceIcon name={service.icon} />
+        <span>{service.shortTitle}</span>
+      </div>
+      <h2 data-reveal="up">{service.statementTitle}</h2>
+      <p data-reveal="up" data-delay="1">{service.intro}</p>
+    </section>
+  )
+}
+
+{
+  service.layout === "ledger" && (
+    <section class="service-statement-rule section-pad">
+      <p class="section-label" data-reveal="up">How we approach it</p>
+      <div class="service-statement-rule-copy">
+        <h2 data-reveal="up">{service.statementTitle}</h2>
+        <p class="body-large" data-reveal="up" data-delay="1">
+          {service.intro}
+        </p>
+      </div>
+    </section>
+  )
+}
