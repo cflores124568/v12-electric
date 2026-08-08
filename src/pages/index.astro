@@ -6,7 +6,7 @@ import Reviews from "../components/Reviews.astro";
 import ProjectGallery from "../components/ProjectGallery.astro";
 import { services as allServices } from "../data/site";
 
-const homepageServices = allServices.slice(0, 3);
+const homepageServices = allServices.slice(0, 6);
 ---
 
 <BaseLayout
@@ -84,31 +84,10 @@ const homepageServices = allServices.slice(0, 3);
         </div>
       </section>
 
-      <section id="about" class="manifesto section-pad">
-        <div class="manifesto-copy" data-reveal="up">
-          <p class="section-label">What we look for first</p>
-          <h2>Desert loads ask more from a system.</h2>
-          <p class="body-large">
-            Heat, HVAC, pools, appliances, and EV charging all meet at the panel. We start with
-            the existing conditions, then plan the work around how the property is actually used.
-          </p>
-        </div>
-
-        <figure class="manifesto-media media-frame" data-reveal="image">
-          <img
-            src="/images/conduit-installation.webp"
-            width="1448"
-            height="1086"
-            alt="Neatly arranged electrical conduit inside a framed commercial wall"
-            loading="lazy"
-          />
-        </figure>
-      </section>
-
       <section id="services" class="services section-pad">
         <div class="section-heading" data-reveal="up">
-          <p class="section-label">Core electrical work</p>
-          <h2>Work that holds up.</h2>
+          <p class="section-label">Our services</p>
+          <h2>Complete electrical solutions.</h2>
         </div>
 
         <div class="service-grid">
@@ -136,6 +115,56 @@ const homepageServices = allServices.slice(0, 3);
             ))
           }
         </div>
+      </section>
+
+      <section class="home-trust" aria-labelledby="trust-title">
+        <div class="home-trust-heading section-pad" data-reveal="up">
+          <p class="section-label">Why choose V12 Electric?</p>
+          <h2 id="trust-title">Clear work. Thoughtful planning.</h2>
+        </div>
+        <div class="home-trust-list">
+          <article data-reveal="up">
+            <p class="home-trust-index">01</p>
+            <h3>Experienced</h3>
+            <p>Skilled craftsmanship and attention to detail on every project.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">02</p>
+            <h3>Reliable</h3>
+            <p>We show up, follow through, and stand behind our work.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">03</p>
+            <h3>Built to last</h3>
+            <p>Quality materials and clean installations made for desert conditions.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">04</p>
+            <h3>Property-aware</h3>
+            <p>Electrical decisions made around the way each home or business works.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="manifesto section-pad">
+        <div class="manifesto-copy" data-reveal="up">
+          <p class="section-label">What we look for first</p>
+          <h2>Desert loads ask more from a system.</h2>
+          <p class="body-large">
+            Heat, HVAC, pools, appliances, and EV charging all meet at the panel. We start with
+            the existing conditions, then plan the work around how the property is actually used.
+          </p>
+        </div>
+
+        <figure class="manifesto-media media-frame" data-reveal="image">
+          <img
+            src="/images/conduit-installation.webp"
+            width="1448"
+            height="1086"
+            alt="Neatly arranged electrical conduit inside a framed commercial wall"
+            loading="lazy"
+          />
+        </figure>
       </section>
 
       <section id="projects" class="project-story" aria-labelledby="project-title">

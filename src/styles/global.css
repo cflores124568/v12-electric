@@ -4335,3 +4335,226 @@ blockquote {
     object-position: 59% center;
   }
 }
+
+/* Reference-led homepage rhythm: service lanes, proof band, then project detail. */
+.home-shell .services {
+  padding-top: clamp(5rem, 8vw, 8rem);
+  padding-bottom: clamp(5rem, 8vw, 8rem);
+  background: var(--white);
+}
+
+.home-shell .section-heading {
+  display: block;
+  max-width: 64rem;
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.home-shell .section-heading .section-label {
+  margin-bottom: 0.9rem;
+}
+
+.home-shell .section-heading h2 {
+  max-width: none;
+  font-size: clamp(2.5rem, 4.8vw, 5rem);
+}
+
+.home-shell .service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 78rem;
+  border: 1px solid var(--line);
+}
+
+.home-shell .service-item,
+.home-shell .service-item:first-child {
+  display: block;
+  grid-row: auto;
+  min-height: 15.5rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.home-shell .service-item:nth-child(3n) {
+  border-right: 0;
+}
+
+.home-shell .service-item:nth-last-child(-n + 3) {
+  border-bottom: 0;
+}
+
+.home-shell .service-image,
+.home-shell .service-item:first-child .service-image,
+.home-shell .service-item:not(:first-child) .service-image {
+  display: none;
+}
+
+.home-shell .service-copy {
+  min-height: 15.5rem;
+  padding: clamp(1.4rem, 2.5vw, 2.4rem);
+}
+
+.home-shell .service-index {
+  margin-bottom: 1.15rem !important;
+  font-size: 0.64rem !important;
+}
+
+.home-shell .service-copy h3 {
+  max-width: 12ch;
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+}
+
+.home-shell .service-copy > p:not(.service-index) {
+  max-width: 25ch;
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.home-shell .service-copy .text-link {
+  margin-top: auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.home-trust {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  background: var(--deep);
+  color: var(--white);
+}
+
+.home-trust-heading {
+  border-right: 1px solid rgb(255 253 248 / 18%);
+}
+
+.home-trust .section-label {
+  color: #8eb2ff;
+}
+
+.home-trust h2 {
+  max-width: 10ch;
+  color: var(--white);
+  font-family: var(--body);
+  font-size: clamp(2.5rem, 4vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.home-trust-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-trust-list article {
+  min-height: 13rem;
+  padding: clamp(1.5rem, 3vw, 2.7rem);
+  border-bottom: 1px solid rgb(255 253 248 / 18%);
+}
+
+.home-trust-list article:nth-child(odd) {
+  border-right: 1px solid rgb(255 253 248 / 18%);
+}
+
+.home-trust-list article:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.home-trust-index {
+  margin-bottom: 1.6rem;
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.home-trust-list h3 {
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.home-trust-list article > p:last-child {
+  max-width: 22ch;
+  margin-top: 0.55rem;
+  color: rgb(255 253 248 / 68%);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .home-shell .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-shell .service-item:nth-child(3n) {
+    border-right: 1px solid var(--line);
+  }
+
+  .home-shell .service-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .home-shell .service-item:nth-last-child(-n + 3) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .home-shell .service-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .home-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .home-trust-heading {
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 253 248 / 18%);
+  }
+
+  .home-trust h2 {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 620px) {
+  .home-shell .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-shell .service-item,
+  .home-shell .service-item:nth-child(2n),
+  .home-shell .service-item:nth-child(3n) {
+    min-height: 13.5rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .home-shell .service-item:last-child {
+    border-bottom: 0;
+  }
+
+  .home-shell .service-copy {
+    min-height: 13.5rem;
+  }
+
+  .home-trust-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-trust-list article,
+  .home-trust-list article:nth-child(odd),
+  .home-trust-list article:nth-last-child(-n + 2) {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 253 248 / 18%);
+  }
+
+  .home-trust-list article:last-child {
+    border-bottom: 0;
+  }
+}
