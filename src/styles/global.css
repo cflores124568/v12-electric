@@ -1314,33 +1314,23 @@ blockquote {
 .page-strike {
   position: absolute;
   z-index: 5;
-  top: 18%;
-  left: calc(43% - clamp(2.5rem, 3.5vw, 4rem));
-  width: clamp(5.5rem, 7vw, 8rem);
-  height: 66%;
+  top: 50%;
+  left: 48%;
+  width: clamp(3.4rem, 4.6vw, 5.4rem);
+  height: auto;
   pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 .page-strike svg {
-  position: absolute;
-  top: 13%;
+  display: block;
   width: 100%;
-  height: 74%;
-  filter: drop-shadow(0.65rem 0 0 rgb(4 21 44 / 86%));
+  height: auto;
+  filter: drop-shadow(0 0.5rem 1.5rem rgb(4 21 44 / 45%));
 }
 
 .page-strike path {
-  fill: var(--blue);
-}
-
-.page-strike span {
-  position: absolute;
-  top: 0;
-  left: 59%;
-  width: 3px;
-  height: 16%;
-  background: var(--blue);
-  transform: rotate(24deg);
+  fill: var(--white);
 }
 
 .intro-split,
@@ -1772,10 +1762,10 @@ blockquote {
 
 .process-timeline article {
   display: grid;
-  grid-template-columns: minmax(9rem, 0.32fr) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(5rem, 0.14fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
   align-items: center;
-  min-height: 15rem;
+  min-height: 11rem;
   border-top: 1px solid var(--line);
 }
 
@@ -1786,23 +1776,25 @@ blockquote {
 .process-big-number {
   color: var(--blue);
   font-family: var(--display);
-  font-size: clamp(5rem, 9vw, 9rem);
+  font-size: clamp(2.6rem, 4.2vw, 4.6rem);
   font-style: normal;
   line-height: 1;
 }
 
 .process-timeline article > div {
   display: grid;
-  grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(11rem, 0.36fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
   min-width: 0;
 }
 
 .process-timeline h2 {
-  max-width: 12ch;
-  font-size: clamp(2.4rem, 3.6vw, 4rem);
-  overflow-wrap: break-word;
+  max-width: none;
+  font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  overflow-wrap: normal;
 }
 
 .process-timeline p {
