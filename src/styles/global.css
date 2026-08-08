@@ -1631,9 +1631,18 @@ blockquote {
   clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
 }
 
+/* The 3:2 source image was setting the row height on its own (a ~930px
+   column rendered 620px tall). Taking the image out of flow lets min-height
+   and the copy decide how tall a row is, and the image crops to fit. */
 .service-overview-media {
+  position: relative;
   min-height: clamp(24rem, 33vw, 29rem);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.service-overview-media img {
+  position: absolute;
+  inset: 0;
 }
 
 /* A repeated row gets its own rhythm — .section-pad is page-level spacing
