@@ -37,28 +37,49 @@ const projects = [
     alt: "Electrician inspecting electrical equipment with a handheld meter",
   },
 ];
+
+const [evCharging, serviceUpgrade, chandelier, lighting] = projects;
 ---
 
 <section class="project-proof-section" aria-labelledby="project-proof-title">
-  <div class="section-heading section-pad" data-reveal="up">
-    <p class="section-label">Project gallery</p>
-    <h2 id="project-proof-title">Electrical work from the field.</h2>
+  <div class="project-proof-heading section-pad" data-reveal="up">
+    <p class="section-label">Recent work</p>
+    <h2 id="project-proof-title">Built for the property, not the template.</h2>
     <p class="body-large">
-      A selection of power, lighting, service, and inspection work across the Coachella Valley.
+      A closer look at the equipment, routing, and finished details behind the work.
     </p>
   </div>
 
-  <div class="project-proof-grid">
-    {
-      projects.map((project, index) => (
-        <figure class:list={["project-proof-card", index === 0 && "project-proof-card-wide"]} data-reveal="image">
-          <img src={project.image} width="1920" height="1440" alt={project.alt} loading="lazy" />
-          <figcaption>
-            <span>{project.category}</span>
-            <strong>{project.title}</strong>
-          </figcaption>
-        </figure>
-      ))
-    }
+  <div class="project-proof-layout section-pad">
+    <figure class="project-proof-lead" data-reveal="image">
+      <img src={serviceUpgrade.image} width="1920" height="1440" alt={serviceUpgrade.alt} loading="lazy" />
+      <figcaption>
+        <span>Palm Springs / power systems</span>
+        <strong>{serviceUpgrade.title}</strong>
+      </figcaption>
+    </figure>
+
+    <div class="project-proof-copy" data-reveal="up">
+      <p class="section-label">What the work includes</p>
+      <p>
+        Clear service equipment, dedicated circuits, and work that can be inspected and maintained
+        later.
+      </p>
+      <a class="text-link" href="/projects/">See project work <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="project-proof-supporting">
+      {
+        [evCharging, chandelier, lighting].map((project) => (
+          <figure data-reveal="image">
+            <img src={project.image} width="1920" height="1440" alt={project.alt} loading="lazy" />
+            <figcaption>
+              <span>{project.category}</span>
+              <strong>{project.title}</strong>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </div>
 </section>

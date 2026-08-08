@@ -1,16 +1,18 @@
 ---
 interface Props {
   class?: string;
+  variant?: "light" | "dark";
 }
 
 const className = Astro.props.class ?? "";
+const variant = Astro.props.variant ?? "dark";
 ---
 
-<a class={`brand-logo ${className}`} href="/" aria-label="V12 Electric home">
+<a class:list={["brand-logo", `brand-logo-${variant}`, className]} href="/" aria-label="V12 Electric home">
   <img
-    src="/images/v12-electric-logo-white-on-blue.png"
-    width="853"
-    height="1844"
+    src={variant === "light" ? "/images/v12-electric-logo-source.png" : "/images/v12-electric-logo-white-on-blue.png"}
+    width={variant === "light" ? 1536 : 853}
+    height={variant === "light" ? 1024 : 1844}
     alt="V12 Electric"
   />
 </a>

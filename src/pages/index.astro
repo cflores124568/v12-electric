@@ -1,39 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BrandLogo from "../components/BrandLogo.astro";
-import ServiceIcon from "../components/ServiceIcon.astro";
 import ServiceAreaMap from "../components/ServiceAreaMap.astro";
 import Reviews from "../components/Reviews.astro";
 import ProjectGallery from "../components/ProjectGallery.astro";
 import { services as allServices } from "../data/site";
 
-const railServices = allServices.slice(0, 3);
 const homepageServices = allServices.slice(0, 6);
-
-const process = [
-  {
-    number: "01",
-    title: "Assess",
-    description: "We look at the existing conditions, the load, and what the space needs to support.",
-  },
-  {
-    number: "02",
-    title: "Plan",
-    description: "We define the equipment, routing, timing, and coordination needed before work begins.",
-  },
-  {
-    number: "03",
-    title: "Install",
-    description: "We complete the work cleanly, test the system, and explain what comes next.",
-  },
-] as const;
 ---
 
 <BaseLayout
   title="V12 Electric | Power, Lighting & Design"
   description="V12 Electric serves the Coachella Valley with EV chargers, panel upgrades, residential and commercial electrical, inspections, repairs, smart-home wiring, and lighting controls."
 >
-  <div id="top" class="site-shell">
+  <div id="top" class="site-shell home-shell">
     <header class="site-header" data-reveal="fade">
       <BrandLogo class="header-logo" />
 
@@ -45,7 +25,7 @@ const process = [
         <a href="/contact/">Contact</a>
       </nav>
 
-      <a class="button button-primary header-cta" href="/contact/">Plan Your Project</a>
+      <a class="button button-primary header-cta" href="tel:+17605676593">Call or text Eric</a>
 
       <button
         class="menu-toggle"
@@ -67,86 +47,47 @@ const process = [
           <a href="/process/">Process</a>
           <a href="/contact/">Contact</a>
         </nav>
-        <a class="button button-light" href="/contact/">Plan Your Project</a>
+        <a class="button button-primary" href="tel:+17605676593">Call Eric</a>
       </div>
     </header>
 
     <main id="main-content">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
+          <p class="hero-kicker" data-reveal="up">Coachella Valley electrical service</p>
           <h1 id="hero-title" data-reveal="up">
             <span>Power.</span>
             <span>Lighting.</span>
-            <span>Done right.</span>
+            <span class="hero-accent">Done right.</span>
           </h1>
           <p data-reveal="up" data-delay="1">
-            From service calls and panel upgrades to EV chargers and lighting, V12 Electric helps
-            Coachella Valley homes and businesses get the electrical work in front of them done.
+            Panel upgrades, EV chargers, lighting, repairs, and electrical work for homes and
+            businesses across the Coachella Valley.
           </p>
           <div class="button-row" data-reveal="up" data-delay="2">
-            <a class="button button-primary" href="/contact/">
-              Plan Your Project
-              <span aria-hidden="true">↗</span>
+            <a class="button button-primary" href="tel:+17605676593">
+              Call or text Eric
+              <span aria-hidden="true">→</span>
             </a>
-            <a class="button button-outline" href="#services">Explore Services</a>
+            <a class="button button-outline" href="#projects">See recent work</a>
           </div>
-        </div>
-
-        <div class="hero-strike" aria-hidden="true">
-          <span class="hero-strike-rule hero-strike-rule-top"></span>
-          <svg viewBox="0 0 118 286" role="presentation">
-            <path d="M79 0 20 132h37L5 286l108-177H70L79 0Z" />
-          </svg>
-          <span class="hero-strike-rule hero-strike-rule-bottom"></span>
         </div>
 
         <div class="hero-media" data-reveal="image">
           <img
-            src="/images/hero-electricians-plans.webp"
-            width="1842"
-            height="854"
-            alt="Two electricians reviewing plans inside a new construction project"
+            src="/images/proof/commercial-service.webp"
+            width="2304"
+            height="1792"
+            alt="A Coachella Valley commercial property illuminated at dusk beneath the San Jacinto Mountains"
             fetchpriority="high"
           />
         </div>
       </section>
 
-      <section class="service-rail" aria-label="Core services">
-        {
-          railServices.map((service) => (
-            <a href="#services" class="service-rail-item">
-              <ServiceIcon name={service.icon} />
-              <span>{service.shortTitle}</span>
-            </a>
-          ))
-        }
-      </section>
-
-      <section id="about" class="manifesto section-pad">
-        <div class="manifesto-copy" data-reveal="up">
-          <p class="section-label">How we work</p>
-          <h2>Plan the system before the walls close.</h2>
-          <p class="body-large">
-            We review existing capacity, coordinate the electrical work with the project, route it
-            cleanly, and test the system before handoff.
-          </p>
-        </div>
-
-        <figure class="manifesto-media media-frame" data-reveal="image">
-          <img
-            src="/images/conduit-installation.webp"
-            width="1448"
-            height="1086"
-            alt="Neatly arranged electrical conduit inside a framed commercial wall"
-            loading="lazy"
-          />
-        </figure>
-      </section>
-
       <section id="services" class="services section-pad">
         <div class="section-heading" data-reveal="up">
-          <p class="section-label">Services</p>
-          <h2>Electrical work for the way you use the space.</h2>
+          <p class="section-label">Our services</p>
+          <h2>Complete electrical solutions.</h2>
         </div>
 
         <div class="service-grid">
@@ -163,11 +104,12 @@ const process = [
                   />
                 </figure>
                 <div class="service-copy">
-                  <div class="service-title">
-                    <ServiceIcon name={service.icon} />
-                    <h3>{service.title}</h3>
-                  </div>
+                  <p class="service-index">0{index + 1}</p>
+                  <h3>{service.title}</h3>
                   <p>{service.summary}</p>
+                  <a class="text-link" href={`/services/${service.slug}/`}>
+                    View service <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </article>
             ))
@@ -175,25 +117,58 @@ const process = [
         </div>
       </section>
 
-      <section id="projects" class="featured-project" aria-labelledby="project-title">
-        <div class="featured-copy section-pad" data-reveal="up">
-          <p class="section-label">Selected work</p>
-          <h2 id="project-title">Lighting that works with the room.</h2>
-          <p>Ambient, task, and architectural lighting planned around how the room is used.</p>
+      <section class="home-trust" aria-labelledby="trust-title">
+        <div class="home-trust-heading section-pad" data-reveal="up">
+          <p class="section-label">Why choose V12 Electric?</p>
+          <h2 id="trust-title">Clear work. Thoughtful planning.</h2>
         </div>
-        <figure class="featured-media media-frame image-drift" data-reveal="image">
+        <div class="home-trust-list">
+          <article data-reveal="up">
+            <p class="home-trust-index">01</p>
+            <h3>Experienced</h3>
+            <p>Skilled craftsmanship and attention to detail on every project.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">02</p>
+            <h3>Reliable</h3>
+            <p>We show up, follow through, and stand behind our work.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">03</p>
+            <h3>Built to last</h3>
+            <p>Quality materials and clean installations made for desert conditions.</p>
+          </article>
+          <article data-reveal="up">
+            <p class="home-trust-index">04</p>
+            <h3>Property-aware</h3>
+            <p>Electrical decisions made around the way each home or business works.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="manifesto section-pad">
+        <div class="manifesto-copy" data-reveal="up">
+          <p class="section-label">What we look for first</p>
+          <h2>Desert loads ask more from a system.</h2>
+          <p class="body-large">
+            Heat, HVAC, pools, appliances, and EV charging all meet at the panel. We start with
+            the existing conditions, then plan the work around how the property is actually used.
+          </p>
+        </div>
+
+        <figure class="manifesto-media media-frame" data-reveal="image">
           <img
-            src="/images/featured-kitchen.webp"
-            width="1894"
-            height="830"
-            alt="Contemporary kitchen with layered architectural and task lighting"
+            src="/images/conduit-installation.webp"
+            width="1448"
+            height="1086"
+            alt="Neatly arranged electrical conduit inside a framed commercial wall"
             loading="lazy"
           />
         </figure>
       </section>
 
-      <section class="upgrade section-pad">
-        <figure class="upgrade-media media-frame" data-reveal="image">
+      <section id="projects" class="project-story" aria-labelledby="project-title">
+        <figure class="project-story-media media-frame image-drift" data-reveal="image">
           <img
             src="/images/panel-upgrade.webp"
             width="1536"
@@ -202,55 +177,15 @@ const process = [
             loading="lazy"
           />
         </figure>
-        <div class="upgrade-copy" data-reveal="up">
+        <div class="project-story-copy section-pad" data-reveal="up">
+          <p class="section-label">Palm Springs · Panel capacity review</p>
           <h2>When the panel has to carry more.</h2>
-          <span class="short-rule" aria-hidden="true"></span>
           <p class="body-large">
             EV chargers, HVAC, pools, kitchens, and additions add demand. We assess panel capacity,
             circuit loads, and the safest path forward before upgrading service equipment.
           </p>
-        <a class="text-link" href="/contact/">Discuss your project <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="/contact/">Discuss your project <span aria-hidden="true">→</span></a>
         </div>
-      </section>
-
-      <section id="process" class="process section-pad">
-        <div class="section-heading compact" data-reveal="up">
-          <p class="section-label">Our process</p>
-          <h2>From the first call to the final test.</h2>
-        </div>
-
-        <ol class="process-list">
-          {
-            process.map((item, index) => (
-              <li data-reveal="up" data-delay={String(index)}>
-                <span class="process-number">{item.number}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ol>
-      </section>
-
-      <section class="testimonial">
-        <div class="testimonial-copy" data-reveal="up">
-          <span class="quote-mark" aria-hidden="true">“</span>
-          <blockquote>
-            Excellent work; awesome guys; top notch all around.
-          </blockquote>
-          <p>Gary W. · Google review</p>
-        </div>
-        <figure class="testimonial-media media-frame image-drift" data-reveal="image">
-          <img
-            src="/images/testimonial-living-room.webp"
-            width="1672"
-            height="941"
-            alt="Contemporary living room with integrated architectural lighting"
-            loading="lazy"
-          />
-        </figure>
       </section>
 
       <ProjectGallery />
@@ -259,16 +194,6 @@ const process = [
 
       <ServiceAreaMap />
 
-      <section id="contact" class="closing-cta">
-        <div data-reveal="up">
-          <h2>Tell us what needs attention.</h2>
-          <p>Call or text V12 Electric to discuss a repair, upgrade, lighting project, or new installation.</p>
-        </div>
-        <a class="button button-light" href="/contact/">
-          Plan Your Project
-          <span aria-hidden="true">↗</span>
-        </a>
-      </section>
     </main>
 
     <footer class="site-footer">
