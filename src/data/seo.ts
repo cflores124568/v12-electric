@@ -199,6 +199,29 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
   ],
 };
 
+export const serviceAreaFaqs: readonly FaqItem[] = [
+  {
+    question: "Which cities does V12 Electric serve?",
+    answer:
+      "V12 Electric works throughout the Coachella Valley: Palm Springs, Cathedral City, Desert Hot Springs, Rancho Mirage, Palm Desert, Indian Wells, La Quinta, Indio, and Coachella. Each city has its own page with local services, utility, and permit details.",
+  },
+  {
+    question: "Do permit requirements change from city to city?",
+    answer:
+      "Yes. Each city runs its own building department, and requirements depend on the scope of the work. V12 Electric identifies the likely permit path for the property and accounts for inspection timing before installation is scheduled.",
+  },
+  {
+    question: "Is the work different in one part of the valley than another?",
+    answer:
+      "The code is the same valley-wide, but the properties are not. Mid-century remodels, newer gated communities, and working commercial spaces each bring different panel conditions, routing constraints, and equipment expectations.",
+  },
+  {
+    question: "What if the property sits outside these nine cities?",
+    answer:
+      "Send the address and a short description of the work. V12 Electric will confirm whether the property is serviceable before anything is scheduled.",
+  },
+] as const;
+
 export const toFaqSchema = (faqs: readonly FaqItem[]) => ({
   "@type": "FAQPage",
   mainEntity: faqs.map((faq) => ({

@@ -269,6 +269,7 @@ export const projects = [
 
 export const navItems = [
   { label: "Services", href: "/services/" },
+  { label: "Service Areas", href: "/service-areas/" },
   { label: "Projects", href: "/projects/" },
   { label: "About", href: "/about/" },
   { label: "Process", href: "/process/" },

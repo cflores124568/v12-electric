@@ -64,7 +64,7 @@ const citySchema = {
   image={city.heroImage}
   imageAlt={city.heroAlt}
   breadcrumbs={[
-    { name: "Service Areas", path: "/#service-area-title" },
+    { name: "Service Areas", path: "/service-areas/" },
     { name: `${city.city} Electrician`, path: `/service-areas/${city.slug}/` },
   ]}
   structuredData={[citySchema, toFaqSchema(cityFaqs)]}

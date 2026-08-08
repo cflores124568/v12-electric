@@ -1,0 +1,108 @@
+---
+import InteriorLayout from "../../layouts/InteriorLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceAreaMap from "../../components/ServiceAreaMap.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import { serviceAreaCities } from "../../data/service-areas";
+import { serviceAreaFaqs, toFaqSchema } from "../../data/seo";
+
+const heroImage = "/images/hero-bighorn-night.webp";
+const heroAlt =
+  "A contemporary Palm Desert estate with layered architectural and landscape lighting at night";
+const cityListSchema = {
+  "@type": "ItemList",
+  name: "V12 Electric service areas",
+  itemListElement: serviceAreaCities.map((city, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: `${city.city} electrician`,
+    url: `https://v12electric.com/service-areas/${city.slug}/`,
+  })),
+};
+---
+
+<InteriorLayout
+  title="Coachella Valley Service Areas | V12 Electric"
+  description="V12 Electric serves nine Coachella Valley cities — Palm Springs through Coachella — with local utility, permit, and property knowledge behind every electrical project."
+  image={heroImage}
+  imageAlt={heroAlt}
+  breadcrumbs={[{ name: "Service Areas", path: "/service-areas/" }]}
+  structuredData={[cityListSchema, toFaqSchema(serviceAreaFaqs)]}
+  active="service areas"
+>
+  <PageHero
+    eyebrow="Service area"
+    title="One valley. Nine cities."
+    description="From Desert Hot Springs to Coachella, V12 Electric works with the utility, the permit authority, and the property conditions that belong to each city — not a service radius drawn on a map."
+    image={heroImage}
+    alt={heroAlt}
+  />
+
+  <section class="intro-split section-pad">
+    <p class="section-label" data-reveal="up">Local detail, not a radius</p>
+    <div data-reveal="up">
+      <h2>The valley is one place. The properties are not.</h2>
+      <p class="body-large">
+        A mid-century remodel in Palm Springs, a gated estate in Indian Wells, and a working
+        commercial space in Indio ask different questions of the same code. Each city page covers
+        the utility, the permit authority, and the conditions that show up behind the walls there.
+      </p>
+    </div>
+  </section>
+
+  <ServiceAreaMap />
+
+  <section class="area-index section-pad" aria-labelledby="area-index-title">
+    <div class="area-index-heading" data-reveal="up">
+      <p class="section-label">Cities served</p>
+      <h2 id="area-index-title">Where we work.</h2>
+    </div>
+
+    <div class="area-index-grid">
+      {
+        serviceAreaCities.map((city, index) => (
+          <article class="area-card" data-reveal="up" data-delay={String(index % 3)}>
+            <a href={`/service-areas/${city.slug}/`}>
+              <figure class="area-card-media media-frame">
+                <img
+                  src={city.heroImage}
+                  width="1672"
+                  height="941"
+                  alt={city.heroAlt}
+                  loading="lazy"
+                />
+              </figure>
+              <div class="area-card-copy">
+                <span class="area-card-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{city.city}</h3>
+                <p>{city.focus}</p>
+                <dl>
+                  <div>
+                    <dt>Utility</dt>
+                    <dd>{city.utility}</dd>
+                  </div>
+                  <div>
+                    <dt>Permits</dt>
+                    <dd>{city.permitAuthority}</dd>
+                  </div>
+                </dl>
+                <span class="area-card-link">
+                  {city.city} electrician <span aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <FaqSection
+    faqs={serviceAreaFaqs}
+    eyebrow="Coverage questions"
+    title="What people ask about the service area."
+    id="service-area-faq"
+  />
+</InteriorLayout>

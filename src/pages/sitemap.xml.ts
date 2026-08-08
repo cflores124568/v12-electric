@@ -5,6 +5,7 @@ const siteUrl = "https://v12electric.com";
 const staticPaths = [
   "/",
   "/services/",
+  "/service-areas/",
   "/projects/",
   "/about/",
   "/process/",

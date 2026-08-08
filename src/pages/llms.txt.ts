@@ -25,6 +25,7 @@ V12 Electric plans and performs EV charger installations, panel and service upgr
 
 - [Home](https://v12electric.com/): Overview, project proof, reviews, and service-area coverage.
 - [Electrical services](https://v12electric.com/services/): Complete service directory.
+- [Service areas](https://v12electric.com/service-areas/): Coachella Valley coverage, city by city.
 - [Projects](https://v12electric.com/projects/): Selected completed electrical work.
 - [Process](https://v12electric.com/process/): Discovery, coordination, installation, and verification.
 - [Contact](https://v12electric.com/contact/): Request a quote or call V12 Electric.

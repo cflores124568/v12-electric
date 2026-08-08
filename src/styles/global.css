@@ -2425,8 +2425,13 @@ blockquote {
     width: 7.5rem;
   }
 
+  /* Six nav items have to clear the logo and the call button here. */
   .primary-nav {
-    gap: 1.3rem;
+    gap: 1.05rem;
+  }
+
+  .primary-nav a {
+    font-size: 0.7rem;
   }
 
   .hero {
@@ -7046,4 +7051,164 @@ blockquote {
     0 1px 2px rgb(4 13 25 / 46%),
     0 10px 34px rgb(4 13 25 / 34%),
     0 0 42px rgb(10 91 255 / 34%);
+}
+
+/* Service-area hub
+   The city index. Cards carry the two facts that actually differ by city —
+   utility and permit authority — so the page is useful before the click. */
+
+.area-index {
+  background: var(--white);
+}
+
+.area-index-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.area-index-heading .section-label {
+  grid-column: 1 / -1;
+}
+
+.area-index-heading h2 {
+  max-width: 10ch;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 3.6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.area-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.area-card a {
+  display: grid;
+  height: 100%;
+  align-content: start;
+  border-top: 2px solid var(--blue);
+}
+
+.area-card-media {
+  aspect-ratio: 16 / 10;
+}
+
+.area-card-media img {
+  transition: transform 700ms var(--ease-out);
+}
+
+.area-card a:hover .area-card-media img,
+.area-card a:focus-visible .area-card-media img {
+  transform: scale(1.045);
+}
+
+.area-card-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  padding: clamp(1.3rem, 2vw, 1.8rem) 0 0;
+}
+
+.area-card-number {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: 0.9rem;
+}
+
+.area-card h3 {
+  font-family: var(--hero);
+  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.area-card-copy > p {
+  color: rgb(20 36 51 / 74%);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.area-card dl {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.35rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.area-card dl > div {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.area-card dt {
+  color: rgb(20 36 51 / 52%);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.area-card dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.area-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.area-card a:hover .area-card-link span,
+.area-card a:focus-visible .area-card-link span {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.area-card-link span {
+  transition: transform 260ms var(--ease-out);
+}
+
+@media (max-width: 900px) {
+  .area-index-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .area-index-heading h2 {
+    max-width: 16ch;
+  }
+
+  .area-index-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .area-index-heading h2 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  }
+
+  .area-index-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
