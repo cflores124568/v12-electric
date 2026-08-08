@@ -9,7 +9,7 @@
   --mist: #e9e1d4;
   --steel: rgb(20 36 51 / 24%);
   --line: rgb(20 36 51 / 16%);
-  --display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --display: "Michroma", "Arial Narrow", sans-serif;
   --body: "Montserrat", system-ui, sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(1.5rem, 5vw, 5rem);
@@ -3569,11 +3569,11 @@ blockquote {
 .home-shell .contact-prompt h2,
 .home-shell .service-area-index h2 {
   color: var(--navy);
-  font-family: var(--body);
+  font-family: var(--display);
   font-style: normal;
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
   text-transform: none;
   text-wrap: balance;
 }
@@ -3675,10 +3675,10 @@ blockquote {
 
 .home-shell .service-copy h3 {
   color: var(--navy);
-  font-family: var(--body);
-  font-size: clamp(1.35rem, 2vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 1.7vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -4074,9 +4074,10 @@ blockquote {
 
 .service-area-detail h3 {
   color: var(--navy);
-  font-family: var(--body);
-  font-size: clamp(1.8rem, 2.6vw, 2.8rem);
-  letter-spacing: -0.05em;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.1vw, 2.3rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .service-area-detail > p:not(.section-label) {
@@ -4440,11 +4441,11 @@ blockquote {
 .home-trust h2 {
   max-width: 10ch;
   color: var(--white);
-  font-family: var(--body);
-  font-size: clamp(2.5rem, 4vw, 4.6rem);
-  font-weight: 700;
-  letter-spacing: -0.06em;
-  line-height: 0.96;
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 3.3vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
   text-wrap: balance;
 }
 
@@ -4477,9 +4478,9 @@ blockquote {
 
 .home-trust-list h3 {
   color: var(--white);
-  font-family: var(--body);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 400;
 }
 
 .home-trust-list article > p:last-child {
