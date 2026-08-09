@@ -1792,6 +1792,36 @@ blockquote {
   line-height: 1.75;
 }
 
+.service-overview-scope {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.service-overview-scope li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.service-overview-scope li:last-child {
+  border-bottom: 0;
+}
+
+.service-overview-scope-more {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.service-overview-scope + .text-link {
+  margin-top: 1.4rem;
+}
+
 .capability-band {
   background: var(--mist);
 }

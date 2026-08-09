@@ -60,6 +60,14 @@ const serviceListSchema = {
             </div>
             <h2>{service.title}</h2>
             <p>{service.summary}</p>
+            <ul class="service-overview-scope">
+              {service.inclusions.slice(0, 3).map((item) => (
+                <li>{item.label}</li>
+              ))}
+              <li class="service-overview-scope-more">
+                +{service.inclusions.length - 3} more in a typical scope
+              </li>
+            </ul>
             {service.slug === "lutron-lighting-controls" && <LutronCredential compact />}
             <a class="text-link" href={`/services/${service.slug}/`}>
               Explore this service <span aria-hidden="true">↗</span>
