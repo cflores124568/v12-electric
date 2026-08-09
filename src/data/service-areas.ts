@@ -110,7 +110,7 @@ export const serviceAreaCities: ServiceAreaCity[] = [
     tier: "secondary",
     focus: "Outdoor electrical, older-panel safety work, spa circuits, cooling loads, and EV charging.",
     fieldNote:
-      "Exterior devices take the full desert afternoon. Outdoor electrical work needs the right enclosure, seal, mounting, and protection—not just a device labeled for exterior use.",
+      "Exterior devices take the full desert afternoon. Outdoor electrical work needs the right enclosure, seal, mounting, and protection, not just a device labeled for exterior use.",
     utility: "Southern California Edison (SCE)",
     permitAuthority: "City of Desert Hot Springs Building Division",
     permitUrl: "https://www.cityofdhs.org/building-and-safety/",

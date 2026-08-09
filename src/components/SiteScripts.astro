@@ -36,6 +36,8 @@
   if (reduceMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   } else {
+    document.documentElement.classList.add("motion-ready");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

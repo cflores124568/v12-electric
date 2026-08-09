@@ -1136,3 +1136,93 @@
     transition: none;
   }
 }
+
+/* Mobile type refinement for the two editorial index pages. */
+@media (max-width: 700px) {
+  .luxury-kicker,
+  .luxury-button,
+  .luxury-text-link,
+  .luxury-discipline-list li,
+  .luxury-lutron-credential,
+  .luxury-project-standard-track span,
+  .luxury-project-item p,
+  .luxury-case-study-meta dt {
+    font-size: var(--type-label);
+    line-height: 1.35;
+  }
+
+  .luxury-hero-copy {
+    padding-bottom: clamp(3rem, 8vh, 4.25rem);
+  }
+
+  .luxury-hero h1 {
+    max-width: 12ch;
+    font-size: clamp(2.35rem, 10.4vw, 3.1rem);
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .luxury-hero-copy > p:not(.luxury-kicker),
+  .luxury-planning-copy > p:not(.luxury-kicker),
+  .luxury-service-index-heading > p,
+  .luxury-lutron-copy > p:not(.luxury-kicker),
+  .luxury-properties header > p,
+  .luxury-project-standard-copy > p,
+  .luxury-project-gallery-heading > p,
+  .luxury-case-study-panel > p:not(.luxury-kicker),
+  .luxury-principles-support p {
+    font-size: var(--type-body);
+    line-height: 1.65;
+  }
+
+  .luxury-planning h2,
+  .luxury-service-index-heading h2,
+  .luxury-lutron h2,
+  .luxury-properties h2,
+  .luxury-project-standard h2,
+  .luxury-project-gallery-heading h2,
+  .luxury-case-study h2 {
+    font-size: clamp(2rem, 8.8vw, 2.75rem);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .luxury-service-item h3,
+  .luxury-project-item h3,
+  .luxury-property figcaption {
+    font-size: clamp(1.15rem, 5.2vw, 1.45rem);
+    line-height: 1.08;
+  }
+
+  .luxury-service-item p,
+  .luxury-case-study-meta dd {
+    font-size: var(--type-small);
+    line-height: 1.55;
+  }
+
+  .luxury-principles-line h2 {
+    font-size: clamp(2.35rem, 10.5vw, 3.25rem);
+    line-height: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .luxury-service-item img,
+  .luxury-project-item img,
+  .luxury-property img,
+  .luxury-project-standard img,
+  .luxury-case-study img {
+    transition: transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .luxury-service-item:hover img,
+  .luxury-service-item:focus-visible img,
+  .luxury-project-item:hover img,
+  .luxury-project-item:focus-within img,
+  .luxury-property:hover img,
+  .luxury-property:focus-within img,
+  .luxury-case-study:hover img,
+  .luxury-case-study:focus-within img {
+    transform: scale(1.035);
+  }
+}

@@ -5,7 +5,9 @@ import { serviceAreaCities } from "../data/service-areas";
 import { services } from "../data/site";
 
 const bookingUrl = import.meta.env.PUBLIC_HOUSECALL_PRO_BOOKING_URL;
-const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
+// Falls back to the V12 inbox so the form still delivers on builds where the
+// environment variable was never set.
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "v12electricinc@gmail.com";
 const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT;
 const phoneNumber = "+17605676593";
 const phoneDisplay = "(760) 567-6593";
@@ -46,6 +48,10 @@ const textLink = `sms:${phoneNumber}`;
         <div>
           <dt>Call V12 Electric</dt>
           <dd><a class="contact-phone" href={`tel:${phoneNumber}`}>{phoneDisplay}</a></dd>
+        </div>
+        <div>
+          <dt>Email V12 Electric</dt>
+          <dd><a class="contact-email" href={`mailto:${contactEmail}`}>{contactEmail}</a></dd>
         </div>
         <div>
           <dt>Service area</dt>

@@ -3889,6 +3889,12 @@ blockquote {
   gap: 1rem;
 }
 
+.contact-email {
+  color: var(--blue);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
 .contact-phone,
 .footer-phone {
   color: var(--blue);
@@ -7682,5 +7688,358 @@ blockquote {
   .area-index-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+
+/* Responsive type and motion refinement
+   Type roles stay readable on phones while display faces keep their impact.
+   Motion is progressive: content is only staged after the observer is ready. */
+
+:root {
+  --type-label: clamp(0.75rem, 0.72rem + 0.16vw, 0.82rem);
+  --type-small: clamp(0.88rem, 0.84rem + 0.18vw, 0.96rem);
+  --type-body: clamp(1rem, 0.96rem + 0.18vw, 1.08rem);
+  --type-lead: clamp(1.06rem, 1rem + 0.28vw, 1.2rem);
+}
+
+@media (min-width: 901px) {
+  .site-header {
+    min-height: 4.75rem;
+  }
+
+  .brand-logo {
+    height: 3.45rem;
+  }
+}
+
+.section-label,
+.hero-kicker,
+.luxury-kicker,
+.city-sequence,
+.city-eyebrow p,
+.service-sequence,
+.service-hero-mark p {
+  font-size: var(--type-label);
+  line-height: 1.35;
+}
+
+.button,
+.text-link,
+.city-hero-link,
+.area-card-link,
+.service-hero-link,
+.next-service-rail a strong {
+  font-size: var(--type-label);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 1.35rem, 0);
+    transition:
+      opacity 680ms var(--ease-out),
+      transform 680ms var(--ease-out);
+  }
+
+  .motion-ready [data-reveal="fade"] {
+    transform: none;
+  }
+
+  .motion-ready [data-reveal="image"] {
+    transform: scale(0.975) translate3d(0, 0.75rem, 0);
+    transition-duration: 900ms;
+  }
+
+  .motion-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-ready [data-delay="1"] {
+    transition-delay: 80ms;
+  }
+
+  .motion-ready [data-delay="2"] {
+    transition-delay: 150ms;
+  }
+
+  .motion-ready [data-delay="3"] {
+    transition-delay: 220ms;
+  }
+
+  .motion-ready [data-delay="4"] {
+    transition-delay: 290ms;
+  }
+
+  .motion-ready [data-delay="5"] {
+    transition-delay: 360ms;
+  }
+
+  .menu-toggle span,
+  .city-faq summary::after,
+  .answer-faq summary::after {
+    transition:
+      transform 320ms var(--ease-out),
+      color 220ms var(--ease-out);
+  }
+
+  .city-faq details[open] summary::after,
+  .answer-faq details[open] summary::after {
+    transform: rotate(90deg);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-shell .service-image img,
+  .project-card-media img,
+  .project-proof-section img,
+  .service-overview-media img,
+  .service-proof-media img,
+  .service-proof-inset-media img,
+  .area-card-media img {
+    transition: transform 760ms var(--ease-out);
+  }
+
+  .home-shell .service-item:hover .service-image img,
+  .home-shell .service-item:focus-within .service-image img,
+  .project-card:hover .project-card-media img,
+  .project-card:focus-within .project-card-media img,
+  .service-overview-item:hover .service-overview-media img,
+  .service-overview-item:focus-within .service-overview-media img,
+  .service-proof-inset:hover .service-proof-inset-media img,
+  .service-proof-inset:focus-within .service-proof-inset-media img,
+  .area-card:hover .area-card-media img,
+  .area-card:focus-within .area-card-media img {
+    transform: scale(1.035);
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --gutter: clamp(1.2rem, 5.1vw, 1.45rem);
+    --section-space: clamp(4.5rem, 18vw, 5.5rem);
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .site-header,
+  .luxury-shell .site-header-overlay {
+    min-height: 4.5rem;
+  }
+
+  .brand-logo,
+  .luxury-shell .site-header-overlay .brand-logo {
+    height: 3.25rem;
+  }
+
+  .button,
+  .header-cta,
+  .mobile-contact-bar a {
+    min-height: 3.15rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.045em;
+  }
+
+  .mobile-menu nav a {
+    font-size: clamp(2.2rem, 10.5vw, 3.15rem);
+    line-height: 1.06;
+  }
+
+  .home-shell .hero {
+    min-height: max(45rem, 100dvh);
+  }
+
+  .home-shell .hero-copy {
+    min-height: calc(max(45rem, 100dvh) - 8rem);
+    padding-top: clamp(5.15rem, 18vh, 6rem);
+  }
+
+  .home-shell .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(2.7rem, 11.4vw, 3.35rem);
+    line-height: 0.96;
+    text-wrap: balance;
+  }
+
+  .hero-kicker {
+    margin-bottom: clamp(1.5rem, 6vw, 2rem) !important;
+  }
+
+  .home-shell .hero-copy > p:not(.hero-kicker),
+  .interior-hero-copy > p:last-child,
+  .city-hero-summary,
+  .service-hero-summary,
+  .service-hero-cinematic .service-hero-summary,
+  .service-hero-ledger-copy > p,
+  .body-large {
+    font-size: var(--type-body);
+    line-height: 1.65;
+  }
+
+  .hero-trust-badges li,
+  .hero-trust-license,
+  .lutron-credential-copy p,
+  .service-map-logo span,
+  .service-area-cities a {
+    font-size: var(--type-label);
+  }
+
+  .home-shell .hero .lutron-credential-compact {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .home-shell .hero .lutron-credential-compact .lutron-credential-link {
+    grid-column: 2;
+    margin: 0.3rem 0 0;
+    white-space: normal;
+  }
+
+  .interior-hero-copy {
+    min-height: 32rem;
+    padding-top: 3.25rem;
+  }
+
+  .interior-hero h1,
+  .service-hero-cinematic h1,
+  .service-hero-ledger h1 {
+    max-width: 12ch;
+    font-size: clamp(2.35rem, 10.2vw, 3.05rem);
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .city-hero,
+  .city-hero-copy {
+    min-height: max(47rem, 100dvh);
+  }
+
+  .city-hero-copy {
+    padding-top: 6.5rem;
+    padding-bottom: calc(2rem + 3.15rem + env(safe-area-inset-bottom));
+  }
+
+  .city-hero h1 {
+    font-size: clamp(2.45rem, 10.4vw, 3.15rem);
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .city-sequence {
+    margin-bottom: 1.8rem;
+  }
+
+  .city-local-note strong,
+  .city-local-note p,
+  .city-technical-list dt,
+  .city-technical-list a,
+  .city-service-list > a > span,
+  .area-card dt,
+  .area-card dd,
+  .area-card-number {
+    font-size: var(--type-label);
+    line-height: 1.5;
+  }
+
+  .city-intro-copy h2,
+  .city-technical h2,
+  .city-services h2,
+  .city-faq h2,
+  .city-directory h2,
+  .home-shell .manifesto h2,
+  .home-shell .section-heading h2,
+  .home-shell .project-story h2,
+  .home-shell .project-proof-heading h2,
+  .home-shell .review-feature h2,
+  .area-index-heading h2,
+  .service-statement-band h2,
+  .service-statement-rule-copy h2,
+  .service-scope-index-heading h2,
+  .service-scope-ledger-heading h2,
+  .service-signals-heading h2,
+  .service-method-heading h2,
+  .next-service-rail-heading h2 {
+    font-size: clamp(1.95rem, 8.4vw, 2.65rem);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  .about-statement h2,
+  .about-grid h2,
+  .process-intro h2,
+  .process-collaboration h2,
+  .contact-intro h2,
+  .contact-close h2,
+  .handoff-band h2,
+  .project-principles h2,
+  .about-field-note blockquote {
+    font-size: clamp(1.9rem, 8.1vw, 2.55rem);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .home-shell .service-copy h3,
+  .home-trust-list h3,
+  .area-card h3,
+  .service-scope-index-list strong,
+  .city-service-list h3,
+  .inquiry-head h2,
+  .inquiry-success h3 {
+    font-size: clamp(1.12rem, 4.9vw, 1.35rem);
+    line-height: 1.15;
+  }
+
+  .home-shell .service-copy > p:not(.service-index),
+  .home-trust-list article > p:last-child,
+  .area-card-copy > p,
+  .service-scope-index-list p,
+  .service-scope-ledger-list dd p,
+  .service-method-list p,
+  .city-service-list p,
+  .city-faq details p,
+  .review-list blockquote,
+  .contact-notes dd,
+  .contact-action-panel > p:not(.section-label),
+  .booking-panel > p:not(.section-label),
+  .inquiry-head p,
+  .form-note,
+  .form-trust,
+  .form-status {
+    font-size: var(--type-small);
+    line-height: 1.65;
+  }
+
+  .contact-notes dt,
+  .inquiry-form label > span,
+  .service-method-list strong,
+  .service-proof-inset-media figcaption,
+  .review-feature footer strong,
+  .review-feature footer span,
+  .review-full,
+  .review-list footer {
+    font-size: var(--type-label);
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 3.25rem;
+    font-size: 1rem;
+  }
+
+  textarea {
+    min-height: 8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }
