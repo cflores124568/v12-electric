@@ -1,0 +1,1138 @@
+.luxury-shell {
+  --luxury-navy: #041426;
+  --luxury-navy-raised: #08213b;
+  --luxury-royal: #0a4fa8;
+  --luxury-cobalt: #0a69ed;
+  --luxury-cobalt-bright: #1680ff;
+  --luxury-white: #f4f7fb;
+  --luxury-silver: #aebbc9;
+  --luxury-line: rgb(174 187 201 / 20%);
+  --luxury-display: "K2D", "Oxanium", sans-serif;
+  width: 100%;
+  max-width: 1920px;
+  background: var(--luxury-navy);
+}
+
+.luxury-shell .site-header-overlay {
+  position: sticky;
+  inset: auto;
+  top: 0;
+  min-height: 4.75rem;
+  border-bottom: 1px solid rgb(244 247 251 / 10%);
+  background: rgb(4 20 38 / 96%);
+  color: var(--luxury-white);
+  backdrop-filter: blur(18px);
+}
+
+.luxury-shell .site-header-overlay .primary-nav a {
+  color: rgb(244 247 251 / 82%);
+}
+
+.luxury-shell .site-header-overlay .primary-nav a:hover,
+.luxury-shell .site-header-overlay .primary-nav a:focus-visible,
+.luxury-shell .site-header-overlay .primary-nav a[aria-current="page"] {
+  color: var(--luxury-white);
+}
+
+.luxury-shell .site-header-overlay .header-cta {
+  border-radius: 999px;
+  background: var(--luxury-cobalt);
+  color: var(--luxury-white);
+}
+
+.luxury-shell .site-header-overlay .header-cta:hover,
+.luxury-shell .site-header-overlay .header-cta:focus-visible {
+  background: #0d76ff;
+}
+
+.luxury-shell .site-header-overlay .brand-logo {
+  height: 3.45rem;
+}
+
+.luxury-shell .site-header-overlay .menu-toggle span {
+  background: var(--luxury-white);
+}
+
+.luxury-shell h1,
+.luxury-shell h2,
+.luxury-shell h3 {
+  font-family: var(--luxury-display);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.luxury-kicker {
+  color: var(--luxury-cobalt-bright);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.luxury-button {
+  display: inline-flex;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.65rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.luxury-button:hover,
+.luxury-button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.luxury-button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.luxury-button-primary {
+  background: var(--luxury-cobalt);
+  color: var(--luxury-white);
+}
+
+.luxury-button-primary:hover,
+.luxury-button-primary:focus-visible {
+  background: #0d76ff;
+}
+
+.luxury-button-ghost {
+  border-color: rgb(244 247 251 / 70%);
+  color: var(--luxury-white);
+}
+
+.luxury-button-ghost:hover,
+.luxury-button-ghost:focus-visible {
+  border-color: var(--luxury-white);
+  background: rgb(244 247 251 / 8%);
+}
+
+.luxury-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.2rem;
+}
+
+.luxury-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
+  color: var(--luxury-cobalt-bright);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.luxury-text-link span {
+  transition: transform 220ms ease;
+}
+
+.luxury-text-link:hover span,
+.luxury-text-link:focus-visible span {
+  transform: translateX(0.25rem);
+}
+
+.luxury-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(52rem, calc(100dvh - 4.75rem));
+  overflow: hidden;
+  background: var(--luxury-navy);
+  color: var(--luxury-white);
+}
+
+.luxury-hero-media,
+.luxury-hero-media img,
+.luxury-hero-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.luxury-hero-media img {
+  object-position: center;
+}
+
+.luxury-hero-shade {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgb(2 12 24 / 97%) 0%, rgb(2 12 24 / 83%) 34%, rgb(2 12 24 / 26%) 68%, rgb(2 12 24 / 14%) 100%),
+    linear-gradient(0deg, rgb(2 12 24 / 82%) 0%, transparent 52%);
+}
+
+.luxury-hero-strike {
+  position: absolute;
+  z-index: 2;
+  top: -2rem;
+  left: clamp(6rem, 15vw, 18rem);
+  width: 3px;
+  height: 45%;
+  background: var(--luxury-cobalt-bright);
+  transform: rotate(35deg);
+  transform-origin: top;
+}
+
+.luxury-hero-copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: min(100%, 57rem);
+  padding: clamp(4rem, 8vw, 7rem) var(--gutter) clamp(4rem, 8vw, 7rem);
+}
+
+.luxury-hero h1 {
+  max-width: 13ch;
+  margin-top: 1.35rem;
+  color: var(--luxury-white);
+  font-size: clamp(3.4rem, 5.5vw, 6.5rem);
+}
+
+.luxury-hero-copy > p:not(.luxury-kicker) {
+  max-width: 37rem;
+  margin-top: 1.5rem;
+  color: rgb(244 247 251 / 80%);
+  font-size: clamp(1rem, 1.25vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.luxury-planning {
+  display: grid;
+  grid-template-columns: minmax(22rem, 0.9fr) minmax(30rem, 1.1fr);
+  min-height: 43rem;
+  background: var(--luxury-white);
+  color: var(--luxury-navy);
+}
+
+.luxury-planning-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 8vw, 8rem) var(--gutter);
+}
+
+.luxury-planning h2 {
+  max-width: 12ch;
+  margin-top: 1.4rem;
+  font-size: clamp(2.9rem, 4.6vw, 5.4rem);
+}
+
+.luxury-planning-copy > p:not(.luxury-kicker) {
+  max-width: 34rem;
+  margin-top: 1.7rem;
+  color: rgb(4 20 38 / 70%);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.luxury-discipline-list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1.25rem;
+  max-width: 36rem;
+  margin: 2.5rem 0 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid rgb(4 20 38 / 18%);
+  list-style: none;
+}
+
+.luxury-discipline-list li {
+  color: var(--luxury-navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.luxury-planning-media {
+  min-height: 43rem;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.luxury-planning-media img {
+  object-position: center;
+}
+
+.luxury-service-index {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter);
+  background: var(--luxury-navy);
+  color: var(--luxury-white);
+}
+
+.luxury-service-index-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 47rem;
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.luxury-service-index-heading h2 {
+  max-width: 11ch;
+  font-size: clamp(3.4rem, 5.7vw, 6.6rem);
+}
+
+.luxury-service-index-heading > p {
+  max-width: 37rem;
+  margin-top: 1.5rem;
+  color: var(--luxury-silver);
+  line-height: 1.75;
+}
+
+.luxury-service-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  border-top: 1px solid var(--luxury-line);
+  border-left: 1px solid var(--luxury-line);
+}
+
+.luxury-service-item {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 25rem;
+  grid-template-rows: minmax(11rem, 1fr) auto;
+  overflow: hidden;
+  border-right: 1px solid var(--luxury-line);
+  border-bottom: 1px solid var(--luxury-line);
+  background: var(--luxury-navy-raised);
+  color: var(--luxury-white);
+}
+
+.luxury-service-item:nth-child(1) {
+  grid-column: span 7;
+  grid-row: span 2;
+  min-height: 45rem;
+}
+
+.luxury-service-item:nth-child(2),
+.luxury-service-item:nth-child(3) {
+  grid-column: span 5;
+}
+
+.luxury-service-item:nth-child(n + 4):nth-child(-n + 6) {
+  grid-column: span 4;
+}
+
+.luxury-service-item:nth-child(n + 7) {
+  grid-column: span 3;
+  min-height: 22rem;
+}
+
+.luxury-service-item figure {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.luxury-service-item figure::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(4 20 38 / 28%), transparent 55%);
+  content: "";
+}
+
+.luxury-service-item img {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-service-item:hover img,
+.luxury-service-item:focus-visible img {
+  transform: scale(1.035);
+}
+
+.luxury-service-item-copy {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: start;
+  padding: clamp(1.35rem, 2vw, 2rem);
+}
+
+.luxury-index {
+  padding-top: 0.2rem;
+  color: var(--luxury-cobalt-bright);
+  font-family: var(--luxury-display);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+.luxury-service-item h3 {
+  color: var(--luxury-white);
+  font-size: clamp(1.2rem, 1.7vw, 2rem);
+  line-height: 1.02;
+}
+
+.luxury-service-item p {
+  grid-column: 2 / -1;
+  max-width: 33rem;
+  color: var(--luxury-silver);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.luxury-service-arrow {
+  color: var(--luxury-cobalt-bright);
+  font-size: 1rem;
+  transition: transform 220ms ease;
+}
+
+.luxury-service-item:hover .luxury-service-arrow,
+.luxury-service-item:focus-visible .luxury-service-arrow {
+  transform: translate(0.15rem, -0.15rem);
+}
+
+.luxury-lutron {
+  position: relative;
+  isolation: isolate;
+  min-height: 48rem;
+  overflow: hidden;
+  background: var(--luxury-navy);
+  color: var(--luxury-white);
+}
+
+.luxury-lutron-media,
+.luxury-lutron-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.luxury-lutron-media img {
+  object-position: center 58%;
+}
+
+.luxury-lutron-shade {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgb(4 20 38 / 15%), rgb(4 20 38 / 30%) 50%, rgb(4 20 38 / 94%) 100%),
+    linear-gradient(0deg, rgb(4 20 38 / 96%) 0%, transparent 55%);
+}
+
+.luxury-lutron-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 48rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: min(100%, 62rem);
+  margin-left: auto;
+  padding: clamp(4rem, 7vw, 7rem) var(--gutter);
+}
+
+.luxury-lutron h2 {
+  max-width: 13ch;
+  margin-top: 1.25rem;
+  font-size: clamp(3.4rem, 5.5vw, 6.4rem);
+}
+
+.luxury-lutron-copy > p:not(.luxury-kicker) {
+  max-width: 42rem;
+  margin-top: 1.5rem;
+  color: rgb(244 247 251 / 80%);
+  line-height: 1.75;
+}
+
+.luxury-lutron-credential {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  color: rgb(244 247 251 / 78%);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.luxury-lutron-credential img {
+  width: auto;
+  height: 2.2rem;
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+
+.luxury-properties {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter);
+  background: var(--luxury-white);
+  color: var(--luxury-navy);
+}
+
+.luxury-properties header {
+  max-width: 48rem;
+}
+
+.luxury-properties h2 {
+  font-size: clamp(3rem, 4.7vw, 5.4rem);
+}
+
+.luxury-properties header p {
+  margin-top: 1rem;
+  color: rgb(4 20 38 / 66%);
+}
+
+.luxury-property-grid {
+  display: grid;
+  grid-template-columns: 2.25fr repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 3.5rem;
+  overflow: hidden;
+  background: var(--luxury-white);
+}
+
+.luxury-property {
+  position: relative;
+  min-height: 32rem;
+  overflow: hidden;
+  background: var(--luxury-navy);
+}
+
+.luxury-property::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(4 20 38 / 84%), transparent 50%);
+  content: "";
+}
+
+.luxury-property img {
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-property:hover img {
+  transform: scale(1.04);
+}
+
+.luxury-property figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1.5rem;
+  bottom: 1.6rem;
+  left: 1.5rem;
+  color: var(--luxury-white);
+  font-family: var(--luxury-display);
+  font-size: clamp(1.05rem, 1.5vw, 1.55rem);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.luxury-shell .closing-cta {
+  background: var(--luxury-cobalt);
+}
+
+.luxury-shell .closing-cta h2 {
+  color: var(--luxury-white);
+  font-family: var(--luxury-display);
+  font-style: italic;
+  letter-spacing: -0.04em;
+}
+
+.luxury-shell .closing-cta .button-light {
+  border-radius: 999px;
+}
+
+.luxury-shell .site-footer {
+  background:
+    radial-gradient(circle at 78% 8%, rgb(22 128 255 / 10%), transparent 31rem),
+    #030f1c;
+}
+
+.luxury-shell .site-footer::before {
+  background: var(--luxury-cobalt-bright);
+}
+
+/* Projects */
+.luxury-projects-hero .luxury-hero-shade {
+  background:
+    linear-gradient(270deg, rgb(2 12 24 / 95%) 0%, rgb(2 12 24 / 68%) 42%, rgb(2 12 24 / 14%) 72%),
+    linear-gradient(0deg, rgb(2 12 24 / 90%) 0%, transparent 56%);
+}
+
+.luxury-projects-hero .luxury-hero-copy {
+  align-items: flex-start;
+  margin-left: auto;
+  padding-left: clamp(2rem, 11vw, 12rem);
+}
+
+.luxury-project-standard {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter);
+  background: var(--luxury-white);
+  color: var(--luxury-navy);
+}
+
+.luxury-project-standard-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr 0.9fr 1.15fr;
+  grid-template-rows: auto auto;
+  align-items: stretch;
+}
+
+.luxury-project-standard figure {
+  min-height: 34rem;
+  overflow: hidden;
+}
+
+.luxury-project-standard figure:first-child {
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+
+.luxury-project-standard-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2.5rem, 5vw, 5rem);
+}
+
+.luxury-project-standard h2 {
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 4.3vw, 5rem);
+}
+
+.luxury-project-standard-copy p {
+  max-width: 31rem;
+  margin-top: 1.4rem;
+  color: rgb(4 20 38 / 68%);
+  line-height: 1.75;
+}
+
+.luxury-project-standard-track {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.8rem;
+  border-top: 1px solid rgb(4 20 38 / 18%);
+}
+
+.luxury-project-standard-track span {
+  position: relative;
+  padding-top: 1.2rem;
+  color: var(--luxury-navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.luxury-project-standard-track span:not(:last-child)::after {
+  position: absolute;
+  top: -1px;
+  left: 4.2rem;
+  width: calc(100% - 5.4rem);
+  height: 2px;
+  background: var(--luxury-cobalt);
+  content: "";
+}
+
+.luxury-project-gallery {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter);
+  background: var(--luxury-navy);
+  color: var(--luxury-white);
+}
+
+.luxury-project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.5vw, 1.5rem);
+}
+
+.luxury-project-gallery-heading {
+  grid-column: span 3;
+  align-self: start;
+  padding-right: 1.5rem;
+}
+
+.luxury-project-gallery-heading h2 {
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+}
+
+.luxury-project-gallery-heading p {
+  margin-top: 1.5rem;
+  color: var(--luxury-silver);
+  line-height: 1.7;
+}
+
+.luxury-project-item {
+  min-width: 0;
+  color: var(--luxury-white);
+}
+
+.luxury-project-item:nth-of-type(1) {
+  grid-column: 4 / -1;
+}
+
+.luxury-project-item:nth-of-type(2) {
+  grid-column: span 4;
+}
+
+.luxury-project-item:nth-of-type(n + 3) {
+  grid-column: span 2;
+}
+
+.luxury-project-item figure {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--luxury-navy-raised);
+}
+
+.luxury-project-item:nth-of-type(1) figure {
+  aspect-ratio: 16 / 7;
+}
+
+.luxury-project-item:nth-of-type(2) figure {
+  aspect-ratio: 4 / 5;
+}
+
+.luxury-project-item img {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-project-item:hover img,
+.luxury-project-item:focus-visible img {
+  transform: scale(1.035);
+}
+
+.luxury-project-caption {
+  padding-top: 1rem;
+}
+
+.luxury-project-item h3 {
+  color: var(--luxury-white);
+  font-size: clamp(1.05rem, 1.35vw, 1.55rem);
+  line-height: 1.05;
+}
+
+.luxury-project-item p {
+  margin-top: 0.45rem;
+  color: var(--luxury-silver);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.luxury-case-study {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(22rem, 0.65fr);
+  background: #031120;
+  color: var(--luxury-white);
+}
+
+.luxury-case-study-lead {
+  min-height: 42rem;
+}
+
+.luxury-case-study-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 6rem) var(--gutter);
+  border-left: 1px solid var(--luxury-line);
+}
+
+.luxury-case-study h2 {
+  margin-top: 1.25rem;
+  font-size: clamp(3rem, 4.5vw, 5.4rem);
+}
+
+.luxury-case-study-panel > p:not(.luxury-kicker) {
+  margin-top: 1.4rem;
+  color: var(--luxury-silver);
+  line-height: 1.75;
+}
+
+.luxury-case-study-meta {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--luxury-line);
+}
+
+.luxury-case-study-meta div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+}
+
+.luxury-case-study-meta dt {
+  color: var(--luxury-cobalt-bright);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.luxury-case-study-meta dd {
+  margin: 0;
+  color: var(--luxury-white);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.luxury-principles {
+  padding: clamp(5rem, 8vw, 8rem) var(--gutter) 0;
+  overflow: hidden;
+  background: var(--luxury-cobalt);
+  color: var(--luxury-white);
+}
+
+.luxury-principles-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(14rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+}
+
+.luxury-principles-line:nth-child(even) {
+  grid-template-columns: minmax(14rem, 0.75fr) minmax(0, 1.25fr);
+}
+
+.luxury-principles-line + .luxury-principles-line {
+  margin-top: 1rem;
+}
+
+.luxury-principles-line h2 {
+  color: var(--luxury-white);
+  font-size: clamp(3.5rem, 7vw, 8.5rem);
+  white-space: nowrap;
+}
+
+.luxury-principles-line figure {
+  height: clamp(9rem, 13vw, 14rem);
+  overflow: hidden;
+  background: var(--luxury-navy);
+}
+
+.luxury-principles-line figure img {
+  filter: grayscale(1) sepia(0.15) hue-rotate(175deg) saturate(1.5) contrast(1.05);
+}
+
+.luxury-principles-support {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: clamp(3rem, 6vw, 6rem) calc(var(--gutter) * -1) 0;
+  padding: 3rem var(--gutter);
+  background: var(--luxury-navy);
+}
+
+.luxury-principles-support p {
+  max-width: 25rem;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+  color: rgb(244 247 251 / 86%);
+  font-size: clamp(0.95rem, 1.3vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.luxury-principles-support p:first-child {
+  padding-left: 0;
+}
+
+.luxury-principles-support p + p {
+  border-left: 1px solid rgb(22 128 255 / 45%);
+}
+
+.luxury-projects-shell .closing-cta {
+  background: var(--luxury-navy-raised);
+}
+
+@media (max-width: 1100px) {
+  .luxury-service-item:nth-child(1) {
+    grid-column: span 8;
+  }
+
+  .luxury-service-item:nth-child(2),
+  .luxury-service-item:nth-child(3) {
+    grid-column: span 4;
+  }
+
+  .luxury-service-item:nth-child(n + 4) {
+    grid-column: span 4;
+  }
+
+  .luxury-project-gallery-heading {
+    grid-column: 1 / -1;
+    max-width: 40rem;
+    margin-bottom: 1rem;
+  }
+
+  .luxury-project-item:nth-of-type(1) {
+    grid-column: 1 / -1;
+  }
+
+  .luxury-project-item:nth-of-type(2) {
+    grid-column: span 6;
+  }
+
+  .luxury-project-item:nth-of-type(n + 3) {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .luxury-shell .site-header-overlay {
+    position: sticky;
+  }
+
+  .luxury-planning,
+  .luxury-case-study {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-planning-media {
+    min-height: 30rem;
+    clip-path: none;
+  }
+
+  .luxury-lutron-copy {
+    margin-left: 0;
+  }
+
+  .luxury-property-grid {
+    grid-template-columns: 1.6fr 1fr;
+  }
+
+  .luxury-property {
+    min-height: 25rem;
+  }
+
+  .luxury-project-standard-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .luxury-project-standard-copy {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .luxury-project-standard figure {
+    min-height: 28rem;
+  }
+
+  .luxury-project-standard figure:first-child {
+    clip-path: none;
+  }
+
+  .luxury-project-standard-track {
+    grid-column: 1 / -1;
+  }
+
+  .luxury-case-study-lead {
+    min-height: 34rem;
+  }
+
+  .luxury-case-study-panel {
+    border-top: 1px solid var(--luxury-line);
+    border-left: 0;
+  }
+
+  .luxury-principles-line,
+  .luxury-principles-line:nth-child(even) {
+    grid-template-columns: 1fr 0.7fr;
+  }
+
+  .luxury-principles-line h2 {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 700px) {
+  .luxury-hero {
+    min-height: calc(100dvh - 4.5rem);
+  }
+
+  .luxury-hero-shade,
+  .luxury-projects-hero .luxury-hero-shade {
+    background:
+      linear-gradient(0deg, rgb(2 12 24 / 98%) 0%, rgb(2 12 24 / 82%) 47%, rgb(2 12 24 / 20%) 82%),
+      linear-gradient(90deg, rgb(2 12 24 / 35%), transparent);
+  }
+
+  .luxury-hero-media img {
+    object-position: 62% center;
+  }
+
+  .luxury-projects-hero .luxury-hero-copy {
+    margin-left: 0;
+    padding-left: var(--gutter);
+  }
+
+  .luxury-hero-copy {
+    justify-content: flex-end;
+    padding-bottom: 5.25rem;
+  }
+
+  .luxury-hero h1 {
+    max-width: 11ch;
+    font-size: clamp(2.75rem, 12vw, 4.6rem);
+  }
+
+  .luxury-planning h2 {
+    font-size: clamp(2.15rem, 10vw, 2.75rem);
+  }
+
+  .luxury-actions,
+  .luxury-actions .luxury-button {
+    width: 100%;
+  }
+
+  .luxury-planning-copy,
+  .luxury-service-index,
+  .luxury-properties,
+  .luxury-project-standard,
+  .luxury-project-gallery,
+  .luxury-principles {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .luxury-discipline-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .luxury-service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-service-item,
+  .luxury-service-item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 25rem;
+  }
+
+  .luxury-service-item:nth-child(1) {
+    min-height: 31rem;
+  }
+
+  .luxury-service-item-copy {
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  }
+
+  .luxury-lutron {
+    min-height: 43rem;
+  }
+
+  .luxury-lutron-copy {
+    min-height: 43rem;
+    padding: 3.5rem 1.25rem;
+  }
+
+  .luxury-lutron h2 {
+    font-size: clamp(2.8rem, 12vw, 4.4rem);
+  }
+
+  .luxury-lutron-credential {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .luxury-property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-property {
+    min-height: 22rem;
+  }
+
+  .luxury-project-standard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-project-standard figure {
+    min-height: 24rem;
+  }
+
+  .luxury-project-standard-track {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-project-standard-track span {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgb(4 20 38 / 14%);
+  }
+
+  .luxury-project-standard-track span::after {
+    display: none;
+  }
+
+  .luxury-project-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-project-gallery-heading,
+  .luxury-project-item:nth-of-type(n) {
+    grid-column: auto;
+  }
+
+  .luxury-project-item figure,
+  .luxury-project-item:nth-of-type(n) figure {
+    aspect-ratio: 4 / 3;
+  }
+
+  .luxury-case-study-lead {
+    min-height: 27rem;
+  }
+
+  .luxury-case-study-panel {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .luxury-principles-line,
+  .luxury-principles-line:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-principles-line figure {
+    height: 10rem;
+  }
+
+  .luxury-principles-line h2 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .luxury-principles-support {
+    grid-template-columns: 1fr;
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+    padding: 2.5rem 1.25rem;
+  }
+
+  .luxury-principles-support p {
+    padding: 1rem 0;
+  }
+
+  .luxury-principles-support p + p {
+    border-top: 1px solid rgb(22 128 255 / 45%);
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxury-service-item img,
+  .luxury-project-item img,
+  .luxury-property img,
+  .luxury-button,
+  .luxury-text-link span {
+    transition: none;
+  }
+}

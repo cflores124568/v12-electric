@@ -1,9 +1,7 @@
 ---
 import InteriorLayout from "../../layouts/InteriorLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import ServiceIcon from "../../components/ServiceIcon.astro";
-import LutronCredential from "../../components/LutronCredential.astro";
-import { services } from "../../data/site";
+import { services, lutronCredential } from "../../data/site";
+import "../../styles/luxury-interiors.css";
 
 const serviceListSchema = {
   "@type": "ItemList",
@@ -15,76 +13,176 @@ const serviceListSchema = {
     url: `https://v12electric.com/services/${service.slug}/`,
   })),
 };
+
+const propertyTypes = [
+  {
+    label: "Private residences",
+    image: "/images/projects/desert-home-landscape-lighting.webp",
+    alt: "Desert residence at dusk with layered landscape and architectural lighting",
+  },
+  {
+    label: "Renovations",
+    image: "/images/featured-kitchen.webp",
+    alt: "Finished contemporary kitchen with layered pendant and task lighting",
+  },
+  {
+    label: "New construction",
+    image: "/images/conduit-installation.webp",
+    alt: "Organized conduit installation inside a new construction project",
+  },
+  {
+    label: "Select commercial",
+    image: "/images/projects/commercial-rough-in.webp",
+    alt: "Labeled commercial electrical rough-in before finishes",
+  },
+] as const;
 ---
 
 <InteriorLayout
   title="Electrical Services in Coachella Valley | V12 Electric"
   description="Explore EV charging, panel upgrades, repairs, lighting controls, inspections, and residential and commercial electrical services across the Coachella Valley."
-  image="/images/electrical-systems.webp"
-  imageAlt="Electrician working inside an organized electrical panel"
+  image="/images/projects/desert-home-landscape-lighting.webp"
+  imageAlt="Modern desert residence with layered exterior lighting and EV charging"
   breadcrumbs={[{ name: "Services", path: "/services/" }]}
   structuredData={serviceListSchema}
   active="services"
+  overlayHeader
+  shellClass="luxury-shell luxury-services-shell"
 >
-  <PageHero
-    eyebrow="Services"
-    title="Power built around the project."
-    description="From EV charging and service upgrades to Lutron controls and commercial repairs, we coordinate the details that make a space work."
-    image="/images/electrical-systems.webp"
-    alt="Electrician working inside an organized electrical panel"
-  />
-
-  <section class="intro-split section-pad">
-    <p class="section-label" data-reveal="up">One coordinated system</p>
-    <div data-reveal="up">
-      <h2>Plan the infrastructure. Protect the design.</h2>
-      <p class="body-large">
-        Electrical work touches every room, finish, and trade. Our service model connects power,
-        lighting, controls, and planning early so decisions stay clear and installation stays clean.
+  <section class="luxury-hero luxury-services-hero" aria-labelledby="services-hero-title">
+    <figure class="luxury-hero-media">
+      <img
+        src="/images/projects/desert-home-landscape-lighting.webp"
+        width="1600"
+        height="900"
+        alt="Modern desert residence with layered facade, path, and landscape lighting"
+        fetchpriority="high"
+      />
+    </figure>
+    <div class="luxury-hero-shade" aria-hidden="true"></div>
+    <span class="luxury-hero-strike" aria-hidden="true"></span>
+    <div class="luxury-hero-copy" data-reveal="up">
+      <p class="luxury-kicker">Services</p>
+      <h1 id="services-hero-title">Power, planned into the property.</h1>
+      <p>
+        Electrical systems, lighting, controls, and charging coordinated around the architecture.
       </p>
+      <div class="luxury-actions">
+        <a class="luxury-button luxury-button-primary" href="/contact/">Plan your project</a>
+        <a class="luxury-button luxury-button-ghost" href="#service-index">Explore services</a>
+      </div>
     </div>
   </section>
 
-  <section class="service-index" aria-label="V12 Electric services">
-    {
-      services.map((service, index) => (
-        <article class="service-overview-item">
-          <figure class="service-overview-media media-frame" data-reveal="image">
-            <img src={service.image} width="1536" height="1024" alt={service.alt} loading="lazy" />
-          </figure>
-          <div class="service-overview-copy" data-reveal="up">
-            <span class="index-number">0{index + 1}</span>
-            <div class="service-overview-title">
-              <ServiceIcon name={service.icon} />
-              <p class="section-label">{service.shortTitle}</p>
+  <section class="luxury-planning" aria-labelledby="services-planning-title">
+    <div class="luxury-planning-copy" data-reveal="up">
+      <p class="luxury-kicker">One coordinated system</p>
+      <h2 id="services-planning-title">Plan the infrastructure. Protect the design.</h2>
+      <p>
+        We coordinate the loads, routing, equipment, and controls early so installation stays clean
+        and every finish remains intentional.
+      </p>
+      <ul class="luxury-discipline-list" aria-label="Coordinated electrical disciplines">
+        <li>Power</li>
+        <li>Lighting</li>
+        <li>Controls</li>
+        <li>Charging</li>
+      </ul>
+    </div>
+    <figure class="luxury-planning-media" data-reveal="image">
+      <img
+        src="/images/hero-electricians-plans.webp"
+        width="1536"
+        height="1024"
+        alt="V12 electricians reviewing architectural plans inside a new construction project"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+
+  <section id="service-index" class="luxury-service-index" aria-labelledby="service-index-title">
+    <header class="luxury-service-index-heading" data-reveal="up">
+      <h2 id="service-index-title">Every system. One standard.</h2>
+      <p>
+        From first load calculation to final commissioning, every detail is coordinated as part of
+        the property.
+      </p>
+      <a class="luxury-text-link" href="/contact/">Discuss the complete scope <span>→</span></a>
+    </header>
+
+    <div class="luxury-service-grid">
+      {
+        services.map((service, index) => (
+          <a
+            class="luxury-service-item"
+            href={`/services/${service.slug}/`}
+            aria-label={`Explore ${service.title}`}
+            data-reveal="up"
+          >
+            <figure>
+              <img src={service.image} width="1536" height="1024" alt={service.alt} loading="lazy" />
+            </figure>
+            <div class="luxury-service-item-copy">
+              <span class="luxury-index">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <span class="luxury-service-arrow" aria-hidden="true">↗</span>
             </div>
-            <h2>{service.title}</h2>
-            <p>{service.summary}</p>
-            <ul class="service-overview-scope">
-              {service.inclusions.slice(0, 3).map((item) => (
-                <li>{item.label}</li>
-              ))}
-              <li class="service-overview-scope-more">
-                +{service.inclusions.length - 3} more in a typical scope
-              </li>
-            </ul>
-            {service.slug === "lutron-lighting-controls" && <LutronCredential compact />}
-            <a class="text-link" href={`/services/${service.slug}/`}>
-              Explore this service <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
-      ))
-    }
+          </a>
+        ))
+      }
+    </div>
   </section>
 
-  <section class="capability-band section-pad">
-    <p class="section-label">Built to coordinate</p>
-    <div class="capability-list">
-      <span>Homes</span>
-      <span>Businesses</span>
-      <span>Renovations</span>
-      <span>New construction</span>
+  <section class="luxury-lutron" aria-labelledby="lutron-title">
+    <figure class="luxury-lutron-media" data-reveal="image">
+      <img
+        src="/images/featured-kitchen.webp"
+        width="1600"
+        height="1067"
+        alt="Contemporary kitchen with layered architectural, pendant, and task lighting"
+        loading="lazy"
+      />
+    </figure>
+    <div class="luxury-lutron-shade" aria-hidden="true"></div>
+    <div class="luxury-lutron-copy" data-reveal="up">
+      <p class="luxury-kicker">Signature service</p>
+      <h2 id="lutron-title">Light is planned, not placed.</h2>
+      <p>
+        Layered lighting, dimming, and Lutron controls tuned to the architecture and the rhythm of
+        the home.
+      </p>
+      <div class="luxury-lutron-credential">
+        <img
+          src="/images/brands/lutron-logo-horizontal.png"
+          width="480"
+          height="160"
+          alt="Lutron"
+          loading="lazy"
+        />
+        <span>{lutronCredential.label}</span>
+      </div>
+      <a class="luxury-text-link" href="/services/lutron-lighting-controls/">
+        Explore lighting and controls <span>→</span>
+      </a>
     </div>
+  </section>
+
+  <section class="luxury-properties" aria-labelledby="property-types-title">
+    <header data-reveal="up">
+      <h2 id="property-types-title">Built to coordinate.</h2>
+      <p>One standard of planning and finish across every type of property.</p>
+    </header>
+    <div class="luxury-property-grid">
+      {
+        propertyTypes.map((property, index) => (
+          <figure class:list={["luxury-property", { "luxury-property-active": index === 0 }]} data-reveal="image">
+            <img src={property.image} width="1600" height="1067" alt={property.alt} loading="lazy" />
+            <figcaption>{property.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+    <a class="luxury-text-link" href="/contact/">Discuss your property <span>→</span></a>
   </section>
 </InteriorLayout>
