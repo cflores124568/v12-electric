@@ -43,7 +43,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. A capacity review can account for likely additions such as EV charging, HVAC, appliances, pools, workshops, or an addition before the final scope is selected.",
     },
-  ],
+    {
+      question: "Do you work directly with builders and general contractors?",
+      answer:
+        "Yes. V12 Electric coordinates with builders, designers, and other trades through rough-in and finish, and attends coordination meetings when the schedule calls for it.",
+    },
+    {
+      question: "How is a whole-system project priced?",
+      answer:
+        "Pricing follows the scope after the walkthrough and load review. Larger projects are quoted in writing by phase so it is clear what is included at rough-in and at trim.",
+    },  ],
   "ev-charger-installation": [
     {
       question: "Can V12 Electric install Tesla and universal Level 2 chargers?",
@@ -60,7 +69,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Requirements vary by city and scope. The installation plan should account for the local permit and inspection path before work is scheduled.",
     },
-  ],
+    {
+      question: "How long does an EV charger installation take?",
+      answer:
+        "A straightforward installation is usually completed in a day. A long conduit run, a panel change, or a required upgrade adds time, and any of that is identified before scheduling.",
+    },
+    {
+      question: "Should the charger be hardwired or plugged into a 14-50 outlet?",
+      answer:
+        "It depends on the equipment and the location. Hardwiring supports higher continuous output and outdoor installations; a receptacle can make sense for portable equipment in a garage.",
+    },  ],
   "panel-service-upgrades": [
     {
       question: "How do I know whether my electrical panel needs an upgrade?",
@@ -77,7 +95,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. Current and planned loads can be evaluated together so the selected equipment supports the property instead of solving only one immediate addition.",
     },
-  ],
+    {
+      question: "How long is the power off during a panel upgrade?",
+      answer:
+        "Most of the day, though the exact window depends on the equipment, the utility, and inspection timing. The schedule is set in advance so you can plan around it.",
+    },
+    {
+      question: "Is 200-amp service always the right answer?",
+      answer:
+        "No. The right service size comes from a load calculation. Some properties are fine at 125 or 150 amps, and others need more once EV charging, HVAC, and pool equipment are counted.",
+    },  ],
   "residential-electrical": [
     {
       question: "What residential electrical work does V12 Electric handle?",
@@ -94,7 +121,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. Confirming loads, device locations, lighting, equipment, and panel capacity early helps avoid conflicts and changes after finishes are installed.",
     },
-  ],
+    {
+      question: "Do you handle small jobs, or only large projects?",
+      answer:
+        "Both. Single fixture and outlet work is welcome, and it is often scheduled alongside other items so one visit covers the whole list.",
+    },
+    {
+      question: "Will drywall need to be cut, and who patches it?",
+      answer:
+        "Routing is chosen to keep cuts as small as possible. Where access holes are needed, we identify them beforehand and confirm who is handling patch and paint.",
+    },  ],
   "commercial-electrical": [
     {
       question: "What types of commercial electrical work are available?",
@@ -111,7 +147,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. Troubleshooting isolates the failed device, connection, circuit, load, or upstream issue so the recommendation is based on the cause of the problem.",
     },
-  ],
+    {
+      question: "Can work be done after hours or on closed days?",
+      answer:
+        "Yes. Evening, early morning, and closed-day scheduling is common for commercial work where a shutdown during business hours is not workable.",
+    },
+    {
+      question: "Do you work with property managers and landlords?",
+      answer:
+        "Yes. Scope, access, and documentation can be coordinated with property managers, landlords, and tenants so everyone approves the work before it starts.",
+    },  ],
   "electrical-inspections": [
     {
       question: "What does a practical electrical inspection cover?",
@@ -128,7 +173,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. The goal is to separate immediate safety or reliability concerns from planned improvements and explain the practical next steps.",
     },
-  ],
+    {
+      question: "How long does an inspection take?",
+      answer:
+        "Most properties take one to two hours, depending on size, panel count, and how much of the wiring is accessible.",
+    },
+    {
+      question: "Is the inspection fee applied to the repair work?",
+      answer:
+        "Ask when scheduling. Where an inspection leads directly into a repair or upgrade scope, the review is credited toward that work in most cases.",
+    },  ],
   "troubleshooting-repairs": [
     {
       question: "What causes a breaker to keep tripping?",
@@ -145,7 +199,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "No. A tripping breaker may be responding to a problem elsewhere. The circuit and connected loads should be diagnosed before parts are replaced.",
     },
-  ],
+    {
+      question: "How is troubleshooting billed?",
+      answer:
+        "Diagnosis is billed for the time it takes to find the cause. Once the problem is identified, you get the repair price before any work is authorized.",
+    },
+    {
+      question: "Can the problem be found without opening walls?",
+      answer:
+        "Usually. Most faults are located at devices, terminations, and the panel. If access is needed, the location is narrowed down first so any opening is small and deliberate.",
+    },  ],
   "smart-home-wiring": [
     {
       question: "What should be planned before installing smart-home devices?",
@@ -162,7 +225,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Yes. Smart devices still depend on safe circuits, suitable boxes, correct controls, reliable power, and an electrical system with appropriate capacity.",
     },
-  ],
+    {
+      question: "Do smart switches need a neutral wire?",
+      answer:
+        "Most do. Older homes often have switch loops without a neutral, which is why the box condition is confirmed before devices are selected.",
+    },
+    {
+      question: "Do you install the devices, or only the wiring?",
+      answer:
+        "Both are possible. V12 Electric can install and connect the devices, or provide the electrical infrastructure for an integrator to commission the system.",
+    },  ],
   "lutron-lighting-controls": [
     {
       question: "What is included in Lutron lighting-control planning?",
@@ -179,7 +251,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Fixture and dimmer compatibility affects range, flicker, noise, and reliability. Coordinating them early produces more predictable lighting and scene control.",
     },
-  ],
+    {
+      question: "What is the difference between Caséta, RA3, and HomeWorks?",
+      answer:
+        "Caséta suits single rooms and smaller homes, RA3 covers whole-home control with keypads and scenes, and HomeWorks handles larger properties with deeper integration and custom programming.",
+    },
+    {
+      question: "Who sets the lighting scenes?",
+      answer:
+        "V12 Electric programs and tunes the scenes on site, at night, with you present, then labels the keypads and leaves the programming documented.",
+    },  ],
   "design-planning": [
     {
       question: "What does electrical design planning include?",
@@ -196,7 +277,16 @@ export const serviceFaqs: Record<string, readonly FaqItem[]> = {
       answer:
         "Early planning exposes capacity, access, routing, equipment, and sequencing issues while they are still easier to solve and before finished work has to change.",
     },
-  ],
+    {
+      question: "Can V12 Electric review plans drawn by someone else?",
+      answer:
+        "Yes. Plans from an architect, designer, or another contractor can be reviewed, with conflicts, omissions, and capacity concerns returned in writing.",
+    },
+    {
+      question: "When in the schedule should planning happen?",
+      answer:
+        "Before framing where possible, and no later than the pre-drywall walkthrough. Every decision made after that point costs more to change.",
+    },  ],
 };
 
 export const serviceAreaFaqs: readonly FaqItem[] = [

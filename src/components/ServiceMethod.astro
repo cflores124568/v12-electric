@@ -1,0 +1,33 @@
+---
+import type { Service } from "../data/site";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const titleId = `${service.slug}-method-title`;
+---
+
+<section class="service-method section-pad" aria-labelledby={titleId}>
+  <div class="service-method-heading" data-reveal="up">
+    <p class="section-label">How the work runs</p>
+    <h2 id={titleId}>Four steps, every time.</h2>
+    <p>
+      The scope changes from job to job. The sequence does not, so you always know what happens
+      next and what it depends on.
+    </p>
+  </div>
+
+  <ol class="service-method-list">
+    {
+      service.steps.map((step, index) => (
+        <li data-reveal="up" data-delay={String(index % 3)}>
+          <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <strong>{step.title}</strong>
+          <p>{step.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>

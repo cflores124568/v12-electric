@@ -4,6 +4,8 @@ import InteriorLayout from "../../layouts/InteriorLayout.astro";
 import ServiceHero from "../../components/ServiceHero.astro";
 import ServiceStatement from "../../components/ServiceStatement.astro";
 import ServiceScope from "../../components/ServiceScope.astro";
+import ServiceSignals from "../../components/ServiceSignals.astro";
+import ServiceMethod from "../../components/ServiceMethod.astro";
 import ServiceProof from "../../components/ServiceProof.astro";
 import ServiceNav from "../../components/ServiceNav.astro";
 import LutronCredential from "../../components/LutronCredential.astro";
@@ -42,7 +44,7 @@ const serviceSchema = {
     name: `${service.title} scope`,
     itemListElement: service.inclusions.map((item) => ({
       "@type": "Offer",
-      itemOffered: { "@type": "Service", name: item },
+      itemOffered: { "@type": "Service", name: item.label, description: item.detail },
     })),
   },
 };
@@ -50,9 +52,9 @@ const serviceSchema = {
 // Each layout runs the same blocks in its own order so consecutive service
 // pages never unfold the same way.
 const sectionOrder = {
-  split: ["statement", "scope", "faq", "proof"],
-  cinematic: ["scope", "statement", "proof", "faq"],
-  ledger: ["statement", "scope", "proof", "faq"],
+  split: ["statement", "scope", "signals", "method", "faq", "proof"],
+  cinematic: ["scope", "statement", "signals", "method", "proof", "faq"],
+  ledger: ["statement", "signals", "scope", "method", "proof", "faq"],
 }[service.layout];
 ---
 
@@ -79,6 +81,8 @@ const sectionOrder = {
       <Fragment>
         {block === "statement" && <ServiceStatement service={service} />}
         {block === "scope" && <ServiceScope service={service} />}
+        {block === "signals" && <ServiceSignals service={service} />}
+        {block === "method" && <ServiceMethod service={service} />}
         {block === "proof" && <ServiceProof service={service} />}
         {block === "faq" && (
           <FaqSection

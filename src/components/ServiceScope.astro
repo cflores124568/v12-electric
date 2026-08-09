@@ -21,7 +21,10 @@ const titleId = `${scopeId}-title`;
         {service.inclusions.map((item, index) => (
           <li data-reveal="up" data-delay={String(index % 3)}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item}</strong>
+            <div>
+              <strong>{item.label}</strong>
+              <p>{item.detail}</p>
+            </div>
           </li>
         ))}
       </ul>
@@ -40,7 +43,10 @@ const titleId = `${scopeId}-title`;
         {service.inclusions.map((item, index) => (
           <li data-reveal="up">
             <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item}</strong>
+            <div>
+              <strong>{item.label}</strong>
+              <p>{item.detail}</p>
+            </div>
           </li>
         ))}
       </ol>
@@ -59,7 +65,10 @@ const titleId = `${scopeId}-title`;
         {service.inclusions.map((item, index) => (
           <div data-reveal="up">
             <dt>{String(index + 1).padStart(2, "0")}</dt>
-            <dd>{item}</dd>
+            <dd>
+              <strong>{item.label}</strong>
+              <p>{item.detail}</p>
+            </dd>
           </div>
         ))}
       </dl>

@@ -1858,10 +1858,10 @@ blockquote {
 .inclusion-list li {
   display: grid;
   grid-template-columns: 4rem 1fr;
-  align-items: center;
+  align-items: start;
   gap: 1.5rem;
   min-height: 7rem;
-  padding: 1.5rem 2rem;
+  padding: 1.75rem 2rem;
   border-bottom: 1px solid var(--steel);
 }
 
@@ -1874,12 +1874,22 @@ blockquote {
   font-family: var(--display);
   font-size: 2.6rem;
   font-style: normal;
+  line-height: 1;
 }
 
 .inclusion-list strong {
+  display: block;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+.inclusion-list p {
+  max-width: 34rem;
+  margin: 0.7rem 0 0;
+  color: rgb(20 36 51 / 72%);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .service-proof {
@@ -5636,11 +5646,15 @@ blockquote {
 
 .home-shell .service-item,
 .home-shell .service-item:first-child {
-  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   grid-row: auto;
-  min-height: 15.5rem;
+  min-height: 0;
+  overflow: hidden;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  background: var(--white);
 }
 
 .home-shell .service-item:nth-child(3n) {
@@ -5654,17 +5668,24 @@ blockquote {
 .home-shell .service-image,
 .home-shell .service-item:first-child .service-image,
 .home-shell .service-item:not(:first-child) .service-image {
-  display: none;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-shell .service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home-shell .service-copy {
-  min-height: 15.5rem;
+  flex: 1;
+  min-height: 14rem;
   padding: clamp(1.4rem, 2.5vw, 2.4rem);
-}
-
-.home-shell .service-index {
-  margin-bottom: 1.15rem !important;
-  font-size: 0.64rem !important;
 }
 
 .home-shell .service-copy h3 {
@@ -5684,6 +5705,17 @@ blockquote {
   font-size: 0.68rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.home-shell .service-copy .text-link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.home-shell .service-item:focus-within {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 
 .home-trust {
@@ -5802,7 +5834,7 @@ blockquote {
   .home-shell .service-item,
   .home-shell .service-item:nth-child(2n),
   .home-shell .service-item:nth-child(3n) {
-    min-height: 13.5rem;
+    min-height: 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
@@ -5812,7 +5844,7 @@ blockquote {
   }
 
   .home-shell .service-copy {
-    min-height: 13.5rem;
+    min-height: 12.5rem;
   }
 
   .home-trust-list {
@@ -6780,7 +6812,7 @@ blockquote {
 .service-scope-index-list li {
   display: grid;
   grid-template-columns: clamp(3.5rem, 7vw, 7rem) minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(1.2rem, 4vw, 4rem);
   padding: clamp(1.4rem, 2.4vw, 2.3rem) var(--gutter);
   border-bottom: 1px solid var(--line);
@@ -6798,10 +6830,20 @@ blockquote {
 }
 
 .service-scope-index-list strong {
+  display: block;
   font-size: clamp(1.02rem, 1.7vw, 1.55rem);
   font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1.15;
   text-transform: uppercase;
+}
+
+.service-scope-index-list p {
+  max-width: 48rem;
+  margin: 0.75rem 0 0;
+  color: rgb(20 36 51 / 72%);
+  font-size: clamp(0.94rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
 }
 
 .service-scope-ledger {
@@ -6848,8 +6890,193 @@ blockquote {
 
 .service-scope-ledger-list dd {
   margin: 0;
+}
+
+.service-scope-ledger-list dd strong {
+  display: block;
   font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 400;
   letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.service-scope-ledger-list dd p {
+  max-width: 46rem;
+  margin: 0.6rem 0 0;
+  color: rgb(20 36 51 / 72%);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* Signals + method
+   Two blocks shared by all three service stagings: the reasons people call,
+   and the sequence the job actually follows. Signals inverts on cinematic
+   pages so the dark run through that page stays unbroken. */
+
+.service-signals {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  background: var(--white);
+}
+
+.service-signals[data-tone="dark"] {
+  background: var(--service-ink);
+  color: var(--service-ivory);
+}
+
+.service-signals-heading {
+  align-self: start;
+}
+
+.service-signals-heading h2 {
+  max-width: 15ch;
+  font-family: var(--body);
+  font-size: clamp(1.7rem, 2.7vw, 2.9rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-signals[data-tone="dark"] .section-label {
+  color: var(--service-spark);
+}
+
+.service-signals-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.service-signals[data-tone="dark"] .service-signals-list {
+  border-top-color: rgb(244 240 232 / 24%);
+}
+
+.service-signals-list li {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  padding: clamp(1.3rem, 2vw, 1.8rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.service-signals[data-tone="dark"] .service-signals-list li {
+  border-bottom-color: rgb(244 240 232 / 24%);
+}
+
+.service-signals-list li:nth-child(odd) {
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+  border-right: 1px solid var(--line);
+}
+
+.service-signals[data-tone="dark"] .service-signals-list li:nth-child(odd) {
+  border-right-color: rgb(244 240 232 / 24%);
+}
+
+.service-signals-list li:nth-child(even) {
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+}
+
+.service-signals-list svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-top: 0.35rem;
+  fill: var(--blue);
+}
+
+.service-signals[data-tone="dark"] .service-signals-list svg {
+  fill: var(--service-spark);
+}
+
+.service-signals-list p {
+  margin: 0;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+}
+
+.service-method {
+  background: var(--mist);
+}
+
+.service-signals[data-tone="dark"] + .service-method {
+  background: var(--white);
+}
+
+.service-method-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: end;
+  gap: 1rem clamp(2rem, 6vw, 6rem);
+}
+
+.service-method-heading .section-label {
+  grid-column: 1 / -1;
+}
+
+.service-method-heading h2 {
+  max-width: 12ch;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.98;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.service-method-heading p {
+  max-width: 36rem;
+  margin: 0;
+  color: rgb(20 36 51 / 74%);
+  line-height: 1.8;
+}
+
+.service-method-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(2.5rem, 4vw, 4rem) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--steel);
+  list-style: none;
+  counter-reset: none;
+}
+
+.service-method-list li {
+  padding: clamp(1.5rem, 2.4vw, 2.2rem) clamp(1.2rem, 2vw, 2rem) clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.service-method-list li + li {
+  border-left: 1px solid var(--steel);
+}
+
+.service-method-list span {
+  display: block;
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  line-height: 1;
+}
+
+.service-method-list strong {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.service-method-list p {
+  margin: 0.8rem 0 0;
+  color: rgb(20 36 51 / 74%);
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .service-proof-overlay {
@@ -7047,6 +7274,7 @@ blockquote {
   .service-statement-band,
   .service-statement-rule,
   .service-scope-ledger,
+  .service-signals,
   .service-proof-inset {
     grid-template-columns: 1fr;
     gap: 1.75rem;
@@ -7055,13 +7283,36 @@ blockquote {
   .service-statement-band h2,
   .service-scope-index-heading h2,
   .service-scope-ledger-heading h2,
+  .service-signals-heading h2,
   .next-service-rail-heading h2 {
     max-width: 16ch;
   }
 
   .service-scope-index-heading,
+  .service-method-heading,
   .next-service-rail-heading {
     grid-template-columns: 1fr;
+  }
+
+  .service-method-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-method-list li {
+    padding-inline: 0 clamp(1.2rem, 3vw, 2.5rem);
+  }
+
+  .service-method-list li + li {
+    border-left: 0;
+  }
+
+  .service-method-list li:nth-child(even) {
+    padding-inline: clamp(1.2rem, 3vw, 2.5rem) 0;
+    border-left: 1px solid var(--steel);
+  }
+
+  .service-method-list li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--steel);
   }
 
   .service-proof-inset {
@@ -7105,9 +7356,32 @@ blockquote {
   .service-statement-rule-copy h2,
   .service-scope-index-heading h2,
   .service-scope-ledger-heading h2,
+  .service-signals-heading h2,
+  .service-method-heading h2,
   .next-service-rail-heading h2 {
     max-width: 100%;
     font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  }
+
+  .service-signals-list,
+  .service-method-list {
+    grid-template-columns: 1fr;
+  }
+
+  .service-signals-list li:nth-child(odd) {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .service-signals-list li:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .service-method-list li,
+  .service-method-list li:nth-child(even) {
+    padding-inline: 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--steel);
   }
 
   .service-scope-index-list li {

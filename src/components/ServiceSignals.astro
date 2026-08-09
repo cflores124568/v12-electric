@@ -1,0 +1,39 @@
+---
+import type { Service } from "../data/site";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const titleId = `${service.slug}-signals-title`;
+// Cinematic pages run a dark statement band, so the signals block inverts to
+// keep that page reading as one continuous sequence.
+const tone = service.layout === "cinematic" ? "dark" : "light";
+---
+
+<section
+  class="service-signals section-pad"
+  data-tone={tone}
+  aria-labelledby={titleId}
+>
+  <div class="service-signals-heading" data-reveal="up">
+    <p class="section-label">When to call</p>
+    <h2 id={titleId}>{service.signalsTitle}</h2>
+  </div>
+
+  <ul class="service-signals-list">
+    {
+      service.signals.map((signal, index) => (
+        <li data-reveal="up" data-delay={String(index % 3)}>
+          <span aria-hidden="true">
+            <svg viewBox="0 0 16 16" role="presentation">
+              <path d="M9.4 0 2 9.2h4.3L5.6 16 14 6.4H9.1L9.4 0Z" />
+            </svg>
+          </span>
+          <p>{signal}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
