@@ -6915,12 +6915,14 @@ blockquote {
 
 .service-signals {
   display: grid;
+  border-top: 1px solid var(--line);
   grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 1fr);
   gap: clamp(2.5rem, 7vw, 7rem);
   background: var(--white);
 }
 
 .service-signals[data-tone="dark"] {
+  border-top: 0;
   background: var(--service-ink);
   color: var(--service-ivory);
 }
@@ -7001,6 +7003,7 @@ blockquote {
 }
 
 .service-method {
+  border-top: 1px solid var(--line);
   background: var(--mist);
 }
 
