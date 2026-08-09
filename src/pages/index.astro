@@ -83,13 +83,24 @@ const homepageServices = allServices.slice(0, 6);
         </div>
 
         <div class="hero-media" data-reveal="image">
-          <img
-            src="/images/hero-bighorn-night.webp"
-            width="1717"
-            height="916"
-            alt="A contemporary Palm Desert estate with layered architectural and landscape lighting at night"
-            fetchpriority="high"
-          />
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/images/hero-desert-night-poster.webp"
+            aria-label="A contemporary Palm Desert estate with layered architectural and landscape lighting at night"
+          >
+            <source src="/videos/hero-desert-night.mp4" type="video/mp4" />
+            <img
+              src="/images/hero-bighorn-night.webp"
+              width="1717"
+              height="916"
+              alt="A contemporary Palm Desert estate with layered architectural and landscape lighting at night"
+              fetchpriority="high"
+            />
+          </video>
         </div>
       </section>
 

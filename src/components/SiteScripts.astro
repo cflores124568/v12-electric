@@ -26,6 +26,13 @@
   const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  if (reduceMotion) {
+    document.querySelectorAll<HTMLVideoElement>(".hero-media video").forEach((video) => {
+      video.removeAttribute("autoplay");
+      video.pause();
+    });
+  }
+
   if (reduceMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   } else {
