@@ -1327,6 +1327,30 @@ blockquote {
   line-height: 1.7;
 }
 
+.footer-yelp {
+  display: inline-flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+
+.footer-yelp img {
+  width: auto;
+  height: 1.35rem;
+  object-fit: contain;
+}
+
+.footer-yelp span {
+  color: rgb(244 241 232 / 72%);
+  font-size: 0.78rem;
+  transition: color 200ms ease;
+}
+
+.footer-yelp:hover span,
+.footer-yelp:focus-visible span {
+  color: #fff;
+}
+
 .footer-brand .footer-license {
   margin-top: auto;
   padding-top: 2.5rem;

@@ -787,6 +787,13 @@ export const projects = [
   },
 ] as const;
 
+export const yelpProfile = {
+  url: "https://www.yelp.com/biz/v12-palm-desert",
+  label: "Read reviews on Yelp",
+} as const;
+
+export const socialProfiles = [yelpProfile.url] as const;
+
 export const navItems = [
   { label: "Services", href: "/services/" },
   { label: "Service Areas", href: "/service-areas/" },

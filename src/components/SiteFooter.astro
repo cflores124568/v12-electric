@@ -1,5 +1,6 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
+import { yelpProfile } from "../data/site";
 ---
 
 <footer class="site-footer">
@@ -7,6 +8,15 @@ import BrandLogo from "./BrandLogo.astro";
     <div class="footer-brand">
       <BrandLogo />
       <p>Power, lighting, and electrical planning for Coachella Valley properties.</p>
+      <a
+        class="footer-yelp"
+        href={yelpProfile.url}
+        target="_blank"
+        rel="noopener"
+      >
+        <img src="/images/brands/yelp-logo-dark-bg.svg" width="1000" height="385" alt="Yelp" />
+        <span>{yelpProfile.label} <span aria-hidden="true">↗</span></span>
+      </a>
       <p class="footer-license">California contractor license #1114737</p>
     </div>
 
