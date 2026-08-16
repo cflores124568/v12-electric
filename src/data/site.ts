@@ -795,3 +795,5 @@ export const navItems = [
   { label: "Process", href: "/process/" },
   { label: "Contact", href: "/contact/" },
 ] as const;
+
+export const googleReviewUrl = "https://g.page/r/CaT51ChcH1bCEBM/review";

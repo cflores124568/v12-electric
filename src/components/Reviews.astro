@@ -1,5 +1,6 @@
 ---
 import { reviewProof } from "../data/reviews";
+import { googleReviewUrl } from "../data/site";
 
 const [featuredReview, ...remainingReviews] = reviewProof;
 const supportingReviews = remainingReviews.slice(0, 3);
@@ -47,6 +48,9 @@ const supportingReviews = remainingReviews.slice(0, 3);
     <div class="contact-prompt-actions">
       <a class="button button-outline" href="tel:+17605676593">Call <span aria-hidden="true">→</span></a>
       <a class="button button-outline" href="sms:+17605676593">Text <span aria-hidden="true">→</span></a>
+      <a class="button button-outline" href={googleReviewUrl} target="_blank" rel="noreferrer">
+        Leave a Google review <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </aside>
 </section>

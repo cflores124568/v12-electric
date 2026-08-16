@@ -1,5 +1,6 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
+import { googleReviewUrl } from "../data/site";
 ---
 
 <footer class="site-footer">
@@ -16,6 +17,9 @@ import BrandLogo from "./BrandLogo.astro";
       <p>Tell us what you are working on, where the property is, and what needs attention.</p>
       <div class="footer-actions">
         <a class="footer-phone" href="tel:+17605676593">Call (760) 567-6593</a>
+        <a class="footer-phone" href={googleReviewUrl} target="_blank" rel="noreferrer">
+          Leave a Google review <span aria-hidden="true">↗</span>
+        </a>
         <a class="footer-contact-link" href="/contact/">
           Start a conversation <span aria-hidden="true">↗</span>
         </a>
