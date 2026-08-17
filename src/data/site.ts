@@ -5,14 +5,14 @@ export const services = [
     title: "Electrical Systems",
     shortTitle: "Power",
     layout: "split",
-    statementTitle: "Built into the plan, not added at the end.",
-    summary: "Panels, wiring, and complete electrical systems planned around the way your space works.",
+    statementTitle: "Built in, not bolted on.",
+    summary: "Panels, wiring, and complete electrical systems for the whole property.",
     image: "/images/services/electrical-systems.webp",
     alt: "Organized parallel conduit runs inside a new desert construction wall",
     proofImage: "/images/electrical-systems.webp",
     proofAlt: "Electrician completing a carefully organized electrical panel installation",
     intro:
-      "A dependable electrical system starts with clear planning. We coordinate loads, equipment, routing, and future needs before installation begins.",
+      "Service, panels, branch circuits, and equipment runs for a whole property. We read the plans, walk the framing with you, and mark device locations on the studs — because it costs nothing to move a box at that stage and real money after paint.",
     inclusions: [
       {
         label: "Service and panel upgrades",
@@ -70,7 +70,7 @@ export const services = [
         body: "Circuits are tested, the panel directory is written out clearly, and you get a plain explanation of what changed.",
       },
     ],
-    closing: "Power should feel effortless because the planning behind it was thorough.",
+    closing: "Every change is cheap until the walls close.",
   },
   {
     slug: "ev-charger-installation",
@@ -85,7 +85,7 @@ export const services = [
     proofImage: "/images/proof/ev-charger-hardwired-240.webp",
     proofAlt: "Hardwired Level 2 charger with conduit, disconnect, and a labeled 240-volt junction box",
     intro:
-      "An EV charger is only as useful as the electrical system behind it. We review the existing service, choose the right circuit and route, and coordinate the details that make daily charging practical.",
+      "The wall connector takes an hour. What takes judgment is whether your service can carry 48 amps continuous with the AC running in August. We run the load calculation first, then tell you whether it is a straight install, a load-management setup, or a service upgrade — with the price for each before you commit to anything.",
     inclusions: [
       {
         label: "Tesla and universal Level 2 chargers",
@@ -143,7 +143,7 @@ export const services = [
         body: "We energize the charger, confirm a full-rate charge on your vehicle, and walk you through the settings.",
       },
     ],
-    closing: "Charging should fit the property and the way you actually use it.",
+    closing: "Charging should fit the driveway you actually park in.",
   },
   {
     slug: "panel-service-upgrades",
@@ -158,7 +158,7 @@ export const services = [
     proofImage: "/images/proof/service-upgrade.webp",
     proofAlt: "Open service equipment with organized conductors and upgraded components",
     intro:
-      "A panel upgrade is a planning exercise as much as an installation. We look at current loads, future equipment, service capacity, routing, and utility requirements before recommending the right scope.",
+      "Panel upgrades get sold on fear. We would rather show you the numbers. We open the panel, document what is in it, add up the real demand, and tell you whether you need 200 amps, a subpanel, or just a few corrections. If a subpanel does it, that is what goes in writing.",
     inclusions: [
       {
         label: "Panel and service replacement",
@@ -216,7 +216,7 @@ export const services = [
         body: "The new service is tested under load, labeled, and photographed so you have a record of what was installed.",
       },
     ],
-    closing: "Modern capacity starts with understanding what the property already carries.",
+    closing: "The right service size comes off a load calculation, not a sales sheet.",
   },
   {
     slug: "residential-electrical",
@@ -231,7 +231,7 @@ export const services = [
     proofImage: "/images/proof/chandelier-installation.webp",
     proofAlt: "Two-story chandelier installation in a finished residential interior",
     intro:
-      "Homes need electrical work that is safe, considered, and respectful of the finishes around it. We handle everyday repairs and larger remodel scopes with the same attention to access and cleanup.",
+      "Homes here tend to fall in two camps: mid-century places with two-prong outlets and cloth wiring, and newer builds with plenty of capacity and a panel nobody ever labeled. Either way, we plan the route before we cut, cover the floors, and keep the openings as small as the job allows.",
     inclusions: [
       {
         label: "Remodel and addition wiring",
@@ -289,7 +289,7 @@ export const services = [
         body: "Devices are tested, the panel directory is updated, and we show you exactly what changed before we leave.",
       },
     ],
-    closing: "The best residential electrical work disappears into the way the home is used.",
+    closing: "Good residential work disappears into the way the house gets used.",
   },
   {
     slug: "commercial-electrical",
@@ -450,7 +450,7 @@ export const services = [
     proofImage: "/images/proof/reviews/brian-l-linear-pendant.webp",
     proofAlt: "Linear pendant light repaired and installed for a customer project",
     intro:
-      "A quick repair is only useful if it solves the real problem. We isolate the failed device, load, connection, or upstream issue before choosing the right correction.",
+      "A breaker that trips is doing its job. The question is what it is protecting you from. We take the history, split the circuit, and meter it until the fault is proven instead of guessed. Then you get the cause in plain language, the repair options, and a price for each before anything gets replaced.",
     inclusions: [
       {
         label: "Breaker and outlet failures",
@@ -508,7 +508,7 @@ export const services = [
         body: "The correction is made and the circuit is loaded and re-tested to confirm the symptom is actually gone.",
       },
     ],
-    closing: "The right repair starts with a diagnosis you can understand.",
+    closing: "Swapping parts until it stops is not a diagnosis.",
   },
   {
     slug: "smart-home-wiring",
@@ -596,7 +596,7 @@ export const services = [
     proofImage: "/images/proof/ceiling-lighting.webp",
     proofAlt: "Custom ceiling lighting installation with multiple fixture layers",
     intro:
-      "Good lighting is both technical and emotional. We coordinate fixture locations, switching, dimming, controls, color temperature, and light levels as one complete system.",
+      "Lighting fails in predictable ways: LEDs that buzz on the wrong dimmer, five unmarked switches by the front door, and a patio running off a completely separate system. As a certified Lutron installer, Eric specs the fixtures and the control system together — Caséta, RA3, or HomeWorks — wires the loads by scene, and sets the levels on site at night with you standing there.",
     inclusions: [
       {
         label: "Lutron lighting and controls",
@@ -654,7 +654,7 @@ export const services = [
         body: "After trim, we set levels on site at night with you present, then label keypads and leave the programming documented.",
       },
     ],
-    closing: "The right light makes the architecture, materials, and daily experience work together.",
+    closing: "Lighting gets judged at night, so that is when we tune it.",
   },
   {
     slug: "design-planning",
@@ -662,14 +662,14 @@ export const services = [
     title: "Design & Planning",
     shortTitle: "Design",
     layout: "ledger",
-    statementTitle: "Solved before the walls close.",
-    summary: "Thoughtful electrical planning coordinated with owners, builders, and design teams from day one.",
+    statementTitle: "Decide it before it is framed.",
+    summary: "Electrical planning worked out with owners, builders, and designers before framing.",
     image: "/images/design-planning.webp",
     alt: "Electrical design being marked on an architectural plan",
     proofImage: "/images/hero-electricians-plans.webp",
     proofAlt: "Electricians coordinating a new construction project from marked-up plans",
     intro:
-      "The best time to solve an electrical problem is before the walls close. We translate the way you will use the space into a coordinated, buildable plan.",
+      "We read the drawing set, come back with the conflicts, and count the loads nobody put on the plans yet — the pool, the casita, the second EV, the solar that shows up three years later. Then we mark it on site and walk it with you.",
     inclusions: [
       {
         label: "Plan and specification review",
@@ -727,7 +727,7 @@ export const services = [
         body: "The result is a coordinated scope the crew can install and the inspector can follow without interpretation.",
       },
     ],
-    closing: "Early coordination protects the design intent and keeps installation moving.",
+    closing: "Every decision after the pre-drywall walk costs money to change.",
   },
 ] as const;
 
@@ -748,42 +748,42 @@ export const projects = [
     image: "/images/projects/desert-home-landscape-lighting.webp",
     alt: "Modern desert home at dusk with facade, step, and landscape lighting and an EV charging pedestal",
     description:
-      "Facade, path, and step lighting tied together with a driveway charging pedestal.",
+      "Facade, path, and step lighting on one control layer, plus a charging pedestal at the driveway.",
   },
   {
     title: "Layered Kitchen Lighting",
     category: "Lighting + Controls",
     image: "/images/projects/kitchen-pendant-lighting.webp",
     alt: "Contemporary kitchen with pendant fixtures over the island and recessed ceiling lighting",
-    description: "Ambient, task, and decorative lighting coordinated as a single system.",
+    description: "Ambient, task, and pendant layers on separate dimmers, tuned at night.",
   },
   {
     title: "Home EV Charging",
     category: "EV charging",
     image: "/images/projects/ev-charger-desert.webp",
     alt: "Wall-mounted EV charging connector at a desert home with a vehicle parked alongside",
-    description: "A dedicated circuit and wall connector placed for how the driveway actually gets used.",
+    description: "A 60-amp circuit and a wall connector placed where the car actually parks.",
   },
   {
     title: "Service & Panel Verification",
     category: "Electrical Systems",
     image: "/images/projects/panel-verification.webp",
     alt: "Electrician measuring voltage at a panel's main lugs with a Fluke tester",
-    description: "A cleaner, safer electrical backbone, measured and confirmed before handoff.",
+    description: "Voltage checked at the main lugs and recorded before handoff.",
   },
   {
     title: "New-Build Coordination",
     category: "Design & Planning",
     image: "/images/projects/new-build-conduit.webp",
     alt: "Neatly bent conduit runs and a junction box installed before wall finishes",
-    description: "Careful routing and trade coordination before the walls close.",
+    description: "Conduit run and boxes set before drywall, walked with the builder.",
   },
   {
     title: "Commercial Rough-In",
     category: "Commercial",
     image: "/images/projects/commercial-rough-in.webp",
     alt: "Labeled junction boxes and flexible conduit runs during a commercial rough-in",
-    description: "Every circuit labeled at rough-in so the next trade and the next tech both know what is what.",
+    description: "Every circuit labeled at rough-in, so the next trade is not guessing.",
   },
 ] as const;
 
@@ -796,4 +796,17 @@ export const navItems = [
   { label: "Contact", href: "/contact/" },
 ] as const;
 
-export const googleReviewUrl = "https://g.page/r/CaT51ChcH1bCEBM/review";
+export const business = {
+  name: "V12 Electric",
+  ownerName: "Eric",
+  formerName: "TruLuxe Electric",
+  licenseNumber: "1114737",
+  licenseLabel: "California contractor license #1114737",
+  phone: "+17605676593",
+  phoneDisplay: "(760) 567-6593",
+  googleReviewUrl: "https://g.page/r/CaT51ChcH1bCEBM/review",
+  serviceAreaSummary:
+    "Palm Springs, Cathedral City, Desert Hot Springs, Rancho Mirage, Palm Desert, Indian Wells, La Quinta, Indio, and Coachella",
+} as const;
+
+export const googleReviewUrl = business.googleReviewUrl;

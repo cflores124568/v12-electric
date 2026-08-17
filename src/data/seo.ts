@@ -308,7 +308,7 @@ export const serviceAreaFaqs: readonly FaqItem[] = [
   {
     question: "What if the property sits outside these nine cities?",
     answer:
-      "Send the address and a short description of the work. V12 Electric will confirm whether the property is serviceable before anything is scheduled.",
+      "Send the address and a short description of the work. V12 Electric will confirm whether it is close enough to cover before anything is scheduled.",
   },
 ] as const;
 

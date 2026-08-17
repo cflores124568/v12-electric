@@ -436,6 +436,7 @@ blockquote {
 
 .intro-split .body-large,
 .service-detail-intro .body-large,
+.about-statement .body-large,
 .about-grid-copy .body-large,
 .process-intro .body-large,
 .process-collaboration .body-large,
@@ -5791,14 +5792,6 @@ blockquote {
 
 .home-trust-list article:nth-last-child(-n + 2) {
   border-bottom: 0;
-}
-
-.home-trust-index {
-  margin-bottom: 1.6rem;
-  color: var(--blue);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
 }
 
 .home-trust-list h3 {

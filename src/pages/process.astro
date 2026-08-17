@@ -5,23 +5,23 @@ import PageHero from "../components/PageHero.astro";
 const steps = [
   {
     number: "01",
-    title: "Discover",
-    copy: "We learn how the space will be used, review existing conditions, and define the project priorities.",
+    title: "We come look",
+    copy: "We walk the property, pull the dead front, and see what is already on the panel. Repair calls start with a meter. Planned work starts with a walk through the rooms.",
   },
   {
     number: "02",
-    title: "Coordinate",
-    copy: "We align power, lighting, equipment, controls, plans, and trade dependencies before work begins.",
+    title: "In writing",
+    copy: "Scope, materials, price, and what is not included. Permit path if the job needs one. Nothing starts until you have read it.",
   },
   {
     number: "03",
-    title: "Build",
-    copy: "Installation moves forward with clean routing, clear communication, and respect for the surrounding work.",
+    title: "We do the work",
+    copy: "Agreed schedule, floors covered, cuts kept small. If something behind the wall changes the price, you hear it before we keep going.",
   },
   {
     number: "04",
-    title: "Verify",
-    copy: "We test the system, review the finished work, and walk through the result with the project team.",
+    title: "Test and label",
+    copy: "Every circuit loaded and verified, the directory typed, and a walkthrough so you know exactly what changed.",
   },
 ] as const;
 
@@ -42,7 +42,7 @@ const processSchema = {
 
 <InteriorLayout
   title="Electrical Project Process | V12 Electric"
-  description="See how V12 Electric moves electrical repairs, upgrades, and planned projects through discovery, coordination, installation, testing, and handoff."
+  description="How V12 Electric runs a job: we look at it, put the price in writing, do the work, then test and label it. Same order for planned and urgent work."
   image="/images/proof/process-hero-test.webp"
   imageAlt="Electrician testing an energized circuit with a circuit tracer"
   breadcrumbs={[{ name: "Process", path: "/process/" }]}
@@ -50,20 +50,21 @@ const processSchema = {
   active="process"
 >
   <PageHero
-    eyebrow="Our process"
-    title="From first call to final test."
-    description="A practical electrical process for repairs, upgrades, and planned projects."
+    eyebrow="How we work"
+    title="What actually happens."
+    description="Assessment, a written estimate, then the work. Same order every time — planned or urgent."
     image="/images/proof/process-hero-test.webp"
     alt="Electrician testing an energized circuit with a Klein circuit tracer"
   />
 
   <section class="process-intro section-pad">
-    <p class="section-label" data-reveal="up">What happens next</p>
+    <p class="section-label" data-reveal="up">Before anything starts</p>
     <div data-reveal="up">
-      <h2>Know the condition, the scope, and the next step.</h2>
+      <h2>You will know the price before we start.</h2>
       <p class="body-large">
-        We start with the existing conditions and the work you need. From there, we coordinate the
-        installation, verify the result, and make sure you know what has been completed.
+        Every planned job runs the same way: we come look, we write it up, you decide. Urgent calls
+        run the same way on a shorter clock — we find the cause, tell you what the fix costs, and
+        wait for a yes before we open anything up.
       </p>
     </div>
   </section>
@@ -93,17 +94,17 @@ const processSchema = {
       />
     </figure>
     <div class="section-pad" data-reveal="up">
-      <p class="section-label">Collaboration</p>
-      <h2>Clear coordination with the people on the project.</h2>
+      <p class="section-label">Working with your team</p>
+      <h2>Builders, designers, and the other trades.</h2>
       <p class="body-large">
-        We coordinate with homeowners, builders, designers, architects, and other trades so the
-        electrical work is ready when the project needs it.
+        On new construction and remodels we are in the meetings, not waiting on a phone call.
+        Electrical answers land when framing needs them, not after drywall.
       </p>
     </div>
   </section>
 
   <section class="handoff-band section-pad">
     <p class="section-label">The handoff</p>
-    <h2>Tested. Explained. Ready to use.</h2>
+    <h2>Tested. Labeled. Explained.</h2>
   </section>
 </InteriorLayout>
