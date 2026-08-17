@@ -1,0 +1,47 @@
+---
+import InteriorLayout from "../layouts/InteriorLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { business, navItems } from "../data/site";
+
+const { phone, phoneDisplay } = business;
+---
+
+<InteriorLayout
+  title="Page Not Found | V12 Electric"
+  description="That page is no longer here. Find V12 Electric services, service areas, and contact details for electrical work across the Coachella Valley."
+  image="/images/design-planning.webp"
+  imageAlt="Electrical design marked on an architectural plan"
+  noIndex={true}
+  showCta={false}
+>
+  <PageHero
+    eyebrow="404"
+    title="This circuit is dead."
+    description="The page you asked for has been moved or retired. Everything else is one line below."
+    image="/images/design-planning.webp"
+    alt="Electrical design marked on an architectural plan"
+  />
+
+  <section class="not-found section-pad">
+    <h2>Where to go next</h2>
+    <ul class="not-found-links">
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p>
+      If you were looking for something specific, call and we will point you to it or just handle
+      it on the phone.
+    </p>
+
+    <div class="button-row">
+      <a class="button button-primary" href={`tel:${phone}`}>Call {phoneDisplay}</a>
+      <a class="button button-outline" href="/">Back to home</a>
+    </div>
+  </section>
+</InteriorLayout>

@@ -3961,6 +3961,52 @@ blockquote {
   text-underline-offset: 0.2em;
 }
 
+.not-found {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.not-found h2 {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.not-found-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+  margin: 0 0 2.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.not-found-links a {
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.not-found-links a:hover,
+.not-found-links a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.not-found p {
+  max-width: 64ch;
+  color: rgb(20 36 51 / 74%);
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
 @media (max-width: 900px) {
   .service-area-directory,
   .proof-intro,
