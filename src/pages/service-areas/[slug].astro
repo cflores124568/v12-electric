@@ -11,18 +11,16 @@ import { services } from "../../data/site";
 import { toFaqSchema } from "../../data/seo";
 
 export const getStaticPaths = (() =>
-  serviceAreaCities.map((city, cityIndex) => ({
+  serviceAreaCities.map((city) => ({
     params: { slug: city.slug },
-    props: { city, cityIndex },
+    props: { city },
   }))) satisfies GetStaticPaths;
 
 type City = (typeof serviceAreaCities)[number];
-const { city, cityIndex } = Astro.props as { city: City; cityIndex: number };
+const { city } = Astro.props as { city: City };
 
 const serviceBySlug = Object.fromEntries(services.map((service) => [service.slug, service]));
 const localServices = city.serviceSlugs.map((slug) => serviceBySlug[slug]).filter(Boolean);
-const cityNumber = String(cityIndex + 1).padStart(2, "0");
-const cityTotal = String(serviceAreaCities.length).padStart(2, "0");
 const nearbyCities = serviceAreaCities.filter((area) => area.slug !== city.slug);
 const contactHref = `/contact/?city=${city.slug}`;
 const title = `${city.city} Electrician | V12 Electric`;
@@ -89,10 +87,6 @@ const citySchema = {
         </figure>
 
         <div class="city-hero-copy">
-          <p class="city-sequence" data-reveal="up">
-            <span>City</span> {cityNumber} / {cityTotal}
-          </p>
-
           <div class="city-eyebrow" data-reveal="up">
             <ServiceIcon name="power" />
             <p>{city.city} electrician</p>
@@ -128,7 +122,6 @@ const citySchema = {
       <section class="city-intro section-pad" aria-labelledby="city-intro-title">
         <div class="city-intro-aside" data-reveal="up">
           <p class="section-label">Electrical work in {city.city}</p>
-          <span aria-hidden="true">{cityNumber}</span>
         </div>
         <div class="city-intro-copy" data-reveal="up">
           <h2 id="city-intro-title">The property comes before the parts list.</h2>

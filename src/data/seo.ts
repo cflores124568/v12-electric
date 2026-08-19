@@ -306,7 +306,7 @@ export const serviceAreaFaqs: readonly FaqItem[] = [
       "The code is the same valley-wide, but the properties are not. Mid-century remodels, newer gated communities, and working commercial spaces each bring different panel conditions, routing constraints, and equipment expectations.",
   },
   {
-    question: "What if the property sits outside these nine cities?",
+    question: "What if the property sits outside the Coachella Valley?",
     answer:
       "Send the address and a short description of the work. V12 Electric will confirm whether it is close enough to cover before anything is scheduled.",
   },
