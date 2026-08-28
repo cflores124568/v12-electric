@@ -7723,3 +7723,196 @@ blockquote {
     gap: 2.5rem;
   }
 }
+
+/* Mobile containment
+   Grid tracks default to a min-content floor. On narrow screens that allowed
+   long labels, phone numbers, and display type to make a hidden track wider
+   than the viewport while .site-shell clipped the excess. These rules make
+   the phone layout genuinely fluid instead of merely hiding overflow. */
+@media (max-width: 620px) {
+  .review-contact,
+  .review-feature,
+  .contact-prompt,
+  .intro-split,
+  .process-intro,
+  .service-detail-intro,
+  .about-statement,
+  .handoff-band,
+  .city-faq,
+  .service-overview-item,
+  .service-overview-item:nth-child(even),
+  .project-principles,
+  .contact-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-contact > *,
+  .review-feature > *,
+  .contact-prompt > *,
+  .intro-split > *,
+  .process-intro > *,
+  .service-detail-intro > *,
+  .about-statement > *,
+  .handoff-band > *,
+  .city-faq > *,
+  .service-overview-item > *,
+  .project-card-copy > *,
+  .project-principles > *,
+  .project-principles li > *,
+  .contact-section > * {
+    min-width: 0;
+  }
+
+  .review-feature,
+  .contact-prompt,
+  .service-overview-media,
+  .service-overview-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-prompt {
+    width: auto;
+  }
+
+  .contact-prompt-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-prompt-actions .button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 0.75rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .contact-prompt-actions .button:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .contact-prompt-phone {
+    max-width: 100%;
+    font-size: clamp(1.55rem, 7.5vw, 2.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-trust-row {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .lutron-credential-compact {
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    gap: 0.55rem 0.75rem;
+  }
+
+  .lutron-credential-compact .lutron-credential-copy {
+    min-width: 0;
+  }
+
+  .lutron-credential-compact .lutron-credential-copy h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .lutron-credential-compact .lutron-credential-link {
+    grid-column: 1 / -1;
+    width: fit-content;
+    margin: 0;
+    white-space: normal;
+  }
+
+  .lutron-credential:not(.lutron-credential-compact) {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .lutron-credential:not(.lutron-credential-compact) .lutron-credential-mark {
+    width: 6.5rem;
+  }
+
+  .lutron-credential:not(.lutron-credential-compact) .lutron-credential-link {
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+
+  .inclusion-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inclusion-list li {
+    min-width: 0;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .inclusion-list li > * {
+    min-width: 0;
+  }
+
+  .inclusion-list strong,
+  .inclusion-list p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .project-card-copy {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .project-card h2 {
+    max-width: 12ch;
+    font-size: clamp(1.85rem, 8.25vw, 2.5rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .project-card-copy p,
+  .project-principles h2,
+  .project-principles li p,
+  .service-overview-copy h2,
+  .service-overview-copy p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .project-principles ol {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .project-principles li {
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+  }
+
+  .project-principles li span {
+    font-size: 2.1rem;
+  }
+
+  .contact-close {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-close > * {
+    min-width: 0;
+  }
+
+  .contact-close .button {
+    width: min(100%, 20rem);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .mobile-menu nav a {
+    max-width: 100%;
+    font-size: clamp(2.1rem, 9vw, 3.4rem);
+    overflow-wrap: anywhere;
+  }
+}
