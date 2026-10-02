@@ -2,6 +2,7 @@
 import "leaflet/dist/leaflet.css";
 import { serviceAreaCities } from "../data/service-areas";
 
+const cartoKey = import.meta.env.PUBLIC_CARTO_BASEMAPS_KEY;
 const selectedCity = serviceAreaCities[0];
 const mapCities = serviceAreaCities.map((city) => ({
   slug: city.slug,
@@ -59,6 +60,7 @@ const mapCities = serviceAreaCities.map((city) => ({
     <div
       class="service-area-map-surface"
       data-leaflet-map
+      data-carto-key={cartoKey}
       role="region"
       aria-label="Interactive map of V12 Electric service areas in the Coachella Valley"
       tabindex="0"
@@ -124,9 +126,9 @@ const mapCities = serviceAreaCities.map((city) => ({
     });
 
     const darkTiles = L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      "https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key={key}",
       {
-        subdomains: "abcd",
+        key: mapElement.dataset.cartoKey ?? "",
         maxZoom: 20,
         attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
       },
