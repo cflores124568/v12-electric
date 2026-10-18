@@ -1,5 +1,6 @@
 ---
 import { services, type Service } from "../data/site";
+import Arrow from "./Arrow.astro";
 
 interface Props {
   service: Service;
@@ -21,7 +22,7 @@ const variant = service.layout === "split" ? "grid" : "rail";
           <a href={`/services/${item.slug}/`}>
             <span>{item.shortTitle}</span>
             <strong>{item.title}</strong>
-            <span aria-hidden="true">↗</span>
+            <Arrow />
           </a>
         ))}
       </div>
@@ -42,7 +43,7 @@ const variant = service.layout === "split" ? "grid" : "rail";
             <a href={`/services/${item.slug}/`}>
               <span>{number}</span>
               <strong>{item.title}</strong>
-              <span aria-hidden="true">↗</span>
+              <Arrow />
             </a>
           </li>
         ))}

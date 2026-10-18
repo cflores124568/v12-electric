@@ -33,7 +33,7 @@ const {
   title,
   description,
   image = "/images/og-card.jpg",
-  imageAlt = "V12 Electric — electrical service in the Coachella Valley",
+  imageAlt,
   pageType = "website",
   breadcrumbs = [],
   structuredData = [],
@@ -42,8 +42,10 @@ const {
 
 const siteUrl = Astro.site ?? new URL("https://v12electric.com");
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const socialImage = new URL(image, siteUrl);
-const socialImageHasKnownDimensions = image === "/images/og-card.jpg";
+const pageImage = new URL(image, siteUrl);
+// Every page shares the same logo card so links always show the brand.
+const socialImage = new URL("/images/og-card.jpg", siteUrl);
+const socialImageAlt = "V12 Electric logo — Power, Lighting, Design";
 const businessId = new URL("/#business", siteUrl).href;
 const websiteId = new URL("/#website", siteUrl).href;
 const webpageId = `${canonical.href}#webpage`;
@@ -116,7 +118,8 @@ const webpageSchema = {
   about: { "@id": businessId },
   primaryImageOfPage: {
     "@type": "ImageObject",
-    url: socialImage.href,
+    url: pageImage.href,
+    ...(imageAlt && { caption: imageAlt }),
   },
   inLanguage: "en-US",
 };
@@ -180,15 +183,16 @@ const jsonLd = { "@context": "https://schema.org", "@graph": schemaGraph };
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:secure_url" content={socialImage} />
-    {socialImageHasKnownDimensions && <meta property="og:image:width" content="1200" />}
-    {socialImageHasKnownDimensions && <meta property="og:image:height" content="630" />}
-    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialImageAlt} />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>

@@ -1,6 +1,8 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import { googleReviewUrl } from "../data/site";
+import Arrow from "./Arrow.astro";
+import GoogleMark from "./GoogleMark.astro";
 ---
 
 <footer class="site-footer">
@@ -18,10 +20,10 @@ import { googleReviewUrl } from "../data/site";
       <div class="footer-actions">
         <a class="footer-phone" href="tel:+17605676593">Call (760) 567-6593</a>
         <a class="footer-phone" href={googleReviewUrl} target="_blank" rel="noreferrer">
-          Leave a Google review <span aria-hidden="true">↗</span>
+          <GoogleMark /> Leave a Google review <Arrow />
         </a>
         <a class="footer-contact-link" href="/contact/">
-          Start a conversation <span aria-hidden="true">↗</span>
+          Start a conversation <Arrow />
         </a>
       </div>
     </section>
@@ -57,7 +59,7 @@ import { googleReviewUrl } from "../data/site";
         Serving the Coachella Valley, from Palm Springs and Desert Hot Springs down through La
         Quinta, Indio, and Coachella.
       </p>
-      <a href="/service-areas/">View the service area <span aria-hidden="true">→</span></a>
+      <a href="/service-areas/">View the service area <Arrow /></a>
     </section>
   </div>
 
@@ -67,6 +69,6 @@ import { googleReviewUrl } from "../data/site";
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
     </nav>
-    <a class="footer-back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    <a class="footer-back-to-top" href="#top">Back to top <Arrow name="up" /></a>
   </div>
 </footer>

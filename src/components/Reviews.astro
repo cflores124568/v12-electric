@@ -1,6 +1,8 @@
 ---
 import { reviewProof } from "../data/reviews";
 import { googleReviewUrl } from "../data/site";
+import Arrow from "./Arrow.astro";
+import GoogleMark from "./GoogleMark.astro";
 
 const [featuredReview, ...remainingReviews] = reviewProof;
 const supportingReviews = remainingReviews.slice(0, 3);
@@ -14,10 +16,13 @@ const supportingReviews = remainingReviews.slice(0, 3);
       <blockquote>“{featuredReview.excerpt ?? featuredReview.text}”</blockquote>
       <footer>
         <strong>{featuredReview.author}</strong>
-        <span>{featuredReview.source}{featuredReview.date && ` · ${featuredReview.date}`}</span>
+        <span>
+          {featuredReview.source === "Google" && <GoogleMark />}{" "}{featuredReview.source}
+          {featuredReview.date && ` · ${featuredReview.date}`}
+        </span>
       </footer>
       <details class="review-full">
-        <summary>Read full review <span aria-hidden="true">↗</span></summary>
+        <summary>Read full review <Arrow name="down" /></summary>
         <p>“{featuredReview.text}”</p>
         <p class="review-continuity">
           Reviews appear as customers wrote them. Some were published under our previous business
@@ -46,10 +51,10 @@ const supportingReviews = remainingReviews.slice(0, 3);
     <h2>Call or text Eric.</h2>
     <a class="contact-prompt-phone" href="tel:+17605676593">(760) 567-6593</a>
     <div class="contact-prompt-actions">
-      <a class="button button-outline" href="tel:+17605676593">Call <span aria-hidden="true">→</span></a>
-      <a class="button button-outline" href="sms:+17605676593">Text <span aria-hidden="true">→</span></a>
+      <a class="button button-outline" href="tel:+17605676593">Call <Arrow /></a>
+      <a class="button button-outline" href="sms:+17605676593">Text <Arrow /></a>
       <a class="button button-outline" href={googleReviewUrl} target="_blank" rel="noreferrer">
-        Leave a Google review <span aria-hidden="true">↗</span>
+        <GoogleMark /> Leave a Google review <Arrow />
       </a>
     </div>
   </aside>
@@ -60,7 +65,9 @@ const supportingReviews = remainingReviews.slice(0, 3);
     supportingReviews.map((review) => (
       <article data-reveal="up">
         <blockquote>“{review.text}”</blockquote>
-        <footer>{review.author} · {review.source}</footer>
+        <footer>
+          {review.author} · {review.source === "Google" && <GoogleMark />} {review.source}
+        </footer>
       </article>
     ))
   }

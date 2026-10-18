@@ -189,7 +189,7 @@ blockquote {
 
 .button:hover span,
 .button:focus-visible span {
-  transform: translate(0.15rem, -0.12rem);
+  transform: translateX(0.15rem);
 }
 
 .button:active {
@@ -871,7 +871,7 @@ blockquote {
 
 .text-link:hover span,
 .text-link:focus-visible span {
-  transform: translate(0.15rem, -0.12rem);
+  transform: translateX(0.15rem);
 }
 
 .process {
@@ -1445,7 +1445,7 @@ blockquote {
 
 .footer-contact-link:hover span,
 .footer-contact-link:focus-visible span {
-  transform: translate(0.16rem, -0.16rem);
+  transform: translateX(0.16rem);
 }
 
 .footer-coverage a:hover span,
@@ -4753,9 +4753,8 @@ blockquote {
   transition: transform 250ms var(--ease-out);
 }
 
-.review-full summary:hover span,
-.review-full summary:focus-visible span {
-  transform: translate(0.15rem, -0.15rem);
+.review-full[open] summary span {
+  transform: rotate(180deg);
 }
 
 .review-full p {
@@ -7691,7 +7690,7 @@ blockquote {
 
 .area-card a:hover .area-card-link span,
 .area-card a:focus-visible .area-card-link span {
-  transform: translate(0.2rem, -0.2rem);
+  transform: translateX(0.2rem);
 }
 
 .area-card-link span {
@@ -7915,4 +7914,30 @@ blockquote {
     font-size: clamp(2.1rem, 9vw, 3.4rem);
     overflow-wrap: anywhere;
   }
+}
+
+/* Link arrows: inline SVG so every arrow shares one stroke and baseline. */
+.arrow {
+  display: inline-flex;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.google-mark {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.2em;
 }

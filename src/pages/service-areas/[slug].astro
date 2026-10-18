@@ -9,6 +9,7 @@ import SiteScripts from "../../components/SiteScripts.astro";
 import { serviceAreaCities } from "../../data/service-areas";
 import { services } from "../../data/site";
 import { toFaqSchema } from "../../data/seo";
+import Arrow from "../../components/Arrow.astro";
 
 export const getStaticPaths = (() =>
   serviceAreaCities.map((city) => ({
@@ -102,10 +103,10 @@ const citySchema = {
           <div class="city-hero-actions" data-reveal="up" data-delay="2">
             <a class="button button-primary" href={contactHref}>
               {city.projectCta}
-              <span aria-hidden="true">→</span>
+              <Arrow />
             </a>
             <a class="city-hero-link" href="#city-services">
-              View local services <span aria-hidden="true">→</span>
+              View local services <Arrow />
             </a>
           </div>
 
@@ -149,7 +150,7 @@ const citySchema = {
             <dt>02 / Permit authority</dt>
             <dd>{city.permitAuthority}</dd>
             <a href={city.permitUrl} target="_blank" rel="noreferrer">
-              View permit information <span aria-hidden="true">↗</span>
+              View permit information <Arrow />
             </a>
           </div>
           <div data-reveal="up" data-delay="2">
@@ -174,7 +175,7 @@ const citySchema = {
                   <h3>{service.title}</h3>
                   <p>{service.summary}</p>
                 </div>
-                <span aria-hidden="true">↗</span>
+                <Arrow />
               </a>
             ))
           }
@@ -206,7 +207,7 @@ const citySchema = {
           {
             nearbyCities.map((area) => (
               <a href={`/service-areas/${area.slug}/`}>
-                {area.city} <span aria-hidden="true">↗</span>
+                {area.city} <Arrow />
               </a>
             ))
           }

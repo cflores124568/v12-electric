@@ -5,6 +5,7 @@ import ServiceAreaMap from "../../components/ServiceAreaMap.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import { serviceAreaCities } from "../../data/service-areas";
 import { serviceAreaFaqs, toFaqSchema } from "../../data/seo";
+import Arrow from "../../components/Arrow.astro";
 
 const heroImage = "/images/hero-bighorn-night.webp";
 const heroAlt =
@@ -89,7 +90,7 @@ const cityListSchema = {
                   </div>
                 </dl>
                 <span class="area-card-link">
-                  {city.city} electrician <span aria-hidden="true">↗</span>
+                  {city.city} electrician <Arrow />
                 </span>
               </div>
             </a>

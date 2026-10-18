@@ -1,5 +1,6 @@
 ---
 import type { Service } from "../data/site";
+import Arrow from "./Arrow.astro";
 
 interface Props {
   service: Service;
@@ -24,7 +25,7 @@ const { service } = Astro.props;
         <p class="section-label">The V12 approach</p>
         <blockquote>{service.closing}</blockquote>
         <a class="button button-primary" href="/contact/">
-          Plan Your Project <span aria-hidden="true">↗</span>
+          Plan Your Project <Arrow />
         </a>
       </div>
     </section>
@@ -49,7 +50,7 @@ const { service } = Astro.props;
         </p>
         <blockquote data-reveal="up">{service.closing}</blockquote>
         <a class="button button-light" href="/contact/" data-reveal="up" data-delay="1">
-          Plan Your Project <span aria-hidden="true">↗</span>
+          Plan Your Project <Arrow />
         </a>
       </div>
     </section>
@@ -63,7 +64,7 @@ const { service } = Astro.props;
         <p class="section-label">The V12 approach</p>
         <blockquote>{service.closing}</blockquote>
         <a class="button button-primary" href="/contact/">
-          Plan Your Project <span aria-hidden="true">↗</span>
+          Plan Your Project <Arrow />
         </a>
       </div>
       <figure class="service-proof-inset-media media-frame image-drift" data-reveal="image">

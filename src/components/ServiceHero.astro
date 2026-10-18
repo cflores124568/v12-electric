@@ -1,6 +1,7 @@
 ---
 import ServiceIcon from "./ServiceIcon.astro";
 import type { Service } from "../data/site";
+import Arrow from "./Arrow.astro";
 
 interface Props {
   service: Service;
@@ -77,10 +78,10 @@ const scopeHref = `#${service.slug}-scope`;
 
         <div class="service-hero-actions" data-reveal="up" data-delay="2">
           <a class="button button-primary" href="/contact/">
-            Plan your project <span aria-hidden="true">→</span>
+            Plan your project <Arrow />
           </a>
           <a class="service-hero-link" href={scopeHref}>
-            See the scope <span aria-hidden="true">→</span>
+            See the scope <Arrow />
           </a>
         </div>
       </div>
