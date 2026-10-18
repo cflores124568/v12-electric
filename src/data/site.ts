@@ -8,7 +8,7 @@ export const services = [
     statementTitle: "Built in, not bolted on.",
     summary: "Panels, wiring, and complete electrical systems for the whole property.",
     image: "/images/services/electrical-systems.webp",
-    alt: "Organized parallel conduit runs inside a new desert construction wall",
+    alt: "Yellow and white NM-B wiring and blue electrical boxes in a wood-framed desert home",
     proofImage: "/images/electrical-systems.webp",
     proofAlt: "Electrician completing a carefully organized electrical panel installation",
     intro:
@@ -81,7 +81,7 @@ export const services = [
     statementTitle: "The charger is the easy part.",
     summary: "Level 2 charging planned around service capacity, routing, parking, and inspection requirements.",
     image: "/images/services/ev-charger-installation.webp",
-    alt: "Matte black Level 2 EV charger in a desert-modern carport",
+    alt: "Wall-mounted EV charger with a separate cable hook and holster in a desert carport",
     proofImage: "/images/proof/ev-charger-hardwired-240.webp",
     proofAlt: "Hardwired Level 2 charger with conduit, disconnect, and a labeled 240-volt junction box",
     intro:
@@ -154,7 +154,7 @@ export const services = [
     statementTitle: "Capacity first, hardware second.",
     summary: "Modernize the electrical backbone before new loads turn into nuisance trips or unsafe workarounds.",
     image: "/images/services/panel-service-upgrades.webp",
-    alt: "Modern residential electrical panel on a clean stucco wall",
+    alt: "Outdoor meter-main with an open breaker door and PVC conduit on a desert home's stucco wall",
     proofImage: "/images/proof/service-upgrade.webp",
     proofAlt: "Open service equipment with organized conductors and upgraded components",
     intro:
@@ -300,7 +300,7 @@ export const services = [
     statementTitle: "The business keeps running.",
     summary: "Lighting, equipment circuits, repairs, and upgrades sequenced around operating businesses.",
     image: "/images/services/commercial-electrical.webp",
-    alt: "Upscale desert commercial interior with orderly conduit and pendant lighting",
+    alt: "Oak-fronted desert restaurant counter beneath supported ceiling conduit and pendant lights",
     proofImage: "/images/proof/commercial-service.webp",
     proofAlt: "Commercial electrical service equipment in a working space",
     intro:
@@ -373,7 +373,7 @@ export const services = [
     statementTitle: "A clear picture before the estimate.",
     summary: "Practical checks for older homes, remodels, rentals, equipment changes, and visible safety concerns.",
     image: "/images/services/electrical-inspections.webp",
-    alt: "Multimeter and receptacle tester arranged on a closed electrical panel",
+    alt: "Gloved hand using a voltage tester at an open panel beside a plugged-in receptacle tester",
     proofImage: "/images/proof/electrical-inspection.webp",
     proofAlt: "Electrician inspecting electrical equipment with a handheld meter",
     intro:
